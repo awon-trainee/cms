@@ -15,8 +15,8 @@
 2. Run `composer install` to install PHP dependencies, or run `composer update`
 5. Copy `.env.example` to `.env` and fill in the required values
 6. Run `php artisan key:generate` to generate an application key
-7. Go to `config -> database.php -> inside connection -> mysql (line 60). Change 'engine' => 'InnoDB'
-8. Go to database -> migrations -> remove `create_permission_table`
+7. Go to `config -> database.php -> inside connection -> mysql` (line 60). Change `'engine' => 'InnoDB'`
+8. Go to `database -> migrations -> remove create_permission_table`
 9. Run in the command `php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
 10. Run `php artisan migrate:fresh --seed` to migrate the database
 13. Run `php artisan serve` to start the development server
