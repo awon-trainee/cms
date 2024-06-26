@@ -9,7 +9,7 @@
 - [Laravel](https://laravel.com/docs/10.x/)
 - [Backpack for Laravel](https://backpackforlaravel.com/docs)
 
-### Development (### ! DON'T FORK THE REPO !)
+### Development (! DON'T FORK THE REPO !)
 
 1. Clone this repository
 2. Run `composer install` to install PHP dependencies, or run `composer update`
