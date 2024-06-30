@@ -28,8 +28,6 @@
 
 
 ### to push the codes
-1. Change engine to 'engine => null'
-2. discard changes for `create permission` files
-3. Make new branch for any update you did `git checkout -b name-of-the-branch`
-4. Create `Pull request` from the branch to main
-5. And that's it!
+1. Make new branch for any update you did `git checkout -b name-of-the-branch`
+2. Create `Pull request` from the branch to main
+3. And that's it!
