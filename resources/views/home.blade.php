@@ -22,6 +22,8 @@
                     </div>
                     <div class="stat"></div>
 
+    
+
                 </section>
             @endforeach
         </div>
@@ -51,6 +53,164 @@
             </div>
         </div>
     @endif
+    <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الحسابات البنكية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #4a4a4a;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 800px; /* عرض أقصى 800 بكسل */
+            text-align: center;
+            position: relative; /* لإضافة صورة خلفية */
+            margin: 0 auto; /* لتوسيط المربع أفقياً */
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://example.com/background.jpg') no-repeat center center/cover;
+            opacity: 0.2; /* للتحكم في شفافية الصورة */
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        select {
+            background-color: #8c5ab4 !important;
+            color: white !important;
+            border: none;
+            padding: 15px 50px;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .account-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .details {
+            text-align: right;
+            flex: 1; /* تجعل القسم يتمدد لملء المساحة المتاحة */
+            margin-right: 20px;
+        }
+
+        .details p {
+            margin: 10px 0; /* زيادة المسافة بين الفقرات */
+        }
+
+        .bank-logo img {
+            width: 250px; /* زيادة عرض الصورة إلى 250 بكسل */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">حساباتنا البنكية</h1>
+    <div class="container">
+        <div>
+            <label for="bankSelect">اسم المصرف:</label>
+            <select id="bankSelect" onchange="showAccountDetails()">
+                <option value="">اختر المصرف</option>
+                <option value="rajhi">الراجحي</option>
+                <option value="ahli">الأهلي</option>
+                <option value="anmha">الانماء</option>
+                <option value="jazira">الجزيرة</option>
+            </select>
+        </div>
+        <div class="account-info">
+            <div class="details">
+                <p id="bankName">اسم المصرف:</p>
+                <p id="accountName">اسم الحساب:</p>
+                <p id="accountNumber">رقم الحساب:</p>
+                <p id="ibanNumber">رقم الآيبان:</p>
+            </div>
+            <div class="bank-logo">
+                <img id="bankImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzt-ZS8yvZUd2JsjCmH_elXeOb5_fMQn8Osg&s" alt="bank logo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showAccountDetails() {
+            var selectElement = document.getElementById("bankSelect");
+            var selectedOptionValue = selectElement.value;
+
+            var bankNameElement = document.getElementById("bankName");
+            var accountNameElement = document.getElementById("accountName");
+            var accountNumberElement = document.getElementById("accountNumber");
+            var ibanNumberElement = document.getElementById("ibanNumber");
+            var bankImageElement = document.getElementById("bankImage");
+
+            if (selectedOptionValue === "rajhi") {
+                bankNameElement.textContent = "اسم المصرف: الراجحي";
+                accountNameElement.textContent = "اسم الحساب: جهاد بخاري";
+                accountNumberElement.textContent = "رقم الحساب: 7552888181891";
+                ibanNumberElement.textContent = "رقم الآيبان: SA12345678901234";
+                bankImageElement.src = "https://www.asianleadershipawards.com/images/al_rajhi_bank_logo.jpg";
+            } else if (selectedOptionValue === "ahli") {
+                bankNameElement.textContent = "اسم المصرف: الأهلي";
+                accountNameElement.textContent = "اسم الحساب: نزار البركاتي";
+                accountNumberElement.textContent = "رقم الحساب: 875270880000";
+                ibanNumberElement.textContent = "رقم الآيبان: SA23456789012345";
+                bankImageElement.src = "https://www.almowaten.net/wp-content/uploads/2022/01/1842916-325987017.jpg";
+            } else if (selectedOptionValue === "anmha") {
+                bankNameElement.textContent = "اسم المصرف: الانماء";
+                accountNameElement.textContent = "اسم الحساب: أصيل العميري";
+                accountNumberElement.textContent = "رقم الحساب: 7655181817999";
+                ibanNumberElement.textContent = "رقم الآيبان: SA34567890123456";
+                bankImageElement.src = "https://saudiscoop.com/wp-content/uploads/2021/04/alinma-768x511.jpg";
+            } else if (selectedOptionValue === "jazira") {
+                bankNameElement.textContent = "اسم المصرف: الجزيرة";
+                accountNameElement.textContent = "اسم الحساب: باسل جنيدي";
+                accountNumberElement.textContent = "رقم الحساب: 827373773737";
+                ibanNumberElement.textContent = "رقم الآيبان: SA45678901234567";
+                bankImageElement.src = "https://www.logolynx.com/images/logolynx/84/84e036f81b4a179a7bea95d39a19f1a3.jpeg";
+            } else {
+                bankNameElement.textContent = "";
+                accountNameElement.textContent = "";
+                accountNumberElement.textContent = "";
+                ibanNumberElement.textContent = "";
+                bankImageElement.src = "";
+            }
+        }
+    </script>
+</body>
+</html>
+
 
     <div class="viergein oe viergein-two">
         @if($pageSettings->show_statistics)
@@ -211,3 +371,4 @@
         });
     </script>
 @endpush
+
