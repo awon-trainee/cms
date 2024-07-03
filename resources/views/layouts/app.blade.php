@@ -187,6 +187,7 @@
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
                         style="visibility: visible; animation-duration: 1.1s; animation-iteration-count: 1; animation-name: fadeIn;">
                         <a href="{{ route('other-governance.index') }}" class="nav-link">{{$pages['others']}}</a></li>
+                        
                 </ul>
             </li>
         </ul>
