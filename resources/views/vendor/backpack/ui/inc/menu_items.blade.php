@@ -33,6 +33,8 @@
     <x-backpack::menu-dropdown-item title="الشركاء" :link="backpack_url('partner')" />
     <x-backpack::menu-dropdown-item title="خدماتنا" :link="backpack_url('service')" />
     <x-backpack::menu-dropdown-item title="مبادراتنا" :link="backpack_url('initiative')" />
+    <x-backpack::menu-dropdown-item title="أبرز مشاريعنا" :link="backpack_url('projects')" />
+    <x-backpack::menu-dropdown-item title="الحسابات البنكية" :link="backpack_url('banks')" />
     <x-backpack::menu-dropdown-item title="المسجلين في المبادرات" :link="backpack_url('initiative-registration')" />
     <x-backpack::menu-dropdown-header title="الحوكمة" class="text-muted" />
     <x-backpack::menu-dropdown-item title="اللوائح والسياسات" :link="backpack_url('regulation')" />
@@ -49,6 +51,10 @@
     <x-backpack::menu-dropdown-item title="التوظيف" :link="backpack_url('employment-page')" />
     <x-backpack::menu-dropdown-item title="العضوية" :link="backpack_url('membership-page')" />
     <x-backpack::menu-dropdown-item title="التطوع" :link="backpack_url('volunteering-page')" />
+    <x-backpack::menu-dropdown-header title="إدراج الفرص" class="text-muted" />
+    <x-backpack::menu-dropdown-item title="فرص التوظيف" :link="backpack_url('employment-opportunity')" />
+    <x-backpack::menu-dropdown-item title="فرص العضوية" :link="backpack_url('membership-opportunity')" />
+    <x-backpack::menu-dropdown-item title="فرص التطوع" :link="backpack_url('volunteer-opportunity')" />
     <x-backpack::menu-dropdown-header title="الطلبات" class="text-muted" />
     <x-backpack::menu-dropdown-item title="طلبات التوظيف" :link="backpack_url('employment-request')" />
     <x-backpack::menu-dropdown-item title="طلبات العضويات" :link="backpack_url('membership-request')" />

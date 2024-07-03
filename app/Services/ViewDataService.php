@@ -21,8 +21,13 @@ use App\Models\Picture;
 use App\Models\PublicRecord;
 use App\Models\Regulation;
 use App\Models\Service;
+use App\Models\Projects;
+use App\Models\EmploymentOpportunity;
+use App\Models\VolunteerOpportunity;
+use App\Models\MembershipOpportunity;
 use App\Models\Transparency;
 use App\Models\Value;
+use App\Models\Banks;
 use App\Settings\AboutUsPageSettings;
 use App\Settings\ContactUsSetting;
 use App\Settings\EmploymentSettings;
@@ -45,10 +50,17 @@ class ViewDataService
 
         $data['partners'] = Partner::all();
 
+        $data['projects'] = Projects::all();
+
         $data['latest_news'] = News::with('mainImage')
             ->orderByDesc('created_at')
             ->take(3)
             ->get();
+
+        $data['banks'] = Banks::all();
+
+        $data['first_bank'] = Banks::all()->first();
+
         return $data;
 
     }
@@ -138,6 +150,7 @@ class ViewDataService
     public function getEmploymentData(): array
     {
         $data['settings'] = new EmploymentSettings;
+        $data['employment_opportunity'] = EmploymentOpportunity::all();
 
         return $data;
     }
@@ -145,6 +158,7 @@ class ViewDataService
     public function getVolunteeringData(): array
     {
         $data['settings'] = new VolunteeringSettings;
+        $data['volunteer_opportunity'] = VolunteerOpportunity::all();
 
         return $data;
     }
@@ -152,6 +166,7 @@ class ViewDataService
     public function getMembershipData(): array
     {
         $data['settings'] = new MembershipSettings;
+        $data['membership_opportunity'] = MembershipOpportunity::all();
 
         return $data;
     }

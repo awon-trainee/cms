@@ -123,4 +123,9 @@ Route::group([
     Route::crud('page', 'PageCrudController');
     Route::crud('qualification', 'QualificationCrudController');
     Route::crud('experiance', 'ExperianceCrudController');
+    Route::crud('projects', 'ProjectsCrudController');
+    Route::crud('employment-opportunity', 'EmploymentOpportunityCrudController');
+    Route::crud('volunteer-opportunity', 'VolunteerOpportunityCrudController');
+    Route::crud('membership-opportunity', 'MembershipOpportunityCrudController');
+    Route::crud('banks', 'BanksCrudController');
 }); // this should be the absolute last line of this file
