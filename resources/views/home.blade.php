@@ -2,6 +2,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/libs/owlcarousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bank.css') }}">
 @endpush
 @section('content')
     {{------------------ Hero ------------------}}
@@ -51,6 +52,68 @@
             </div>
         </div>
     @endif
+
+    <section class="bank-section">
+    <h1 class="title">حساباتنا البنكية</h1>
+    <div class="container">
+        <div>
+            <label for="bankSelect">اسم المصرف:</label>
+                <select name="bankSelect" id="bankSelect" onchange="showAccountDetails()">
+                    @foreach($banks as $bank)
+                        <option value="{{ $bank->id }}">{{ $bank->bank_name }}</option>
+                    @endforeach
+            </select>
+        </div>
+        <div class="account-info">
+            <div class="details">
+                <div>
+                    <p>اسم المصرف: </p>
+                    <p id="bankName">{{ $first_bank->bank_name }}</p>
+                </div>
+                <div>
+                    <p>اسم الحساب: </p>
+                    <p id="accountName">{{ $first_bank->account_name }}</p>
+                </div>
+                <div>
+                    <p>رقم الحساب: </p>
+                    <p id="accountNumber">{{ $first_bank->account_number }}</p>
+                </div>
+                <div>
+                    <p>رقم الآيبان: </p>
+                    <p id="ibanNumber">{{ $first_bank->iban }}</p>
+                </div>
+            </div>
+            <div class="bank-logo">
+                <img id="bankImage" src="{{ $first_bank->iban }}" alt="{{ $first_bank->account_name }}">
+            </div>
+        </div>
+    </div>
+    </section>
+
+    {{------------------ Projects section ------------------}}
+    <div class="viergein oe viergein-two">
+        <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1" id="sma1">
+            <div class="title ps-5 text-center mt-5">
+                <h4>أبرز مشاريعنا</h4>
+            </div>
+            <div class="list-of-projects">
+                {{------------------ card of project ------------------}}
+                @foreach($projects as $project)
+                <div class="card shadow rounded-3" style="width: 759px; height: 519px;">
+                    <div style="width: 759px; height: 254px;">
+                        <img src="{{ $project->image }}" class="card-img-top w-100 h-100 object-fit-contain" alt="{{ $project->title }}" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold fs-5"> {{ $project->title }} </h5>
+                        <p class="card-text me-0 mw-0 fs-6 lh-lg">{{ $project->content }}</p>
+                    </div>
+                </div>
+                @endforeach
+                {{------------------ card of project ------------------}}
+            </div>
+        </div>
+    </div>                            
+    {{------------------ Projects section ------------------}}
 
     <div class="viergein oe viergein-two">
         @if($pageSettings->show_statistics)
@@ -209,5 +272,19 @@
             })
             @endif
         });
+    </script>
+    
+    <script>
+        function showAccountDetails() {
+            const selectedBankId = document.getElementById("bankSelect").value;
+            const selectedBank = @json($banks).find(bank => bank.id == selectedBankId);
+
+            document.getElementById("bankName").textContent = selectedBank.bank_name;
+            document.getElementById("accountName").textContent = selectedBank.account_name;
+            document.getElementById("accountNumber").textContent = selectedBank.account_number;
+            document.getElementById("ibanNumber").textContent = selectedBank.iban;
+            document.getElementById("bankImage").src = selectedBank.image;
+            document.getElementById("bankImage").alt = selectedBank.bank_name;
+        }
     </script>
 @endpush

@@ -1,0 +1,81 @@
+.bank-section {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4a4a4a;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px; /* عرض أقصى 800 بكسل */
+    text-align: center;
+    position: relative; /* لإضافة صورة خلفية */
+    margin: 0 auto; /* لتوسيط المربع أفقياً */
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://example.com/background.jpg') no-repeat center center/cover;
+    opacity: 0.2; /* للتحكم في شفافية الصورة */
+    z-index: -1;
+    border-radius: 8px;
+}
+
+select {
+    background-color: #8c5ab4 !important;
+    color: white !important;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.account-info {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.details {
+    text-align: right;
+    flex: 1; /* تجعل القسم يتمدد لملء المساحة المتاحة */
+    margin-right: 20px;
+}
+
+.details>div {
+    display: flex;
+}
+
+.details p {
+    margin: 10px 0; /* زيادة المسافة بين الفقرات */
+}
+
+.bank-logo img {
+    width: 250px; /* زيادة عرض الصورة إلى 250 بكسل */
+    height: auto;
+}

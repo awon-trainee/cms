@@ -198,6 +198,13 @@ div#navbar.active ul li:hover a {
     border: 0;
 }
 
+.btn-link span {
+    color: rgba(var(--primary-charity-color), 1) !important;
+}
+.btn-link span:hover {
+    color: white !important;
+}
+
 .nav .title button.btn-light-charity:hover,
 .nav .title button.btn-light-charity:focus {
     background: white !important;
@@ -629,6 +636,21 @@ section.Main-address .title p {
     max-width: 90%;
 }
 
+.employement-desc {
+    margin-right: 0rem !important;
+    max-width: fit-content !important;
+}
+
+.btn-join {
+    margin-right: 3rem;
+}
+
+.list-of-op {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 5rem;
+}
+
 .manager-content p {
     margin-right: 42px;
     color: #3542b8;
@@ -715,21 +737,37 @@ section.Main-address .title p {
     .manager-body {
         flex-direction: column;
     }
+    .list-of-op {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+    }
+ }
 
-    .charity-members {
+@media (max-width: 1024px) {
+  .charity-members {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-}
-
-@media (max-width: 1024px) {
     .manager-body .experience {
         width: 267px;
     }
+    .list-of-op {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+    }
 
-}
+ }
 
 @media (max-width: 320px) {
+  .list-of-op {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .list-of-op .card {
+        width: 237px !important;
+    }
+    .btn-join {
+        margin-right: 0rem;
+    }
     .manager-body .qualifications {
         flex-direction: column;
     }
@@ -745,6 +783,13 @@ section.Main-address .title p {
     .charity-members {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
+}
+
+.list-of-projects {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 15rem;
 }
 
 .all.bot::before {

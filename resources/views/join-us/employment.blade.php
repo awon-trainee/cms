@@ -17,29 +17,36 @@
                     <x-icons.work/>
                 </span>
             </div>
-            <p style="
-                    min-width: 50vw;
-                    min-height: 30vh;
-                "
-            >
-                {!! $settings->description !!}
-            </p>
         </div>
-        <div class="all-ope-a s">
-            @auth
-                <form action="{{ route('employment.store') }}" method="post">
-                    @csrf
-                    <a class="btn btn-primary text-light m-auto pra" role="button" onclick="this.parentElement.submit()">
-                        تسجيل
-                    </a>
-                </form>
-            @else
-                <a class="btn btn-primary text-light m-auto pra disabled"  role="button">
-                    تسجيل
-                </a>
-            @endauth
+        <div class="list-of-op">
+            <div class="card shadow rounded-3" style="width: 337px;">
+            @foreach($employment_opportunity as $employment)
+                <img src="{{ $employment->image }}" class="card-img-top" alt="employment-img" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold fs-5">{{ $employment->job_title }}</h5>
+                            <p class="card-text employement-desc fs-6 lh-lg">{{ $employment->job_desc }}</p>
+                            <a href="{{ $employment->job_link }}" class="btn btn-link fw-bold">
+                                <span>رابط:</span>
+                                انقر هنا
+                            </a>
+                            <div class="all-ope-a btn-join">
+                                @auth
+                                    <form action="{{ route('employment.store') }}" method="post">
+                                        @csrf
+                                        <a class="btn btn-primary text-light" role="button" onclick="this.parentElement.submit()">
+                                            تسجيل
+                                        </a>
+                                    </form>
+                                @else
+                                    <a class="btn btn-primary text-light m-auto pra disabled"  role="button">
+                                        تسجيل
+                                    </a>
+                                @endauth
+                            </div>
+                            @endforeach
+                    </div>
+            </div>
         </div>
-
         <x-buttons.contact-us/>
     </div>
 </div>
