@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
-                        data-wow-offset="0"><a href="{{ route('executive-manager') }}" class="nav-link">المدير التنفيذي</a>
+                        data-wow-offset="0"><a href="{{ route('executive-manager') }}" class="nav-link"> التنفيذي</a>
                     </li>
                 </ul>
             </li>
@@ -143,8 +143,8 @@
             </li>
             @endif
 
-            <li class="nav-item" id="ul-dropdown-Three" >
-                <a href="#" @class(['nav-link', 'active' => request()->routeIs('news.index', 'events.index', 'pictures.index')])>{{$pages['media_center']}}</a>
+            <li class="nav-item" id="ul-dropdown-Four" >
+                <a href="#" @class(['nav-link', 'active' => request()->routeIs('news.index', 'events.index', 'pictures.index' , 'videos.index')])>{{$pages['media_center']}}</a>
                 <ul class="ul-dropdown wow animate__fadeInDown" data-wow-iteration="1" data-wow-duration=".5s">
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"><a
                             href="{{ route('news.index') }}" class="nav-link ">
@@ -158,6 +158,10 @@
                             href="{{ route('pictures.index') }}" class="nav-link ">
                             {{$pages['images']}}
                         </a></li>
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"><a
+                            href="{{ route('videos.index') }}" class="nav-link">
+                            مكتبة الفيديو
+                        </a></li>   
                 </ul>
             </li>
             <li class="nav-item" id="ul-dropdown-Four">
