@@ -13,11 +13,11 @@
 
             <div class="all-pepo row overflow-x-auto at m-auto position-relative">
                 @foreach($stages as $stage => $members)
-                    <div style="order: {{ $stage }}; -webkit-order: {{ $stage }}" class="row justify-content-center">
+                    <div style="order: {{ $stage }}; -webkit-order: {{ $stage }}" class="row justify-content-center managers">
                     @foreach($members as $member)
-                            <div class="col-lg-3 col-md-4 col-sm-12 mb-4 manager-content">
-                                <div class="avatar">
-                                    <img class="card-img-top rounded-circle shadow" src="{{ $member->picture_url }}" alt="manager-avatar" />
+                            <div class="col-lg-3 col-md-4 col-sm-12 mb-4 manager-content position-relative">
+                                <div class="avatar position-absolute">
+                                    <img src="{{ $member->picture_url }}" class="card-img-top rounded-circle" alt="{{ $member->name }}" />
                                 </div>
                                 <div class="members-body float-end pe-4">
                                     <h6>{{ $member->name }}</h6>

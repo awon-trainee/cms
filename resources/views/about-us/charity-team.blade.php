@@ -11,13 +11,14 @@
                     </h4>
                 </div><!--title-->
             </div>
-            <div class="charity-members container position-relative">
+            <div class="charity-teams">
                 @foreach($members as $member)
-                    <div class="manager-content">
-                        <div class="avatar">
-                            <img class="card-img-top rounded-circle shadow" src="{{ $member->picture_url }}" alt="manager-avatar" />
-                        <div class="members-body float-end pe-4">
-                            <p class="me-0">{{ $member->name }}</p>
+                    <div class="card position-relative">
+                        <div class="avatar position-absolute">
+                            <img src="{{ $member->picture_url }}" class="card-img-top rounded-circle" alt="{{ $member->name }}" />
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ $member->name }}</p>
                             <small class="fw-normal text-secondary">{{ $member->position->title }}</small>
                             <div class="d-flex align-items-center mt-3 gap-2">
                                 <a href="{{$member->telegram}}">

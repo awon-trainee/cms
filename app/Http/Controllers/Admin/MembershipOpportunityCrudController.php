@@ -99,4 +99,9 @@ class MembershipOpportunityCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    protected function setupDeleteOperation()
+    {
+        CRUD::field('file')->type('upload')->withFiles(['disk' => 'digitalocean']);
+    }
 }

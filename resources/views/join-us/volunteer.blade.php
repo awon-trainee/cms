@@ -19,39 +19,35 @@
             </div>
         </div>
         <div class="list-of-op">
-            <div class="card shadow rounded-3" style="width: 337px;">
-                @foreach($volunteer_opportunity as $volunteer)
-                <img src="{{ $volunteer->image }}" class="card-img-top" alt="volunteer-img" />
+            @foreach($volunteer_opportunity as $volunteer)
+                <div class="card">
+                    <img src="{{ $volunteer->image_url }}" class="card-img-top" alt="" />
                     <div class="card-body">
-                        <h5 class="card-title fw-bold fs-5">{{ $volunteer->volunteer_title }}</h5>
-                            <p class="card-text employement-desc fs-6 lh-lg">{{ $volunteer->volunteer_desc }}</p>
-                            <a href="{{ $volunteer->volunteer_link }}" class="btn btn-link fw-bold">
-                                <span>رابط:</span>
+                        <h5 class="card-title">{{ $volunteer->volunteer_title }}</h5>
+                        <p class="card-text">{{ $volunteer->volunteer_desc }}</p>
+                        <a href="{{ $volunteer->volunteer_link }}" class="btn btn-link fw-bold">
+                            <span>رابط:</span>
                                 انقر هنا
-                            </a>
-                            <div class="all-ope-a btn-join">
-                                @auth
-                                    <form action="{{ route('employment.store') }}" method="post">
-                                        @csrf
+                        </a>
+                        <div class="all-ope-a btn-join">
+                            @auth
+                                <form action="{{ route('employment.store') }}" method="post">
+                                    @csrf
                                         <a class="btn btn-primary text-light" role="button" onclick="this.parentElement.submit()">
                                             تسجيل
                                         </a>
-                                    </form>
-                                @else
-                                    <a class="btn btn-primary text-light m-auto pra disabled"  role="button">
-                                        تسجيل
-                                    </a>
-                                @endauth
-                            </div>
+                                </form>
+                            @else
+                                <a class="btn btn-primary text-light m-auto pra disabled"  role="button">
+                                    تسجيل
+                                </a>
+                            @endauth
+                        </div>
                     </div>
-                    @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-
         <x-buttons.contact-us/>
-
-
-
     </div>
 </div>
 @endsection

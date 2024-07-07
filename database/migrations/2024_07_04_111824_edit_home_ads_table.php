@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banks', function (Blueprint $table) {
-            $table->id();
-            $table->string('bank_name');
-            $table->string('account_name');
-            $table->string('account_number');
-            $table->string('iban');
-            $table->string('image');
-            $table->timestamps();
+        Schema::table('home_ads', function (Blueprint $table) {
+            $table->string('title')->nullable()->change();
+            $table->string('description')->nullable()->change();
         });
     }
 
@@ -27,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banks');
+        Schema::table('home_ads', function (Blueprint $table) {
+            //
+        });
     }
 };

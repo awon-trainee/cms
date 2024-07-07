@@ -47,6 +47,11 @@ class Projects extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+    public function getImageUrlAttribute()
+    {
+        //return asset('storage/' . $this->image);
+        return config('filesystems.disks.digitalocean.url').'/'.$this->image;
+    }
 
     /*
     |--------------------------------------------------------------------------

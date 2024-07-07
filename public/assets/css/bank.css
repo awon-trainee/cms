@@ -41,8 +41,7 @@
 }
 
 select {
-    background-color: #8c5ab4 !important;
-    color: white !important;
+    background-color: rgba(var(--secondary-charity-color), 0.2) !important;
     border: none;
     padding: 15px 50px;
     border-radius: 5px;

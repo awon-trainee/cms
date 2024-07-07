@@ -28,6 +28,7 @@ class EmploymentOpportunityCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\EmploymentOpportunity::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/employment-opportunity');
+        CRUD::setEntityNameStrings('employment opportunity', 'employment opportunities');
         CRUD::setEntityNameStrings('فرص التوظيف', 'إدراج فرص التوظيف');
     }
 
@@ -97,5 +98,10 @@ class EmploymentOpportunityCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupDeleteOperation()
+    {
+        CRUD::field('file')->type('upload')->withFiles(['disk' => 'digitalocean']);
     }
 }

@@ -28,7 +28,7 @@ class BanksCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Banks::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/banks');
-        CRUD::setEntityNameStrings('الحسابات البنكية', 'banks');
+        CRUD::setEntityNameStrings('الحسابات البنكية', 'الحسابات البنكية');
     }
 
     /**
@@ -55,7 +55,7 @@ class BanksCrudController extends CrudController
         CRUD::setColumnDetails('image', [
             'label' => 'الصورة'
         ]);
-        CRUD::column('image')->type('image')->withFiles(['disk' => 'public']);
+        CRUD::column('image')->type('image')->withFiles(['disk' => 'digitalocean']);
     }
 
     /**
@@ -72,8 +72,8 @@ class BanksCrudController extends CrudController
         CRUD::field('account_number')->label('رقم الحساب');
         CRUD::field('iban')->label('رقم الآيبان');
         CRUD::field('image')->label('الصورة')->type('upload')->withFiles([
-            'disk' => 'public',
-            'path' => 'storage',
+            'disk' => 'digitalocean',
+            'path' => 'banks',
             'deleteWhenEntryIsDeleted' => true,
             'mime_types' => ['image'],
             'fileNamer' => function($file, $uploader) { return \Str::random(40).'.'.$file->extension(); }
@@ -94,6 +94,6 @@ class BanksCrudController extends CrudController
 
     protected function setupDeleteOperation()
     {
-        CRUD::field('file')->type('upload')->withFiles(['disk' => 'public']);
+        CRUD::field('file')->type('upload')->withFiles(['disk' => 'digitalocean']);
     }
 }

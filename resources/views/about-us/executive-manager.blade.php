@@ -5,7 +5,7 @@
         <div class="viergein viergein-active-2">
             <div class="all">
                 <div class="card mb-3">
-                    <div class="d-flex align-items-center manager-content">
+                    <div class="manager-content">
                         <div class="avatar m-3">
                             <img class="card-img-top rounded-circle shadow" src="{{ asset($viewData->picture_url) }}"
                                  alt="manager-avatar"/>
@@ -34,10 +34,14 @@
                         <div class="manager-body shadow-sm d-flex justify-content-around">
                             <div class="grid m-5">
                                 <h6 class="fw-bold text-muted pt-5">المؤهلات</h6>
-                                <div class="d-flex gap-4 qualifications">
+                                <div class="qualifications">
                                     @foreach($viewData->qualifications as $qualification)
-                                        <div class="card my-3" style="max-width: 18rem;">
-                                            <div class="mx-auto my-3 fs-6">{{$qualification->name}}</div>
+                                        <div class="card my-3">
+                                            <div class="d-flex align-items-center justify-content-center q-name-w">
+                                                <hr />
+                                                <div class="mx-auto my-3 fs-6 text-nowrap">{{ $qualification->name }}</div>
+                                                <hr />
+                                            </div>
                                             <div class="card-body">
                                                 <h5 class="text-center fs-6 fw-bold">{{$qualification->specialization}}</h5>
                                                 <div class="card-text grid">
@@ -70,19 +74,19 @@
                                                 <h5 class="card-title fs-7">{{$experience->position}}</h5>
                                                 <div class="card-text d-flex">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="{{ asset("assets/images/qualification-icon/uni.svg") }}" alt="uni" />
-                                                        <p class="me-1 fs-6 mt-3">{{$experience->start_at}}-{{$experience->end_at}}</p>
+                                                        <img src="{{ asset("assets/images/qualification-icon/calendar.svg") }}" alt="calendar" />
+                                                        <p class="me-1 fs-6 mt-3 text-nowrap">from {{$experience->start_at}} to {{$experience->end_at}}</p>
                                                     </div>
                                                     <div class="d-flex align-items-center me-2">
                                                         <img src="{{ asset("assets/images/qualification-icon/location.svg") }}" alt="location" />
-                                                        <p class="me-1 fs-6 mt-3">{{$experience->employr}}</p>
+                                                        <p class="me-1 fs-6 mt-3">{{$experience->employer}}</p>
                                                     </div>
                                                 </div>
-                                                <ul class="list-group px-0">
+                                                <ol class="list-group px-0 mx-4">
                                                     @foreach(json_decode($experience->tasks) as $task)
                                                         <li>{{ $task->value }}</li>
                                                     @endforeach
-                                                </ul>
+                                                </ol>
                                             </div>
                                         </div>
                                     </div>

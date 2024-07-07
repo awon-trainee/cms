@@ -17,7 +17,7 @@
                         <!-- height and width from admin dashboard -->
                         <img class="position-relative" style="object-fit:@if($ad->filled_pic) fill @else cover @endif; height:35rem; width:100%" src="{{ asset($ad->image_url) }}" alt="ad-image">
                     </div><!--desgin-->
-                    <div class="title">
+                    <div class="title" style="display:@if(($ad->title && $ad->description) || ($ad->title || $ad->description)) block @else none @endif;">
                         <h4>{{ $ad->title }}</h4>
                         <p>{{ $ad->description }}</p>
                     </div>
@@ -38,7 +38,7 @@
                     </div>
                     <h4>الرؤية</h4>
                 </div>
-                <p>{{ $generalSettings->vision }}</p>
+                <p style="white-space:pre-wrap;">{{ $generalSettings->vision }}</p>
             </div>
 
             <div class="all all-Two">
@@ -48,47 +48,71 @@
                     </div>
                     <h4>الرسالة</h4>
                 </div>
-                <p>{{ $generalSettings->message }}</p>
+                <p style="white-space:pre-wrap;">{{ $generalSettings->message }}</p>
             </div>
         </div>
     @endif
 
-    <section class="bank-section">
-    <h1 class="title">حساباتنا البنكية</h1>
-    <div class="container">
+    <div class="viergein oe viergein-two" style="display:@if(sizeof($banks) > 0) block @else none @endif;">
+        <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1" id="sma1">
+            <div class="title ps-5 text-center mt-5">
+                <h4>حساباتنا البنكية</h4>
+            </div>
+            <div class="container">
         <div>
             <label for="bankSelect">اسم المصرف:</label>
                 <select name="bankSelect" id="bankSelect" onchange="showAccountDetails()">
-                    @foreach($banks as $bank)
-                        <option value="{{ $bank->id }}">{{ $bank->bank_name }}</option>
-                    @endforeach
+                @foreach($banks as $bank)
+                    <option value="{{ $bank->id }}">{{ $bank->bank_name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="account-info">
             <div class="details">
                 <div>
                     <p>اسم المصرف: </p>
-                    <p id="bankName">{{ $first_bank->bank_name }}</p>
+                    @if($first_bank && $first_bank->bank_name)
+                        <p id="bankName">{{ $first_bank->bank_name }}</p>
+                    @else
+                        <p id="bankName"></p>
+                    @endif
                 </div>
                 <div>
                     <p>اسم الحساب: </p>
-                    <p id="accountName">{{ $first_bank->account_name }}</p>
+                    @if($first_bank && $first_bank->account_name)
+                        <p id="accountName">{{ $first_bank->account_name }}</p>
+                    @else
+                        <p id="accountName"></p>
+                    @endif
                 </div>
                 <div>
                     <p>رقم الحساب: </p>
-                    <p id="accountNumber">{{ $first_bank->account_number }}</p>
+                    @if($first_bank && $first_bank->account_number)
+                        <p id="accountNumber">{{ $first_bank->account_number }}</p>
+                    @else
+                        <p id="accountNumber"></p>
+                    @endif
                 </div>
                 <div>
                     <p>رقم الآيبان: </p>
-                    <p id="ibanNumber">{{ $first_bank->iban }}</p>
+                    @if($first_bank && $first_bank->iban)
+                        <p id="ibanNumber">{{ $first_bank->iban }}</p>
+                    @else
+                        <p id="ibanNumber"></p>
+                    @endif
                 </div>
             </div>
             <div class="bank-logo">
-                <img id="bankImage" src="{{ $first_bank->iban }}" alt="{{ $first_bank->account_name }}">
+                @if($first_bank && $first_bank->image && $first_bank->account_name)
+                    <img id="bankImage" src="{{ $first_bank->image_url }}" alt="{{ $first_bank->account_name }}">
+                @else
+                    <img id="bankImage" src="" alt="">
+                @endif
             </div>
         </div>
     </div>
-    </section>
+        </div>
+    </div>  
 
     {{------------------ Projects section ------------------}}
     <div class="viergein oe viergein-two">
@@ -99,13 +123,11 @@
             <div class="list-of-projects">
                 {{------------------ card of project ------------------}}
                 @foreach($projects as $project)
-                <div class="card shadow rounded-3" style="width: 759px; height: 519px;">
-                    <div style="width: 759px; height: 254px;">
-                        <img src="{{ $project->image }}" class="card-img-top w-100 h-100 object-fit-contain" alt="{{ $project->title }}" />
-                    </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ $project->image_url }}" class="card-img-top" alt="{{ $project->title }}" />
                     <div class="card-body">
-                        <h5 class="card-title fw-bold fs-5"> {{ $project->title }} </h5>
-                        <p class="card-text me-0 mw-0 fs-6 lh-lg">{{ $project->content }}</p>
+                        <h5 class="card-title">{{ $project->title }} </h5>
+                        <p class="card-text">{{ $project->content }}</p>
                     </div>
                 </div>
                 @endforeach
@@ -273,8 +295,8 @@
             @endif
         });
     </script>
-    
-    <script>
+
+<script>
         function showAccountDetails() {
             const selectedBankId = document.getElementById("bankSelect").value;
             const selectedBank = @json($banks).find(bank => bank.id == selectedBankId);
