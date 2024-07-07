@@ -1,0 +1,184 @@
+.button-content-section {
+    background-color: #ffffff;
+}
+
+.button-content-section .buttons {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border-radius: 5px;
+    padding: 10px; /* Add padding to create space inside the border */
+}
+
+.button-content-section .btn {
+    flex: 1; /* Ensure buttons take equal space */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 1px solid #000000; /* Directly set the border color */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #000;
+    margin: 0 10px; /* Add margin to create space between buttons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    justify-content: center; /* Center icon and text */
+}
+
+.button-content-section .btn img {
+    margin-right: 8px; /* Space between icon and text */
+    height: 20px; /* Adjust icon size */
+}
+
+.button-content-section .btn.active {
+    background-color: #8c5ab4;
+    color: #ffffff;
+}
+
+.button-content-section .btn:hover {
+    background-color: #0056b3 !important;
+    color: #fff;
+}
+
+.button-content-section .contents .content {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.button-content-section .contents .content h4 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+}
+
+.button-content-section .contents .content h4 img {
+    margin-right: 8px; /* Space between icon and text */
+    height: 30px; /* Adjust icon size */
+}
+
+.button-content-section .contents .content p {
+    font-size: 18px;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.button-content-section .contents .content .goal,
+.vision-message-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.button-content-section .contents .content .goal {
+    display: inline-block;
+    width: calc(33.33% - 30px);
+    box-sizing: border-box;
+}
+
+.button-content-section .contents .content .vision-message-container .vision,
+.button-content-section .contents .content .vision-message-container .message,
+.button-content-section .contents .fields-container .field {
+    display: inline-block;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.button-content-section .contents .content .vision-message-container {
+    display: flex;
+    justify-content: space-between; /* Separate the squares */
+    align-items: center; /* Center the text vertically */
+    text-align: center; /* Center the text horizontally */
+}
+
+.button-content-section .contents .content .vision-message-container .vision,
+.button-content-section .contents .content .vision-message-container .message {
+    display: flex;
+    flex-direction: column; /* Stack the icon and text vertically */
+    align-items: center; /* Center the icon and text horizontally */
+    width: 45%; /* Ensure the squares take up less space */
+}
+
+.button-content-section .contents .content .vision-message-container .vision img,
+.button-content-section .contents .content .vision-message-container .message img {
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fields-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
+.field {
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.field img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.field p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.fields-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3c51f5;
+    z-index: -1;
+}
+
+@media (max-width: 600px) {
+    .fields-container {
+        flex-direction: column;
+    }
+
+    .field {
+        margin-bottom: 20px;
+    }
+
+    .fields-container::before {
+        height: 0;
+    }
+}
+
+.vision-message-container {
+    text-align: center;
+}

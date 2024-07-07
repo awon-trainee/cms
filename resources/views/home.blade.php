@@ -3,6 +3,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/libs/owlcarousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bank.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
 @endpush
 @section('content')
     {{------------------ Hero ------------------}}
@@ -27,6 +28,67 @@
             @endforeach
         </div>
     @endif
+            <!-- New section with buttons and content -->
+    <div class="button-content-section mt-5">
+        <div class="buttons">
+            <button class="btn active" onclick="showContent('about', this)"> النبذة</button>
+            <button class="btn" onclick="showContent('goals', this)"> الأهداف</button>
+            <button class="btn" onclick="showContent('vision-message', this)"> الرؤية والرسالة</button>
+            <button class="btn" onclick="showContent('fields', this)"> المجالات</button>
+        </div>
+        <div class="contents mt-3">
+            <div id="about" class="content" style="display: block;">
+                <h4><img src="{{ asset('assets/icons/about-icon.png') }}" alt="About Icon"> نبذة عنَا</h4>
+                <p>محتوى الوصف التفصيلي للنبذه محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه.محتوى الوصف التفصيلي للنبذه.محتوى الوصف التفصيلي للنبذه.</p>
+            </div>
+            <div id="goals" class="content">
+                <h4><img src="{{ asset('assets/icons/goals-icon.png') }}" alt="Goals Icon"> أهدافنا</h4>
+                <div class="goal">هدف 1</div>
+                <div class="goal">هدف 2</div>
+                <div class="goal">هدف 3</div>
+                <div class="goal">هدف 4</div>
+                <div class="goal">هدف 5</div>
+                <div class="goal">هدف 6</div>
+            </div>
+            <div id="vision-message" class="content">
+                <div class="vision-message-container">
+                    <div class="vision">
+                        <h4>
+                            <img src="{{ asset('assets/icons/vision-icon.png') }}" alt="Vision Icon"> رؤيتنا
+                        </h4>
+                        <p>محتوى الرؤية</p>
+                    </div>
+                    <div class="message">
+                        <h4>
+                            <img src="{{ asset('assets/icons/message-icon.png') }}" alt="Message Icon"> رسالتنا
+                        </h4>
+                        <p>محتوى الرسالة</p>
+                    </div>
+                </div>
+            </div>
+            <div id="fields" class="content">
+                <h4><img src="{{ asset('assets/icons/fields-icon.png') }}" alt="Fields Icon"> مجالاتنا</h4>
+                <div class="fields-container">
+                    <div class="field">
+                        <img src="icon1.png" alt="Icon 1">
+                        <p>نص المجال الأول</p>
+                    </div>
+                    <div class="field">
+                        <img src="icon2.png" alt="Icon 2">
+                        <p>نص المجال الثاني</p>
+                    </div>
+                    <div class="field">
+                        <img src="icon3.png" alt="Icon 3">
+                        <p>نص المجال الثالث</p>
+                    </div>
+                    <div class="field">
+                        <img src="icon4.png" alt="Icon 4">
+                        <p>نص المجال الرابع</p>
+                    </div>
+                </div>
+            </div><br>
+        </div>
+    </div>
     @if($pageSettings->show_vision_and_message)
         <div class="viergein wow animate__slideInRight bg-charity-light" data-wow-duration="1s" data-wow-iteration="1"
              data-wow-offset="200">
@@ -286,5 +348,22 @@
             document.getElementById("bankImage").src = selectedBank.image;
             document.getElementById("bankImage").alt = selectedBank.bank_name;
         }
+        function showContent(contentId, element) {
+        // Hide all content divs
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+
+        // Remove active class from all buttons
+        var buttons = document.querySelectorAll('.btn');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+        });
+
+        // Show the clicked content and add active class to the clicked button
+        document.getElementById(contentId).style.display = 'block';
+        element.classList.add('active');
+    }
     </script>
 @endpush
