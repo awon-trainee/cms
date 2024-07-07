@@ -128,4 +128,5 @@ Route::group([
     Route::crud('volunteer-opportunity', 'VolunteerOpportunityCrudController');
     Route::crud('membership-opportunity', 'MembershipOpportunityCrudController');
     Route::crud('banks', 'BanksCrudController');
+    Route::crud('video-library', 'VideoLibraryCrudController');
 }); // this should be the absolute last line of this file

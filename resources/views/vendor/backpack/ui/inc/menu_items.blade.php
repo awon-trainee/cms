@@ -26,6 +26,7 @@
     <x-backpack::menu-dropdown-item title="الإخبار" :link="backpack_url('news')" />
     <x-backpack::menu-dropdown-item title="الغعاليات" :link="backpack_url('event')" />
     <x-backpack::menu-dropdown-item title="الصور" :link="backpack_url('picture')" />
+    <x-backpack::menu-dropdown-item title="مكتبة الفيديو" :link="backpack_url('video-library')" />
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="الصفحات" icon="la la-file-alt">
