@@ -49,5 +49,5 @@ Route::group([
 
 
     Route::get('pictures', 'PictureController@index')->name('pictures.index');
-    Route::get('videos', 'videoController@index')->name('videos.index');
+    Route::get('videos', 'VideoLibraryController@index')->name('videos.index');
 });

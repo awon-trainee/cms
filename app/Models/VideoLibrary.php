@@ -49,7 +49,7 @@ class VideoLibrary extends Model
     */
     public function getImageUrlAttribute()
     {
-        return config('filesystems.disks.digitalocean.url').'/'.$this->image;
+        return config('filesystems.disks.digitalocean.url').'/'.$this->video;
     }
 
     /*

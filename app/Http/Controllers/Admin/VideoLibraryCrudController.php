@@ -71,7 +71,7 @@ class VideoLibraryCrudController extends CrudController
         CRUD::setFromDb(); // set fields from db columns.
         CRUD::field('video')->label('الفيديو')->type('upload')->withFiles([
             'disk' => 'digitalocean',
-            'path' => 'video_library',
+            'path' => 'video-library',
             'deleteWhenEntryIsDeleted' => true,
             'mime_types' => ['video'],
             'fileNamer' => function($file, $uploader) { return \Str::random(40).'.'.$file->extension(); }

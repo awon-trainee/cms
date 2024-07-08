@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\VideoLibrary;
 
-class VideoController extends Controller
+class VideoLibraryController extends Controller
 {
     public function index()
    {

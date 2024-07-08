@@ -11,10 +11,9 @@
                 <div class="videos-container">
                     @foreach($videos as $video)
                         <div class="video-row">
-                            <!-- فيديو 1 -->
-                            <div class="video-thumbnail" onclick="openVideoModal('{{ $video->video_url }}')">
+                            <div class="video-thumbnail" onclick="openVideoModal('{{ $video->image_url }}')">
                                 <video controls>
-                                    <source src="{{ $video->video_url }}" />
+                                    <source src="{{ $video->image_url }}" />
                                 </video>
                                 <div class="video-info">
                                     <span class="video-date">{{ $video->date }}</span>
@@ -86,13 +85,19 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خلف الفيديو */
         transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .video-thumbnail video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .video-thumbnail:hover {
         transform: translateY(-5px); /* رفع الفيديو قليلاً عند التمرير */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* زيادة الظل عند التمرير */
-    }
-    .video-thumbnail img {
-        width: 100%;
-        height: 100%;
     }
     .video-thumbnail .play-button {
         position: absolute;

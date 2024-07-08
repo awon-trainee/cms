@@ -28,7 +28,7 @@ class VideoLibraryRequest extends FormRequest
         $sometimes = $this->method() == 'PUT' ? ['sometimes'] : [];
         return [
             'title' => ['required', 'string', 'max:255'],
-            // 'video' => $sometimes + ['required', 'mimes:mp4,mov,wmv', 'max:5120'],
+            'video' => $sometimes + ['required', 'mimes:mp4,mov,wmv', 'max:5120'],
         ];
     }
 
