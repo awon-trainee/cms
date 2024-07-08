@@ -83,3 +83,4 @@
 
 <x-backpack::menu-item title="المؤهلات" icon="la la-question" :link="backpack_url('qualification')" />
 <x-backpack::menu-item title="الخبرات" icon="la la-question" :link="backpack_url('experiance')" />
+<x-backpack::menu-item title="Faqs" icon="la la-question" :link="backpack_url('faq')" />

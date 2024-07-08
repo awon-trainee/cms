@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::group([
     Route::resource('/volunteering', 'VolunteeringController')->only(['index', 'store']);
     Route::resource('/our-initiatives', 'OurInitiativeController')->only(['index', 'store']);
     Route::resource('/contact-us', 'ContactUsController')->only(['index', 'store']);
+    Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
 
 
     Route::get('pictures', 'PictureController@index')->name('pictures.index');

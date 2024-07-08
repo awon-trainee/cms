@@ -143,23 +143,23 @@
             </li>
             @endif
 
-            <li class="nav-item" id="ul-dropdown-Three" >
-                <a href="#" @class(['nav-link', 'active' => request()->routeIs('news.index', 'events.index', 'pictures.index')])>{{$pages['media_center']}}</a>
+            <li class="nav-item" id="ul-dropdown-Three">
+                <a href="#" @class(['nav-link', 'active' => request()->routeIs('news.index', 'events.index', 'pictures.index', 'faq.index')])>{{$pages['media_center']}}</a>
                 <ul class="ul-dropdown wow animate__fadeInDown" data-wow-iteration="1" data-wow-duration=".5s">
-                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"><a
-                            href="{{ route('news.index') }}" class="nav-link ">
-                            {{$pages['news']}}
-                        </a></li>
-                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"><a
-                            href="{{ route('events.index') }}" class="nav-link">
-                            {{$pages['events']}}
-                        </a></li>
-                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"><a
-                            href="{{ route('pictures.index') }}" class="nav-link ">
-                            {{$pages['images']}}
-                        </a></li>
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s">
+                        <a href="{{ route('news.index') }}" class="nav-link">{{$pages['news']}}</a>
+                    </li>
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s">
+                        <a href="{{ route('events.index') }}" class="nav-link">{{$pages['events']}}</a>
+                    </li>
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s">
+                        <a href="{{ route('pictures.index') }}" class="nav-link">{{$pages['images']}}</a>
+                    </li>
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s">
+                        <a href="{{ route('faq.index') }}" class="nav-link">الأسئلة الشائعة</a>
+                    </li>
                 </ul>
-            </li>
+            </li>            
             <li class="nav-item" id="ul-dropdown-Four">
                 <a href="#" @class(['nav-link', 'active' => request()->routeIs('regulations-and-policies.index', 'operational-plans.index', 'activity-reports.index', 'financial-reports.index', 'public-records.index', 'disclosure-and-transparency.index', 'other-governance.index')])>{{$pages['governance']}}</a>
                 <ul class="ul-dropdown wow animate__fadeInDown" data-wow-iteration="1" data-wow-duration=".5s"
