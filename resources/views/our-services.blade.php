@@ -11,14 +11,15 @@
 
             <div class="all-edara calman e">
                 @foreach($services as $service)
-                    <div class="item-servicse ss-or-sv">
+                    <div class="item-servicse ss-or-sv rounded-0 border-3">
                         <div class="img-servicse">
                             <span style="background: url({{ $service->image_url }})"></span>
                         </div>
-                        <div class="title text-center">
-                            <h3>
+                        <div class="px-4">
+                            <h3 class="fs-4 fw-bold">
                                 {{ $service->title }}
                             </h3>
+                            <p class="text-right me-0">{{ $service->description }}</p>
                         </div>
                     </div>
                 @endforeach

@@ -43,6 +43,7 @@ class ViewDataService
     public function getIndexData(): array
     {
         $data['pageSettings'] = (new HomePageSettings);
+        $data['generalSettings'] = (new AboutUsPageSettings);
 
         $data['ads'] = HomeAd::all();
 

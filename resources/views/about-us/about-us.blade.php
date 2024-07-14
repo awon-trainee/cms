@@ -6,9 +6,9 @@
     <div class="a-description align-items-center">
         <div class="icon" style="min-width: 300px; min-height: 200px">
             <x-icons.exclamation/>
-            <h4 class="text-dark">{{ $pageSettings->question }}</h4>
+            <h4 class="text-dark" style="white-space:pre-wrap;">{{ $pageSettings->question }}</h4>
         </div>
-        <p class="d-sm-block m-auto px-3 text-md-center text-lg-end lh-lg">
+        <p class="d-sm-block m-auto px-3 text-md-center text-lg-end lh-lg" style="white-space:pre-wrap;">
             {{ $pageSettings->answer }}
         </p>
     </div>
@@ -26,7 +26,7 @@
                 </div>
                 <h4 class="text-dark">الرؤية</h4>
             </div><!--title-->
-            <p class="lh-lg">
+            <p class="lh-lg" style="white-space:pre-wrap;">
                 {{ $generalSettings->vision }}
             </p>
 
@@ -39,7 +39,7 @@
                 </div>
                 <h4 class="text-dark">الرسالة</h4>
             </div><!--title-->
-            <p class="text-dark lh-lg">
+            <p class="text-dark lh-lg" style="white-space:pre-wrap;">
                 {{ $generalSettings->message }}
             </p>
         </div>
@@ -51,7 +51,7 @@
                 </div>
                 <h4 class="text-dark">الهدف</h4>
             </div><!--title-->
-            <p class="text-dark lh-lg">
+            <p class="text-dark lh-lg" style="white-space:pre-wrap;">
                 {{ $generalSettings->goals }}
             </p>
         </div>
@@ -74,7 +74,7 @@
             <div class="all-values p-3">
                 @foreach($values as $value)
                     <div class="values-item">
-                        <p class="m-0 lh-lg">{{ $value->title }}</p>
+                        <p class="m-0 lh-lg" style="white-space:pre-wrap;">{{ $value->title }}</p>
                     </div>
                 @endforeach
             </div>

@@ -76,6 +76,10 @@
                         data-wow-offset="0"><a href="{{ route('about-us') }}" class="nav-link">{{$pages['who_us']}}</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{ route('our-services') }}" @class(['nav-link', 'active' => request()->routeIs('our-services')])>{{$pages['services']}}</a>
+                    </li>
+
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
                         data-wow-offset="0"><a href="{{ route('board-of-directors') }}" class="nav-link">{{$pages['board_members']}}</a>
                     </li>
@@ -96,13 +100,9 @@
                         </a>
                     </li>
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
-                        data-wow-offset="0"><a href="{{ route('executive-manager') }}" class="nav-link"> التنفيذي</a>
+                        data-wow-offset="0"><a href="{{ route('executive-manager') }}" class="nav-link">المدير التنفيذي</a>
                     </li>
                 </ul>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('our-services') }}" @class(['nav-link', 'active' => request()->routeIs('our-services')])>{{$pages['services']}}</a>
             </li>
 
             <li class="nav-item" >

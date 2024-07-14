@@ -17,15 +17,19 @@
                     @foreach($members as $member)
                             <div class="col-lg-3 col-md-4 col-sm-12 mb-4 manager-content position-relative">
                                 <div class="avatar position-absolute">
-                                    <img src="{{ $member->picture_url }}" class="card-img-top rounded-circle" alt="{{ $member->name }}" />
+                                    <img src="{{ $member->picture_url }}" class="card-img-top rounded-circle shadow" alt="{{ $member->name }}" />
                                 </div>
-                                <div class="members-body float-end pe-4">
+                                <div class="members-body border border-0 shadow float-end pe-4">
                                     <h6>{{ $member->name }}</h6>
                                     <div class="overlay">
                                         <div class="text"><a href="{{ route('cv', ['id' => $member->id]) }}">انقر لعرض السيرة الذاتية</a></div>
                                     </div>
-                                    <small class="text-muted ">{{ $member->position->title }}</small>
-                                    <div class="d-flex align-items-center mt-3 gap-2">
+                                    <div class="d-grid">
+                                        <small class="text-muted ">{{ $member->position->title }}</small>
+                                        <small class="text-muted ">{{ $member->membership_type }}</small>
+                                        <small class="text-muted ">{{ $member->term_council }}</small>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3 gap-2 me-4">
                                         <a href="{{$member->telegram}}">
                                             <img src="{{ asset("assets/images/social-icons/telegram 2.svg") }}" alt="telegram"/>
                                         </a>

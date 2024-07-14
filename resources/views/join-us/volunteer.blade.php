@@ -20,10 +20,10 @@
         </div>
         <div class="list-of-op">
             @foreach($volunteer_opportunity as $volunteer)
-                <div class="card">
+                <div class="card shadow rounded-3">
                     <img src="{{ $volunteer->image_url }}" class="card-img-top" alt="" />
                     <div class="card-body">
-                        <h5 class="card-title">{{ $volunteer->volunteer_title }}</h5>
+                        <h5 class="card-title fw-bolder">{{ $volunteer->volunteer_title }}</h5>
                         <p class="card-text">{{ $volunteer->volunteer_desc }}</p>
                         <a href="{{ $volunteer->volunteer_link }}" class="btn btn-link fw-bold">
                             <span>رابط:</span>

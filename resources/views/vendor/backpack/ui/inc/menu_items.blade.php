@@ -10,6 +10,7 @@
 <x-backpack::menu-dropdown title="عن الجمعية" icon="la la-address-card">
     <x-backpack::menu-dropdown-header title="إعدادات صفحة عن الجمعية" class="text-muted" />
     <x-backpack::menu-dropdown-item title="خصائص عن الجمعية" :link="backpack_url('about-us-settings')" />
+    <x-backpack::menu-dropdown-item title="خدماتنا" :link="backpack_url('service')" />
     <x-backpack::menu-dropdown-item title="القيم" :link="backpack_url('value')" />
     <x-backpack::menu-dropdown-item title="المجالات" :link="backpack_url('field')" />
     <x-backpack::menu-dropdown-header title="صفحات الأعضاء" class="text-muted" />
@@ -32,7 +33,6 @@
 <x-backpack::menu-dropdown title="الصفحات" icon="la la-file-alt">
     <x-backpack::menu-dropdown-header title="صفحات الموقع" class="text-muted" />
     <x-backpack::menu-dropdown-item title="الشركاء" :link="backpack_url('partner')" />
-    <x-backpack::menu-dropdown-item title="خدماتنا" :link="backpack_url('service')" />
     <x-backpack::menu-dropdown-item title="مبادراتنا" :link="backpack_url('initiative')" />
     <x-backpack::menu-dropdown-item title="أبرز مشاريعنا" :link="backpack_url('projects')" />
     <x-backpack::menu-dropdown-item title="الحسابات البنكية" :link="backpack_url('banks')" />

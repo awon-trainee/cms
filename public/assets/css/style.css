@@ -660,7 +660,7 @@ section.Main-address .title p {
 }
 
 .members-body {
-    height: 245px;
+    height: 270px;
     width: 222px;
     padding-top: 7rem;
 }
@@ -2769,6 +2769,7 @@ p.prgraph-one {
     cursor: pointer;
     width: 100%;
     box-shadow: 1px 5px 11px #00000030;
+    border-color: rgba(var(--secondary-charity-color), 0.2);
 }
 
 .item-servicse.ss-or-sv {
@@ -2793,12 +2794,20 @@ p.prgraph-one {
     color: white;
 }
 
+.item-servicse:hover h3 {
+    color: white;
+}
+
 .item-servicse .title h3 {
     font-size: 15px;
     text-align: center;
     margin: 6px 0 16px 0;
     padding: 0;
     font-weight: 300;
+}
+
+.item-servicse h3 {
+    color: rgba(var(--secondary-charity-color), 1);
 }
 
 .item-servicse:hover .img-servicse::before {

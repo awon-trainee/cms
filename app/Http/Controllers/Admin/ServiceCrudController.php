@@ -50,6 +50,9 @@ class ServiceCrudController extends CrudController
         CRUD::setColumnDetails('title', [
             'label' => 'العنوان',
         ]);
+        CRUD::setColumnDetails('description', [
+            'label' => 'محتوى الخبر',
+        ]);
     }
 
     /**
@@ -75,6 +78,7 @@ class ServiceCrudController extends CrudController
             ]);
 
         CRUD::field('title')->label('العنوان');
+        CRUD::field('description')->label('محتوى الخبر');
     }
 
     /**
@@ -106,6 +110,9 @@ class ServiceCrudController extends CrudController
         ]);
         CRUD::setColumnDetails('title', [
             'label' => 'العنوان',
+        ]);
+        CRUD::setColumnDetails('description', [
+            'label' => 'المحتوى',
         ]);
         CRUD::setColumnDetails('created_at', [
             'label' => 'تاريخ الإنشاء',

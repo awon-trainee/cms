@@ -1,5 +1,6 @@
 .button-content-section {
     background-color: #ffffff;
+    width: 1004px;
 }
 
 .button-content-section .buttons {
@@ -7,7 +8,7 @@
     justify-content: center;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px; /* Add padding to create space inside the border */
 }
 
@@ -19,7 +20,7 @@
     border: 1px solid #000000; /* Directly set the border color */
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    color: #000;
+    color: rgba(var(--secondary-charity-color), 1);
     margin: 0 10px; /* Add margin to create space between buttons */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
     cursor: pointer;
@@ -34,26 +35,33 @@
 }
 
 .button-content-section .btn.active {
-    background-color: #8c5ab4;
+    background-color: rgba(var(--secondary-charity-color), 1);
     color: #ffffff;
 }
 
 .button-content-section .btn:hover {
-    background-color: #0056b3 !important;
+    background-color: rgba(var(--secondary-charity-color), 0.2);
     color: #fff;
 }
 
 .button-content-section .contents .content {
     display: none;
-    margin-top: 20px;
+    margin-top: 37px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
-.button-content-section .contents .content h4 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    display: flex;
-    align-items: center; /* Align icon and text vertically */
+.title {
+    column-gap: 22px;
+}
+
+.title h4 {
+    color: rgba(var(--secondary-charity-color), 1);
+    font-weight: bold;
+}
+
+.goals-content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .button-content-section .contents .content h4 img {
@@ -65,6 +73,14 @@
     font-size: 18px;
     color: #000000;
     margin-right: 10px;
+    margin-top: 2rem;
+}
+
+.goals-content .goal div {
+    background-color: rgba(var(--secondary-charity-color), 0.2);
+    color: rgba(var(--secondary-charity-color), 1);
+    width: 25px;
+    padding: 9px;
 }
 
 .button-content-section .contents .content .goal,
@@ -78,7 +94,6 @@
 
 .button-content-section .contents .content .goal {
     display: inline-block;
-    width: calc(33.33% - 30px);
     box-sizing: border-box;
 }
 
@@ -86,9 +101,18 @@
 .button-content-section .contents .content .vision-message-container .message,
 .button-content-section .contents .fields-container .field {
     display: inline-block;
-    width: calc(50% - 20px);
     box-sizing: border-box;
     margin-bottom: 20px;
+}
+
+.button-content-section .contents .content .vision-message-container .vision,
+.button-content-section .contents .content .vision-message-container .message {
+    width: calc(50% - 20px);
+}
+
+.button-content-section .contents .fields-container .field {
+    width: 100px;
+    height: 100px;
 }
 
 .button-content-section .contents .content .vision-message-container {
@@ -120,14 +144,6 @@
     }
 }
 
-.fields-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin-top: 40px;
-}
-
 .field {
     background: #fff;
     border-radius: 100%;
@@ -140,6 +156,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 99;
 }
 
 .field img {
@@ -154,16 +171,22 @@
     color: #333;
 }
 
+.fields-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
 .fields-container::before {
     content: '';
     position: absolute;
-    top: 50%;
     left: 0;
     right: 0;
     height: 2px;
-    background: #3c51f5;
-    z-index: -1;
+    background: rgba(var(--secondary-charity-color), 1);
 }
+
 
 @media (max-width: 600px) {
     .fields-container {

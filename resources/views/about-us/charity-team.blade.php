@@ -13,9 +13,9 @@
             </div>
             <div class="charity-teams">
                 @foreach($members as $member)
-                    <div class="card position-relative">
+                    <div class="card position-relative shadow border border-0">
                         <div class="avatar position-absolute">
-                            <img src="{{ $member->picture_url }}" class="card-img-top rounded-circle" alt="{{ $member->name }}" />
+                            <img src="{{ $member->picture_url }}" class="card-img-top shadow rounded-circle" alt="{{ $member->name }}" />
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ $member->name }}</p>

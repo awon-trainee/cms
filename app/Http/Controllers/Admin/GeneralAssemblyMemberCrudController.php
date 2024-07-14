@@ -55,6 +55,12 @@ class GeneralAssemblyMemberCrudController extends CrudController
         CRUD::setColumnDetails('order', [
             'label' => 'الترتيب',
         ]);
+        CRUD::setColumnDetails('membership_type', [
+            'label' => 'نوع العضوية',
+        ]);
+        CRUD::setColumnDetails('term_council', [
+            'label' => 'مدة دورة المجلس',
+        ]);
     }
 
     /**
@@ -91,6 +97,8 @@ class GeneralAssemblyMemberCrudController extends CrudController
 
         CRUD::field('name')->type('text')->label('الإسم');
         CRUD::field('order')->type('number')->label('الترتيب');
+        CRUD::field('membership_type')->label('نوع العضوية');
+        CRUD::field('term_council')->label('مدة دورة المجلس');
     }
 
     /**
@@ -125,6 +133,12 @@ class GeneralAssemblyMemberCrudController extends CrudController
         ]);
         CRUD::setColumnDetails('order', [
             'label' => 'الترتيب',
+        ]);
+        CRUD::setColumnDetails('membership_type', [
+            'label' => 'نوع العضوية',
+        ]);
+        CRUD::setColumnDetails('term_council', [
+            'label' => 'مدة دورة المجلس',
         ]);
         CRUD::setColumnDetails('created_at', [
             'label' => 'تاريخ الإنشاء',

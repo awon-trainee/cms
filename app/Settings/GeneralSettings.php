@@ -48,6 +48,7 @@ class GeneralSettings extends Settings implements SettingsRuler
     public string $tictok_account;
     public string $telegram_account;
     public string $google_maps_location;
+    public string $brief;
 
     public static function group(): string
     {
@@ -58,6 +59,7 @@ class GeneralSettings extends Settings implements SettingsRuler
     {
         return [
             'charity_title' => ['nullable', 'string', 'max:100'],
+            'brief' => ['nullable', 'string', 'max:1024'],
             'tictok_account' => ['nullable', 'url', 'max:512'],
             'telegram_account' => ['nullable', 'url', 'max:512'],
             'google_maps_location' => ['nullable'],
@@ -83,6 +85,7 @@ class GeneralSettings extends Settings implements SettingsRuler
     {
         return match ($key) {
             'charity_title' => 'اسم الجمعية',
+            'brief' => 'نبذة عنا',
             'vision' => 'الرؤية',
             'message' => 'الرسالة',
             'goals' => 'الأهداف',

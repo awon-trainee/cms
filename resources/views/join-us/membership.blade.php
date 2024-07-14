@@ -21,10 +21,10 @@
 
         <div class="list-of-op">
             @foreach($membership_opportunity as $membership)
-                <div class="card">
+                <div class="card shadow rounded-3">
                     <img src="{{ $membership->image_link }}" class="card-img-top" alt="" />
                     <div class="card-body">
-                        <h5 class="card-title">{{ $membership->membership_title }}</h5>
+                        <h5 class="card-title fw-bolder">{{ $membership->membership_title }}</h5>
                         <p class="card-text">{{ $membership->membership_desc }}</p>
                         <a href="{{ $membership->membership_link }}" class="btn btn-link fw-bold">
                             <span>رابط:</span>

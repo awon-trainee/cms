@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bank.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
 @endpush
+
 @section('content')
     {{------------------ Hero ------------------}}
     @if($pageSettings->show_ads)
@@ -28,8 +29,8 @@
             @endforeach
         </div>
     @endif
-            <!-- New section with buttons and content -->
-    <div class="button-content-section mt-5">
+
+    <div class="button-content-section mx-auto mt-5">
         <div class="buttons">
             <button class="btn active" onclick="showContent('about', this)"> النبذة</button>
             <button class="btn" onclick="showContent('goals', this)"> الأهداف</button>
@@ -38,60 +39,77 @@
         </div>
         <div class="contents mt-3">
             <div id="about" class="content" style="display: block;">
-                <h4><img src="{{ asset('assets/icons/about-icon.png') }}" alt="About Icon"> نبذة عنَا</h4>
-                <p>محتوى الوصف التفصيلي للنبذه محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه. محتوى الوصف التفصيلي للنبذه.محتوى الوصف التفصيلي للنبذه.محتوى الوصف التفصيلي للنبذه.</p>
+                <div class="d-flex align-items-end title">
+                    <img src="{{ asset("assets/icons/about-us.svg") }}" alt="About Icon" />
+                    <h4>نبذه عنّا</h4>
+                </div>
+                <p style="white-space:pre-wrap;">{{ $generalSettings->brief }}</p>
             </div>
             <div id="goals" class="content">
-                <h4><img src="{{ asset('assets/icons/goals-icon.png') }}" alt="Goals Icon"> أهدافنا</h4>
-                <div class="goal">هدف 1</div>
-                <div class="goal">هدف 2</div>
-                <div class="goal">هدف 3</div>
-                <div class="goal">هدف 4</div>
-                <div class="goal">هدف 5</div>
-                <div class="goal">هدف 6</div>
+                <div class="d-flex align-items-end title">
+                    <img src="{{ asset("assets/icons/goals.svg") }}" alt="Goals Icon" />
+                    <h4>أهدافنا</h4>
+                </div>
+                <div class="goals-content">
+                    <div class="goal d-flex align-items-center">
+                        <div class="text-center rounded-3">1</div>
+                        <p style="white-space:pre-wrap;">محتوى الهدف الأول ، محتوى الهدف الأول ، محتوى الهدف الأول .</p>
+                    </div>
+                </div>
             </div>
             <div id="vision-message" class="content">
                 <div class="vision-message-container">
                     <div class="vision">
-                        <h4>
-                            <img src="{{ asset('assets/icons/vision-icon.png') }}" alt="Vision Icon"> رؤيتنا
-                        </h4>
-                        <p>محتوى الرؤية</p>
+                        <div class="d-flex title align-items-center">
+                            <img src="{{ asset("assets/icons/vision.svg") }}" alt="Vision Icon" />
+                            <h4>رؤيتنا</h4>
+                        </div>
+                        <p style="white-space:pre-wrap;">{{ $generalSettings->vision }}</p>
                     </div>
                     <div class="message">
-                        <h4>
-                            <img src="{{ asset('assets/icons/message-icon.png') }}" alt="Message Icon"> رسالتنا
-                        </h4>
-                        <p>محتوى الرسالة</p>
+                        <div class="d-flex title align-items-end">
+                            <img src="{{ asset("assets/icons/message.svg") }}" alt="Message Icon" />
+                            <h4>رسالتنا</h4>
+                        </div>
+                        <p style="white-space:pre-wrap;">{{ $generalSettings->message }}</p>
                     </div>
                 </div>
             </div>
             <div id="fields" class="content">
-                <h4><img src="{{ asset('assets/icons/fields-icon.png') }}" alt="Fields Icon"> مجالاتنا</h4>
+                <div class="d-flex title align-items-center">
+                    <img src="{{ asset("assets/icons/majalat.svg") }}" alt="Fields Icon" />
+                    <h4>مجالاتنا</h4>
+                </div>
                 <div class="fields-container">
                     <div class="field">
-                        <img src="icon1.png" alt="Icon 1">
-                        <p>نص المجال الأول</p>
+                        <img src="{{ asset("assets/icons/bar-chart 1.svg") }}" alt="Icon 1">
+                        <p style="white-space:pre-wrap;">نص المجال الأول</p>
                     </div>
                     <div class="field">
-                        <img src="icon2.png" alt="Icon 2">
-                        <p>نص المجال الثاني</p>
+                        <img src="{{ asset("assets/icons/bar-chart 2.svg") }}" alt="Icon 2">
+                        <p style="white-space:pre-wrap;">نص المجال الثاني</p>
                     </div>
                     <div class="field">
-                        <img src="icon3.png" alt="Icon 3">
-                        <p>نص المجال الثالث</p>
+                        <img src="{{ asset("assets/icons/bar-chart 1.svg") }}" alt="Icon 1">
+                        <p style="white-space:pre-wrap;">نص المجال الأول</p>
                     </div>
                     <div class="field">
-                        <img src="icon4.png" alt="Icon 4">
-                        <p>نص المجال الرابع</p>
+                        <img src="{{ asset("assets/icons/bar-chart 2.svg") }}" alt="Icon 2">
+                        <p style="white-space:pre-wrap;">نص المجال الثاني</p>
+                    </div>
+                    <div class="field">
+                        <img src="{{ asset("assets/icons/bar-chart 2.svg") }}" alt="Icon 2">
+                        <p style="white-space:pre-wrap;">نص المجال الثاني</p>
                     </div>
                 </div>
-            </div><br>
+            </div>
+            <br />
         </div>
     </div>
-    @if($pageSettings->show_vision_and_message)
-        <div class="viergein wow animate__slideInRight bg-charity-light" data-wow-duration="1s" data-wow-iteration="1"
-             data-wow-offset="200">
+
+
+    <!-- @if($pageSettings->show_vision_and_message)
+        <div class="viergein wow animate__slideInRight bg-charity-light" data-wow-duration="1s" data-wow-iteration="1" data-wow-offset="200">
             <div class="all wow animate__fadeInDown" data-wow-duration=".5s" data-wow-iteration="1" data-wow-offset="20"
                  id="sma">
                 <div class="title">
@@ -113,96 +131,88 @@
                 <p style="white-space:pre-wrap;">{{ $generalSettings->message }}</p>
             </div>
         </div>
-    @endif
+    @endif -->
 
     <div class="viergein oe viergein-two" style="display:@if(sizeof($banks) > 0) block @else none @endif;">
         <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1" id="sma1">
-            <div class="title ps-5 text-center mt-5">
+            <div class="title ps-5 mt-5">
                 <h4>حساباتنا البنكية</h4>
             </div>
-            <div class="container">
-        <div>
-            <label for="bankSelect">اسم المصرف:</label>
-                <select name="bankSelect" id="bankSelect" onchange="showAccountDetails()">
-                @foreach($banks as $bank)
-                    <option value="{{ $bank->id }}">{{ $bank->bank_name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="account-info">
-            <div class="details">
-                <div>
-                    <p>اسم المصرف: </p>
-                    @if($first_bank && $first_bank->bank_name)
-                        <p id="bankName">{{ $first_bank->bank_name }}</p>
-                    @else
-                        <p id="bankName"></p>
-                    @endif
+            <div class="bank-container">
+                <div class="bank-logo-wrapper">
+                    <div class="bank-logo">
+                        @if($first_bank && $first_bank->image_url)
+                            <img id="bankImage" src="{{ $first_bank->image_url }}" alt="bank logo">
+                        @else
+                            <img id="bankImage" src="" alt="bank logo">
+                        @endif
+                    </div>
                 </div>
-                <div>
-                    <p>اسم الحساب: </p>
-                    @if($first_bank && $first_bank->account_name)
-                        <p id="accountName">{{ $first_bank->account_name }}</p>
-                    @else
-                        <p id="accountName"></p>
-                    @endif
-                </div>
-                <div>
-                    <p>رقم الحساب: </p>
-                    @if($first_bank && $first_bank->account_number)
-                        <p id="accountNumber">{{ $first_bank->account_number }}</p>
-                    @else
-                        <p id="accountNumber"></p>
-                    @endif
-                </div>
-                <div>
-                    <p>رقم الآيبان: </p>
-                    @if($first_bank && $first_bank->iban)
-                        <p id="ibanNumber">{{ $first_bank->iban }}</p>
-                    @else
-                        <p id="ibanNumber"></p>
-                    @endif
+                <div class="account-info">
+                    <div class="bank-label">
+                        <span>اسم المصرف:</span>
+                        <div class="select-container">
+                            <select id="bankSelect" onchange="showAccountDetails()">
+                                @foreach($banks as $bank)
+                                    <option value="{{ $bank->id }}" id="bankName" data-image="{{ $bank->image_url }}">{{ $bank->bank_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="account-details">
+                        <p>
+                            <strong>اسم الحساب:</strong>
+                            @if($first_bank && $first_bank->account_name)
+                                <span id="accountName">{{ $first_bank->account_name }}</span>
+                            @else
+                                <span id="accountName"></span>
+                            @endif
+                        </p>
+                        <p>
+                            <strong>رقم الحساب:</strong>
+                            @if($first_bank && $first_bank->account_number)
+                                <span id="accountNumber">{{ $first_bank->account_number }}</span>
+                            @else
+                                <span id="accountNumber"></span>
+                            @endif
+
+                        </p>
+                        <p>
+                            <strong>رقم الايبان:</strong>
+                            @if($first_bank && $first_bank->iban)
+                                <span id="ibanNumber">{{ $first_bank->iban }}</span>
+                            @else
+                                <span id="ibanNumber"></span>
+                            @endif
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="bank-logo">
-                @if($first_bank && $first_bank->image && $first_bank->account_name)
-                    <img id="bankImage" src="{{ $first_bank->image_url }}" alt="{{ $first_bank->account_name }}">
-                @else
-                    <img id="bankImage" src="" alt="">
-                @endif
-            </div>
-        </div>
-    </div>
         </div>
     </div>  
 
-    {{------------------ Projects section ------------------}}
     <div class="viergein oe viergein-two">
         <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1" id="sma1">
-            <div class="title ps-5 text-center mt-5">
+            <div class="title ps-5 mt-5">
                 <h4>أبرز مشاريعنا</h4>
             </div>
-            <div class="list-of-projects">
-                {{------------------ card of project ------------------}}
-                @foreach($projects as $project)
-                <div class="card" style="width: 18rem;">
+        </div>
+        <div class="list-of-projects">
+            {{------------------ card of project ------------------}}
+            @foreach($projects as $project)
+                <div class="card shadow rounded-3" style="width: 18rem;">
                     <img src="{{ $project->image_url }}" class="card-img-top" alt="{{ $project->title }}" />
-                    <div class="card-body">
+                    <div class="card-body shadow-sm rounded-3">
                         <h5 class="card-title">{{ $project->title }} </h5>
                         <p class="card-text">{{ $project->content }}</p>
                     </div>
                 </div>
-                @endforeach
+            @endforeach
                 {{------------------ card of project ------------------}}
-            </div>
         </div>
-    </div>                            
-    {{------------------ Projects section ------------------}}
-
-    <div class="viergein oe viergein-two">
+        
         @if($pageSettings->show_statistics)
-            <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1"
-                 id="sma1">
+            <div class="all der-3 wow animate__slideInUp" data-wow-duration=".5s" data-wow-iteration="1" id="sma1">
                 <div class="title ps-5">
                     <h4>إنجازاتنا في أرقام</h4>
                     <p>نفخر في العديد من الإنجازات ومن أهمها:</p>
@@ -228,9 +238,7 @@
         @endif
 
         @if($pageSettings->show_news)
-            <div class="all-five sc wow animate__slideInLeft" data-wow-duration=".3s"
-                 data-wow-offset="600" id="sma1">
-
+            <div class="all-five sc wow animate__slideInLeft" data-wow-duration=".3s" data-wow-offset="600" id="sma1">
                 <div class="title new-s-2 wow animate__slideInLeft" data-wow-duration=".2s"
                      data-wow-offset="-50">
                     <h4>آخر أخبارنا</h4>
@@ -241,47 +249,40 @@
                         @foreach($latest_news as $news)
                             <div class="carousel-item ">
                                 <div class="row align-items-center">
-                                <div class="col p-0">
-                                <div class="image" style="background-image: url({{ $news->mainImage->image_url }});">
-
-                                </div>
-                                </div>
-                                <div class="col p-0 carousel-content d-flex align-items-center">
-                                    <div class="position-absolute control-button d-sm-block">
-                                        <button class="news-carousel-control-prev" type="button" data-bs-target="#newsCarousel"
-                                                data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true">
-                                                <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.75308 24.5512C1.34419 24.552 0.947926 24.4096 0.63308 24.1487C0.455877 24.0018 0.309399 23.8213 0.202033 23.6177C0.0946673 23.4141 0.0285238 23.1913 0.00739099 22.9621C-0.0137418 22.7329 0.0105518 22.5018 0.0788796 22.282C0.147207 22.0622 0.258226 21.858 0.405579 21.6812L8.24558 12.3012L0.685581 2.90367C0.540215 2.72466 0.43166 2.51869 0.366154 2.2976C0.300649 2.07651 0.279484 1.84465 0.303878 1.61535C0.328272 1.38605 0.397741 1.16383 0.508295 0.961464C0.61885 0.7591 0.768308 0.58058 0.94808 0.436165C1.12915 0.276852 1.34119 0.156683 1.57089 0.0832025C1.8006 0.0097217 2.04302 -0.0154848 2.28294 0.00916379C2.52285 0.0338123 2.75508 0.107784 2.96505 0.226438C3.17501 0.345091 3.35819 0.505863 3.50308 0.698666L11.9556 11.1987C12.213 11.5118 12.3537 11.9046 12.3537 12.3099C12.3537 12.7153 12.213 13.108 11.9556 13.4212L3.20558 23.9212C3.03002 24.1329 2.80702 24.3004 2.55465 24.4098C2.30228 24.5193 2.02767 24.5677 1.75308 24.5512Z"
-                                                          fill="{{ $generalSettings->secondary_color }}"/>
-                                                </svg>
-                                            </span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="news-carousel-control-next" type="button" data-bs-target="#newsCarousel"
-                                                data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true">
-                                                <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11.2469 0.448833C11.6558 0.448034 12.0521 0.590441 12.3669 0.851334C12.5441 0.998245 12.6906 1.17867 12.798 1.38228C12.9053 1.58589 12.9715 1.80867 12.9926 2.03788C13.0137 2.26709 12.9894 2.49822 12.9211 2.71803C12.8528 2.93783 12.7418 3.142 12.5944 3.31883L4.75442 12.6988L12.3144 22.0963C12.4598 22.2753 12.5683 22.4813 12.6338 22.7024C12.6994 22.9235 12.7205 23.1554 12.6961 23.3847C12.6717 23.614 12.6023 23.8362 12.4917 24.0385C12.3812 24.2409 12.2317 24.4194 12.0519 24.5638C11.8709 24.7231 11.6588 24.8433 11.4291 24.9168C11.1994 24.9903 10.957 25.0155 10.7171 24.9908C10.4772 24.9662 10.2449 24.8922 10.035 24.7736C9.82499 24.6549 9.64181 24.4941 9.49692 24.3013L1.04442 13.8013C0.787028 13.4882 0.646317 13.0954 0.646317 12.6901C0.646317 12.2847 0.787028 11.892 1.04442 11.5788L9.79442 1.07883C9.96998 0.867054 10.193 0.699642 10.4454 0.590181C10.6977 0.480721 10.9723 0.432295 11.2469 0.448833Z"
-                                                          fill="{{ $generalSettings->secondary_color }}"/>
-                                                </svg>
-                                            </span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
+                                    <div class="col p-0">
+                                        <div class="image" style="background-image: url({{ $news->mainImage->image_url }});"></div>
                                     </div>
-                                    <div class="title d-inline-block w-100">
-
-                                        <div>
-                                            <h3>{{ $news->title }}</h3>
-                                            <p class="m-0 mw-100">{{ Str::limit($news->content, 100) }}</p>
+                                    <div class="col p-0 carousel-content d-flex align-items-center">
+                                        <div class="position-absolute control-button d-sm-block">
+                                            <button class="news-carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true">
+                                                    <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.75308 24.5512C1.34419 24.552 0.947926 24.4096 0.63308 24.1487C0.455877 24.0018 0.309399 23.8213 0.202033 23.6177C0.0946673 23.4141 0.0285238 23.1913 0.00739099 22.9621C-0.0137418 22.7329 0.0105518 22.5018 0.0788796 22.282C0.147207 22.0622 0.258226 21.858 0.405579 21.6812L8.24558 12.3012L0.685581 2.90367C0.540215 2.72466 0.43166 2.51869 0.366154 2.2976C0.300649 2.07651 0.279484 1.84465 0.303878 1.61535C0.328272 1.38605 0.397741 1.16383 0.508295 0.961464C0.61885 0.7591 0.768308 0.58058 0.94808 0.436165C1.12915 0.276852 1.34119 0.156683 1.57089 0.0832025C1.8006 0.0097217 2.04302 -0.0154848 2.28294 0.00916379C2.52285 0.0338123 2.75508 0.107784 2.96505 0.226438C3.17501 0.345091 3.35819 0.505863 3.50308 0.698666L11.9556 11.1987C12.213 11.5118 12.3537 11.9046 12.3537 12.3099C12.3537 12.7153 12.213 13.108 11.9556 13.4212L3.20558 23.9212C3.03002 24.1329 2.80702 24.3004 2.55465 24.4098C2.30228 24.5193 2.02767 24.5677 1.75308 24.5512Z"
+                                                          fill="{{ $generalSettings->secondary_color }}"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="news-carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true">
+                                                    <svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.2469 0.448833C11.6558 0.448034 12.0521 0.590441 12.3669 0.851334C12.5441 0.998245 12.6906 1.17867 12.798 1.38228C12.9053 1.58589 12.9715 1.80867 12.9926 2.03788C13.0137 2.26709 12.9894 2.49822 12.9211 2.71803C12.8528 2.93783 12.7418 3.142 12.5944 3.31883L4.75442 12.6988L12.3144 22.0963C12.4598 22.2753 12.5683 22.4813 12.6338 22.7024C12.6994 22.9235 12.7205 23.1554 12.6961 23.3847C12.6717 23.614 12.6023 23.8362 12.4917 24.0385C12.3812 24.2409 12.2317 24.4194 12.0519 24.5638C11.8709 24.7231 11.6588 24.8433 11.4291 24.9168C11.1994 24.9903 10.957 25.0155 10.7171 24.9908C10.4772 24.9662 10.2449 24.8922 10.035 24.7736C9.82499 24.6549 9.64181 24.4941 9.49692 24.3013L1.04442 13.8013C0.787028 13.4882 0.646317 13.0954 0.646317 12.6901C0.646317 12.2847 0.787028 11.892 1.04442 11.5788L9.79442 1.07883C9.96998 0.867054 10.193 0.699642 10.4454 0.590181C10.6977 0.480721 10.9723 0.432295 11.2469 0.448833Z"
+                                                          fill="{{ $generalSettings->secondary_color }}"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                        <div class="title d-inline-block w-100">
+                                            <div>
+                                                <h3>{{ $news->title }}</h3>
+                                                <p class="m-0 mw-100">{{ Str::limit($news->content, 100) }}</p>
                                                 <button class="btn btn-primary btn-charity mt-3" type="button">
                                                     <a href="{{ route('news.show', $news->id) }}" class="nav-link text-light">قراءة</a>
                                                 </button>
+                                            </div>
                                         </div>
-
                                     </div>
-                                </div>
-
                                 </div>
                             </div>
                         @endforeach
@@ -290,24 +291,22 @@
             </div>
         @endif
 
-    @if($pageSettings->show_partners)
-        <div class="shrka wow animate__backInDown" data-wow-duration=".9s" data-wow-iteration="1"
-             data-wow-offset="-50">
-            <div class="title sark-all">
-                <h4>شركاؤنا</h4>
+        @if($pageSettings->show_partners)
+            <div class="shrka wow animate__backInDown" data-wow-duration=".9s" data-wow-iteration="1" data-wow-offset="-50">
+                <div class="title sark-all">
+                    <h4>شركاؤنا</h4>
+                </div>
+                <div class="shrkat justify-content-center">
+                    @foreach($partners as $partner)
+                        <div class="item d-flex justify-content-center">
+                            <a class="nav-link w-100">
+                                <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="shrkat justify-content-center">
-                @foreach($partners as $partner)
-                    <div class="item d-flex justify-content-center">
-                        <a class="nav-link w-100">
-                            <img src="{{ $partner->logo_url }}" alt="{{ $partner->name }}">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    @endif
-
+        @endif
     </div>
 @endsection
 <x-buttons.contact-us/>
@@ -358,31 +357,31 @@
         });
     </script>
 
-<script>
+    <script>
         function showAccountDetails() {
-            const selectedBankId = document.getElementById("bankSelect").value;
-            const selectedBank = @json($banks).find(bank => bank.id == selectedBankId);
+            let selectedBankId = document.getElementById("bankSelect").value;
+            let selectedBank = @json($banks).find(bank => bank.id == selectedBankId);
+            let selectedImage = document.getElementById("bankSelect").options[document.getElementById("bankSelect").selectedIndex].getAttribute('data-image');
 
-            document.getElementById("bankName").textContent = selectedBank.bank_name;
             document.getElementById("accountName").textContent = selectedBank.account_name;
             document.getElementById("accountNumber").textContent = selectedBank.account_number;
             document.getElementById("ibanNumber").textContent = selectedBank.iban;
-            document.getElementById("bankImage").src = selectedBank.image;
+            document.getElementById("bankName").textContent = selectedBank.bank_name;
+            document.getElementById("bankImage").src = selectedImage;
             document.getElementById("bankImage").alt = selectedBank.bank_name;
         }
+
         function showContent(contentId, element) {
         // Hide all content divs
         var contents = document.querySelectorAll('.content');
         contents.forEach(function(content) {
             content.style.display = 'none';
         });
-
         // Remove active class from all buttons
         var buttons = document.querySelectorAll('.btn');
         buttons.forEach(function(button) {
             button.classList.remove('active');
         });
-
         // Show the clicked content and add active class to the clicked button
         document.getElementById(contentId).style.display = 'block';
         element.classList.add('active');
