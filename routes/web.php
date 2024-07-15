@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegulationAndPolicyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group([
     Route::resource('/news', 'NewsController')->only(['index', 'show']);
     Route::resource('/events', 'EventController')->only(['index', 'show']);
     Route::resource('/regulations-and-policies', 'RegulationAndPolicyController')->only(['index', 'show']);
+    Route::get('/regulations-and-policies/preview/{id}', [RegulationAndPolicyController::class, 'preview'])->name('regulations-and-policies.preview');
     Route::resource('/operational-plans', 'OperationalPlanController')->only(['index', 'show']);
     Route::resource('/activity-reports', 'ActivityReportController')->only(['index', 'show']);
     Route::resource('/financial-reports', 'FinancialReportController')->only(['index', 'show']);
