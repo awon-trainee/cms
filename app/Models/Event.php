@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
 class Event extends Model
 {
     use CrudTrait;
@@ -68,5 +69,14 @@ class Event extends Model
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
+
+    
     */
+
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
 }
+
+
