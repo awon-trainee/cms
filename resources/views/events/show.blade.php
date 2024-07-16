@@ -25,6 +25,16 @@
 
         .owl-carousel .item {
             margin: 10px;
+            width: 100%;
+            max-width: 400px; /* تعيين عرض ثابت */
+            height: 300px; /* تعيين ارتفاع ثابت */
+        }
+
+        .owl-carousel .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* تغطية العنصر بالكامل مع الحفاظ على نسبة العرض إلى الارتفاع */
+            border-radius: 10px; /* حواف دائرية */
         }
 
         .event-dates {
@@ -101,7 +111,7 @@
                         <path d="M8 3.5a.5.5 0 0 1 .5.5v4.793l3.146 3.147a.5.5 0 0 1-.708.708l-3.147-3.147A.5.5 0 0 1 7.5 8V4a.5.5 0 0 1 .5-.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0 1A9 9 0 1 1 8 0a9 9 0 0 1 0 18z"/>
                     </svg>
-                    <span>منذ: {{ $event->created_at->locale('ar')->diffForHumans() }}</span>
+                    <span>{{ $event->created_at->locale('ar')->diffForHumans() }}</span>
                 </div>
             </div>
         </div>
@@ -152,15 +162,18 @@
                 autoplay: true,
                 autoplayTimeout: 5000,
                 autoplayHoverPause: true,
-                dots: true,
-                items: itemsToShow,
-                margin: 10,
+                dots: false,
+                margin: 15,
+                navText: [
+                    '<i class="fas fa-chevron-left fa-2x text-secondary"></i>',
+                    '<i class="fas fa-chevron-right fa-2x text-secondary"></i>'
+                ],
                 responsive: {
                     0: {
                         items: 1
                     },
                     600: {
-                        items: itemsToShow < 2 ? itemsToShow : 2
+                        items: 1
                     },
                     1000: {
                         items: itemsToShow
