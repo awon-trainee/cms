@@ -37,7 +37,9 @@
     <x-backpack::menu-dropdown-item title="أبرز مشاريعنا" :link="backpack_url('projects')" />
     <x-backpack::menu-dropdown-item title="الحسابات البنكية" :link="backpack_url('banks')" />
     <x-backpack::menu-dropdown-item title="المسجلين في المبادرات" :link="backpack_url('initiative-registration')" />
-    <x-backpack::menu-dropdown-header title="الحوكمة" class="text-muted" />
+    <!-- <x-backpack::menu-dropdown-header title="الحوكمة" class="text-muted" /> -->
+    <x-backpack::menu-dropdown-item title="صفحات الحوكمة الجديدة" icon="la la-file" :link="backpack_url('governance')" />
+    <x-backpack::menu-dropdown-item title="ملفات صفحات الحوكمة الجديدة"  :link="backpack_url('newgovernance')" />
     <x-backpack::menu-dropdown-item title="اللوائح والسياسات" :link="backpack_url('regulation')" />
     <x-backpack::menu-dropdown-item title="الخطط التشغيلية" :link="backpack_url('operational-plan')" />
     <x-backpack::menu-dropdown-item title="تقارير الأنشطة" :link="backpack_url('activity-report')" />
@@ -45,6 +47,8 @@
     <x-backpack::menu-dropdown-item title="المحاضر العمومية" :link="backpack_url('public-record')" />
     <x-backpack::menu-dropdown-item title="الإفصاح والشفافية" :link="backpack_url('transparency')" />
     <x-backpack::menu-dropdown-item title="أخرى" :link="backpack_url('other-governance')" />
+
+    
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="انضم معنا" icon="la la-sign-in-alt">
@@ -84,3 +88,5 @@
 
 <x-backpack::menu-item title="المؤهلات" icon="la la-question" :link="backpack_url('qualification')" />
 <x-backpack::menu-item title="الخبرات" icon="la la-question" :link="backpack_url('experiance')" />
+
+
