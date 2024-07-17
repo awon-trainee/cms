@@ -42,6 +42,7 @@ class PageSeeder extends Seeder
         Page::query()->create(['name_ar' => 'المحاضر العمومية' , 'name_en' => 'public_lecturer']);
         Page::query()->create(['name_ar' => 'الإفصاح والشفافية' , 'name_en' => 'disclosure_transparency']);
         Page::query()->create(['name_ar' => 'أخرى' , 'name_en' => 'others']);
+
         Page::query()->create(['name_ar' => 'الاستبيانات' , 'name_en' => 'questionnaires']);
 
 

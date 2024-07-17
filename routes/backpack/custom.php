@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\GovernanceCrudController;
 
 // --------------------------
 // Custom Backpack Routes
@@ -129,4 +130,6 @@ Route::group([
     Route::crud('membership-opportunity', 'MembershipOpportunityCrudController');
     Route::crud('banks', 'BanksCrudController');
     Route::crud('video-library', 'VideoLibraryCrudController');
+    Route::crud('governance', 'GovernanceCrudController');
+    Route::crud('newgovernance', 'NewgovernanceCrudController');
 }); // this should be the absolute last line of this file
