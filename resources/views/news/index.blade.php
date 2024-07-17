@@ -10,32 +10,122 @@
                 </div><!--title-->
             </div>
             <div class="all-edara calman one">
-
-
-
-
                 @foreach($news as $new)
-                        <div class="item-servicse Two one" id="news-calman-one">
-                            <div class="img-servicse"><img src="{{ $new->mainImage?->image_url }}" alt=""></div>
-                            <div class="data"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
-                                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                                    <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                </svg> {{ $new->created_at->locale('ar')->translatedFormat('d M Y') }}م </div>
-                            <div class="title"><h3>{{ $new->title }}</h3>
-                                <P> <span>{{ mb_substr($new->content, 0, 100 - 3, "UTF-8").'...' }}</span> </P>
-                            </div>
-                            <div class="item-center w-100 text-center mt-auto mb-2">
-                            <button class="btn btn-primary  button-2 news" >
-                                    <a href="{{ route('news.show', $new->id) }}" class="nav-link text-light">التفاصيل</a>
-                                </button>
+                    <div class="item-servicse Two one card-rounded m-2" id="news-calman-one">
+                        <div class="img-servicse position-relative">
+                            <img src="{{ $new->mainImage?->image_url }}" alt="" class="img-fluid rounded-top mb-0">
+                            <div class="data position-absolute top-0 start-0 p-2 bg-primary text-white custom-shape">
+                                <div class="date-text">
+                                    {{ $new->created_at->locale('ar')->translatedFormat('d M Y') }}
                                 </div>
+                            </div>
+                        </div>
+                        <div class="text-right p-3">
+                            <h5 class="text-right">{{ $new->title }}</h5>
+                            <h6 class="text-right">
+                                <span>{{ mb_substr($new->content, 0, 100 - 3, "UTF-8").'...' }}</span>
+                            </h6>
+                        </div>
+                        <div class="item-center w-100 text-center mt-auto mb-2">
+                            <button class="btn btn-primary button-2 news">
+                                <a href="{{ route('news.show', $new->id) }}" class="nav-link text-light">التفاصيل</a>
+                            </button>
+                        </div>
                     </div>
                 @endforeach
                 <div class="col-12">
                     {{ $news->links() }}
                 </div>
             </div>
-
             <x-buttons.contact-us/>
         </div>
+    </div>
+
 @endsection
+
+@push('styles')
+<style>
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.top-0 {
+    top: 0;
+}
+.start-0 {
+    left: 0;
+}
+.bg-primary {
+    background-color: #8c5ab4 !important;
+}
+.text-white {
+    color: white;
+}
+.p-2 {
+    padding: 0.5rem;
+}
+.p-3 {
+    padding: 1rem;
+}
+.custom-shape {
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 5px 10px;
+}
+.date-text {
+    padding-left: 5px;
+}
+.card-rounded {
+    border-radius: 50px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.card-rounded:hover {
+    transform: translateY(-5px);
+    background-color: #8c5ab4;
+}
+.text-right {
+    text-align: right;
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+    width: 100%;
+}
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.m-2 {
+    margin: 0.5rem;
+}
+#news-calman-one {
+    border-radius: 15px;
+}
+.all-secshen {
+    font-size: 14px;
+}
+.title h4 {
+    font-size: 16px;
+}
+.text-right h5 {
+    font-size: 16px;
+    color: #8c5ab4;
+    font-weight: bold;
+}
+.text-right h6 {
+    font-size: 12px;
+    line-height: 2;
+}
+.btn {
+    font-size: 12px;
+}
+.pagination {
+    font-size: 12px;
+}
+</style>
+@endpush
