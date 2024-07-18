@@ -24,7 +24,7 @@ return [
     'save_action_changed_notification'           => 'تم تغيير السلوك الافتراضي بعد الحفظ.',
 
     // Create form
-    'add'                                        => 'أضافة',
+    'add'                                        => 'إضافة',
     'back_to_all'                                => 'العودة إلى الكل ',
     'cancel'                                     => 'الغاء',
     'add_a_new'                                  => 'أضف جديد ',
@@ -42,10 +42,10 @@ return [
     'in_the_database'                            => 'في قاعدة البيانات',
     'list'                                       => 'قائمة',
     'reset'                                      => 'إعادة ضبط',
-    'actions'                                    => 'أجراءات',
+    'actions'                                    => 'إجراءات',
     'preview'                                    => 'معاينة',
     'delete'                                     => 'حذف',
-    'admin'                                      => 'مسؤل',
+    'admin'                                      => 'مسؤول',
     'details_row'                                => 'هذا هو صف التفاصيل, قم بتعديلة من فضلك. ',
     'details_row_loading_error'                  => 'حدث خطأ أثناء تحميل التفاصيل, حاول مرة اخري. ',
     'clone'                                      => 'استنساخ',
