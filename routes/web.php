@@ -5,6 +5,19 @@ use App\Http\Controllers\RegulationAndPolicyController;
 use App\Http\Controllers\Admin\NewGovernancePagesCrudController;
 use App\Http\Controllers\NewGovernancePageController;
 use App\Http\Controllers\GovernanceController;
+use App\Http\Controllers\OperationalPlanController;
+use App\Http\Controllers\Admin\OperationalPlanCrudController;
+use App\Http\Controllers\ActivityReportController;
+use App\Http\Controllers\Admin\ActivityReportCrudController;
+use App\Http\Controllers\FinancialReportController;
+use App\Http\Controllers\Admin\FinancialReportCrudController;
+use App\Http\Controllers\PublicRecordController;
+use App\Http\Controllers\Admin\PublicRecordCrudController;
+use App\Http\Controllers\DisclosureAndTransparencyController;
+use App\Http\Controllers\Admin\TransparencyCrudController;
+use App\Http\Controllers\OtherGovernanceController;
+use App\Http\Controllers\Admin\OtherGovernanceCrudController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +51,6 @@ Route::group([
     Route::resource('/regulations-and-policies', 'RegulationAndPolicyController')->only(['index', 'show']);
     Route::get('/regulations-and-policies/preview/{id}', [RegulationAndPolicyController::class, 'preview'])->name('regulations-and-policies.preview');
 
-
     // Governance Routes
     Route::get('/governance', [GovernanceController::class, 'index'])->name('governance.index');
     Route::get('/governance/{id}', [GovernanceController::class, 'show'])->name('governance.show');
@@ -49,12 +61,40 @@ Route::group([
     Route::get('/newgovernance/download/{id}', [NewGovernancePageController::class, 'download'])->name('newgovernance.download');
     Route::get('/newgovernance/preview/{id}', [NewGovernancePageController::class, 'preview'])->name('newgovernance.preview');
 
-    Route::resource('/operational-plans', 'OperationalPlanController')->only(['index', 'show']);
+
+
+    Route::resource('/operational-plans', OperationalPlanController::class)->only(['index', 'show']);
+    Route::get('/OperationalPlan/download/{id}', [OperationalPlanController::class, 'download'])->name('OperationalPlan.download');
+    Route::get('/operational-plans/preview/{id}', [OperationalPlanController::class, 'preview'])->name('operational_plans.preview');
+
+
     Route::resource('/activity-reports', 'ActivityReportController')->only(['index', 'show']);
+    Route::get('/ActivityReport/download/{id}', [ActivityReportController::class, 'download'])->name('ActivityReport.download');
+    Route::get('/activity-reports/preview/{id}', [ActivityReportController::class, 'preview'])->name('activity-reports.preview');
+
+
+
     Route::resource('/financial-reports', 'FinancialReportController')->only(['index', 'show']);
+    Route::get('/ActivityReport/download/{id}', [FinancialReportController::class, 'download'])->name('ActivityReport.download');
+    Route::get('/financial-reports/preview/{id}', [FinancialReportController::class, 'preview'])->name('financial-reports.preview');
+
+
+
     Route::resource('/public-records', 'PublicRecordController')->only(['index', 'show']);
+    Route::get('/PublicRecordRequest/download/{id}', [PublicRecordController::class, 'download'])->name('PublicRecordRequest.download');
+    Route::get('/public-records/preview/{id}', [PublicRecordController::class, 'preview'])->name('public-records.preview');
+
+
     Route::resource('/disclosure-and-transparency', 'DisclosureAndTransparencyController')->only(['index', 'show']);
+    Route::get('/Transparency/download/{id}', [DisclosureAndTransparencyController::class, 'download'])->name('Transparency.download');
+    Route::get('/disclosure-and-transparency/preview/{id}', [DisclosureAndTransparencyController::class, 'preview'])->name('disclosure-and-transparency.preview');
+
+
     Route::resource('/other-governance', 'OtherGovernanceController')->only(['index', 'show']);
+    Route::get('/OtherGovernance/download/{id}', [OtherGovernanceController::class, 'download'])->name('OtherGovernance.download');
+    Route::get('/other-governance/preview/{id}', [OtherGovernanceController::class, 'preview'])->name('other-governance.preview');
+
+
     Route::resource('/membership', 'MembershipController')->only(['index', 'store']);
     Route::resource('/employment', 'EmploymentController')->only(['index', 'store']);
     Route::resource('/volunteering', 'VolunteeringController')->only(['index', 'store']);
