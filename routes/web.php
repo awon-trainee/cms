@@ -38,6 +38,7 @@ Route::group([
     Route::resource('/regulations-and-policies', 'RegulationAndPolicyController')->only(['index', 'show']);
     Route::get('/regulations-and-policies/preview/{id}', [RegulationAndPolicyController::class, 'preview'])->name('regulations-and-policies.preview');
 
+
     // Governance Routes
     Route::get('/governance', [GovernanceController::class, 'index'])->name('governance.index');
     Route::get('/governance/{id}', [GovernanceController::class, 'show'])->name('governance.show');
@@ -47,7 +48,6 @@ Route::group([
     Route::resource('/New_Governance_Page', 'NewGovernancePageController')->only(['index', 'show']);
     Route::get('/newgovernance/download/{id}', [NewGovernancePageController::class, 'download'])->name('newgovernance.download');
     Route::get('/newgovernance/preview/{id}', [NewGovernancePageController::class, 'preview'])->name('newgovernance.preview');
-
 
     Route::resource('/operational-plans', 'OperationalPlanController')->only(['index', 'show']);
     Route::resource('/activity-reports', 'ActivityReportController')->only(['index', 'show']);

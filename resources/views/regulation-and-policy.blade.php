@@ -213,8 +213,7 @@
 
                     <div class="gap-buttons" style="display: flex; flex-direction: column; gap:20px;">
                         <a href="#" class="secondary-cta preview-btn" data-id="{{ $regulation->id }}"
-                            data-title="{{ $regulation->title }}"
-                            style="display: flex; flex-direction: row; gap:15px;    ">
+                            data-title="{{ $regulation->title }}" style="display: flex; flex-direction: row; gap:15px;    ">
                             <div class="icon-circle">
                                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
