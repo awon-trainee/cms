@@ -6,7 +6,6 @@ use App\Models\Regulation;
 use App\Services\ViewDataService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 
 class RegulationAndPolicyController extends Controller
 {
