@@ -20,7 +20,7 @@
                                     <p class="video-title">{{ $video->title }}</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     @endforeach
                 </div>
 
