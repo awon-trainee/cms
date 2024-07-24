@@ -1,0 +1,64 @@
+/* Styles for the FAQ container
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+} */
+
+/* Styles for the FAQ list */
+.faq-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Styles for each FAQ item */
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Styles for the question button */
+.faq-question {
+    width: 100%;
+    background: rgba(var(--secondary-charity-color), 0.2);
+    color: rgba(var(--secondary-charity-color), 1);
+    border: none;
+    padding: 15px;
+    text-align: right;
+    cursor: pointer;
+    outline: none;
+}
+
+.faq-question span {
+    font-size: 20px !important;
+}
+
+/* Styles for the FAQ answer */
+.faq-answer {
+    text-align: right;
+    display: none;
+    padding: 15px;
+    background: rgba(var(--secondary-charity-color), 0.1);
+}
+
+.faq-answer p {
+    font-size: 16px !important;
+}
+
+/* Styles for the arrow-down icon */
+.faq-question .arrow-down {
+    float: left;
+    transition: transform 0.3s ease;
+}
+
+/* Styles for the active state of the arrow-down icon */
+.faq-question.active .arrow-down {
+    transform: rotate(180deg);
+}
+.faq-icon {
+    height: 24px; /* Adjust the height as per your preference */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Optional: Adjust margin for spacing */
+}

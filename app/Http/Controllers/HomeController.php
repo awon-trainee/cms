@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MailingListRequest;
 use App\Models\BoardMember;
 use App\Models\MailingListSubscriber;
+use App\Models\Members;
 use App\Services\ViewDataService;
 use Illuminate\Contracts\View\View;
 use App\Models\CharityTeamMember;
+use App\Models\Qualification;
+use App\Models\Experiance;
 
 class HomeController extends Controller
 {
@@ -39,7 +42,16 @@ class HomeController extends Controller
     public function executiveManager(): View
     {
         $viewData = $this->viewDataService->getExecutiveData();
-        return view('about-us.executive-manager' , compact('viewData'));
+        $ceoQualification = Qualification::where('members_id', $viewData['ceo']->id)->get();
+        $ceoExperience = Experiance::where('members_id', $viewData['ceo']->id)->get();
+
+        if (!Members::where('name', $viewData['ceo']->name)->exists()) {
+            Members::create([
+                'name' => $viewData['ceo']->name
+            ]);
+        }
+
+        return view('about-us.executive-manager' , $viewData, compact('ceoQualification', 'ceoExperience'));
     }
 
     public function ourInitiatives(): View
@@ -58,25 +70,64 @@ class HomeController extends Controller
     public function boardOfDirectors(): View
     {
         $viewData = $this->viewDataService->getBoardOfDirectorsData();
-        return view('about-us.board-of-directors', $viewData);
+        $directorQualification = [];
+        $directorExperience = [];
+
+
+        foreach ($viewData['stages'] as $key => $value) {
+            foreach($value as $boardMemebr)
+            if (!Members::where('name', $boardMemebr->name)->exists()) {
+                Members::create([
+                    'name' => $boardMemebr->name
+                ]);
+            }
+            $directorQualification = Qualification::where('members_id', $boardMemebr->id)->get();
+            $directorExperience = Experiance::where('members_id', $boardMemebr->id)->get();
+        }
+
+
+        return view('about-us.board-of-directors', $viewData, compact('directorQualification', 'directorExperience'));
     }
 
     public function generalAssemblyMembers(): View
     {
         $viewData = $this->viewDataService->getGeneralAssemblyMembersData();
-        return view('about-us.general-assembly-members', $viewData);
-    }
+        $assemblyQualification = [];
+        $assemblyExperience = [];
 
-    public function cvMember($id)
-    {
-        $boardMember = BoardMember::findOrFail($id);
-        return view('pop-up', ['member' => $boardMember]);
+        foreach ($viewData['members']->items() as $key => $value) {
+            if (!Members::where('name', $value->name)->exists()) {
+                Members::create([
+                    'name' => $value->name
+                ]);
+            }
+            $assemblyQualification = Qualification::where('members_id', $value->id)->get();
+            $assemblyExperience = Experiance::where('members_id', $value->id)->get();
+        }
+
+        return view('about-us.general-assembly-members', $viewData, compact('assemblyQualification', 'assemblyExperience'));
     }
 
     public function workingTeam(): View
     {
         $viewData = $this->viewDataService->getWorkingTeamData();
-        return view('about-us.charity-team', $viewData);
+        $teamQualification = [];
+        $teamExperience = [];
+
+        foreach ($viewData['members']->items() as $key => $value) {
+            if (!Members::where('name', $value->name)->exists()) {
+                Members::create([
+                    'name' => $value->name
+                ]);
+            }
+            $teamQualification = Qualification::where('members_id', $value->id)->get();
+            // $memberId = 4;
+            // $qualifications = Members::join('qualifications', 'members.id', '=', 'qualifications.members_id')->where('members.id', $memberId)
+            // ->select('qualifications.*')->get();
+            $teamExperience = Experiance::where('members_id', $value->id)->get();
+        }
+
+        return view('about-us.charity-team', $viewData, compact('teamQualification', 'teamExperience'));
     }
 
     public function organizationalChart(): View

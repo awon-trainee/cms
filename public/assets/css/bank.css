@@ -1,12 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    text-align: center;
-    direction: rtl;
+.container-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px; /* زيادة المسافة بين العنوان والحاوية */
 }
-
 .bank-container {
-    width: 100%;
+    width: 115%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,18 +18,7 @@ body {
     margin-left: -20px;
     margin-top: 10px; /* زيادة المسافة من الأعلى */
     height: auto;
-    left: -15%; /* تعديل هذا القيمه حسب الحاجة لإخراج الحاوية من الجهة اليسرى */
-    position: relative; /* يجب أن تكون القيمة relative أو absolute */
 }
-
-.container-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* تعديل المحاذاة لتكون الحاوية في الجهة اليسرى */
-    margin-bottom: 40px; /* زيادة المسافة بين العنوان والحاوية */
-}
-
-
 .account-info {
     display: flex;
     flex-direction: column;
@@ -40,79 +28,62 @@ body {
     text-align: right;
     margin-right: 0.5em;
 }
-
 .account-details {
     margin-top: 0px;
     width: 80%;
     text-align: right;
 }
-
 .account-details p {
     margin-right: 0rem;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 35px; /* زيادة المسافة بين الفقرات */
+    margin-bottom: 30px; /* زيادة المسافة بين الفقرات */
     width: 100%; /* عرض الفقرة بالكامل */
     text-align: right; /* جعل النصوص تبدأ من الجهة اليمنى */
     direction: rtl; /* ضبط اتجاه النص إلى اليمين */
-    margin-right: 130px;
 }
-
 .account-details p strong {
     width: 30%; /* عرض العنوان */
     text-align: right; /* محاذاة العناوين لليمين */
     direction: rtl; /* ضبط اتجاه النص إلى اليمين */
-    margin-right: -135px; /* زيادة المسافة على اليسار لتحريك الكلمة لليمين */
- 
 }
-
 .account-details p span {
-    width: 96%; /* عرض المعلومات */
+    width: 70%; /* عرض المعلومات */
     text-align: right; /* محاذاة المعلومات لليمين */
     direction: rtl; /* ضبط اتجاه النص إلى اليمين */
-    
 }
-
 .bank-logo-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px; /* عرض الحاوية */
-    height: 200px; /* ارتفاع الحاوية */
+    width: 150px;
+    height: 150px;
     background-color: #fff;
     border: 1px solid #ddd;
     position: absolute;
-    right: -100px; /* ضبط الموضع الأيمن */
+    right: -100px;
     top: 50%;
-    transform: translateY(-50%); /* توسيط عمودي */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل */
-    overflow: hidden; /* الحفاظ على الميلان */
-    border-radius: 20px; /* ميلان الزوايا */
+    border-radius: 15px;
+    transform: translateY(-50%);
 }
-
-.bank-logo {
-    max-width: 114%; /* تأكد من أن الصورة لا تتجاوز عرض الحاوية */
-    max-height: 110%; /* تأكد من أن الصورة لا تتجاوز ارتفاع الحاوية */
-    object-fit: cover; /* ملاءمة الصورة داخل الحاوية */
+.bank-logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: contain;
 }
-
-
-
-
-
 .select-container {
     position: relative;
     display: inline-block;
     width: 100%;
 }
-
 #bankSelect {
     width: 100%; /* جعل الزر يمتد بطول الحاوية */
     padding: 10px;
     margin-bottom: 20px; /* تعديل المسافة بين الزر والعناصر المحيطة */
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #8c5ab4 !important;
+    background-color: rgba(var(--secondary-charity-color), 1);
     color: white !important;
     box-sizing: border-box;
     -webkit-appearance: none; /* إخفاء السهم الافتراضي */
@@ -121,20 +92,17 @@ body {
     font-size: 15px; /* حجم النص داخل الزر */
     margin-top: 20px; /* زيادة المسافة بين الزر والعناصر المحيطة */
 }
-
 .select-container::after {
-    content: '\f078'; /* رمز السهم للأسفل من FontAwesome */
-    font-family: 'Font Awesome 5 Free'; /* استخدام FontAwesome */
+    content: 'ˇ'; /* رمز السهم للأسفل من FontAwesome */
     font-weight: 900; /* النسخة الصلبة من الأيقونة */
     position: absolute;
-    left: 10px; /* موقع الأيقونة داخل الزر */
-    top: 50%;
+    left: 20px; /* موقع الأيقونة داخل الزر */
+    top: 60%;
     transform: translateY(-50%);
     font-size: 20px; /* تكبير الأيقونة */
     pointer-events: none; /* منع التفاعل مع الأيقونة */
     color: white; /* لون الأيقونة */
 }
-
 .bank-label {
     display: flex;
     align-items: center;
@@ -143,12 +111,38 @@ body {
     margin-bottom: 20px; /* تعديل المسافة بين العناوين والزر */
     gap: 40px; /* إضافة مسافة بين اسم المصرف والزر */
 }
-
 .bank-label span {
     margin-left: 10px;
     font-weight: bold; /* جعل اسم المصرف بولد */
 }
-
 span {
     margin-right: 0.0m;
+}
+
+@media screen and (max-width: 1600px) {
+    .bank-logo-wrapper {
+        width: 180px;
+        height: 180px;
+        right: -50px;
+    }
+
+    .account-details p span {
+        width: 88%;
+    }
+
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1600px) {
+    .account-details p span {
+        width: 175%;
+    }
+    .bank-logo-wrapper {
+        width: 200px;
+        height: 200px;
+        right: -50px;
+    }
+
+    .account-info {
+        margin-left: 20rem;
+    }
 }

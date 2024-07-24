@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\GovernanceCrudController;
 
 // --------------------------
 // Custom Backpack Routes
@@ -100,9 +99,15 @@ Route::group([
     Route::get('volunteering-page', 'VolunteeringSettingsController@index')->name('page.volunteering_page.index');
     Route::get('volunteering-page/edit', 'VolunteeringSettingsController@edit')->name('page.volunteering_page.edit');
     Route::put('volunteering-page', 'VolunteeringSettingsController@update')->name('page.volunteering_page.update');
+
     Route::crud('employment-request', 'EmploymentRequestCrudController');
+    Route::get('employment-request/export', 'EmploymentRequestCrudController@export')->name('employment-requests.export');
+
     Route::crud('membership-request', 'MembershipRequestCrudController');
+    Route::get('membership-request/export', 'MembershipRequestCrudController@export')->name('membership-requests.export');
+
     Route::crud('volunteering-request', 'VolunteeringRequestCrudController');
+    Route::get('volunteering-request/export', 'VolunteeringRequestCrudController@export')->name('volunteer-requests.export');
 
     Route::crud('initiative-registration', 'InitiativeRegistrationCrudController');
     Route::get('initiative-registration/export', 'InitiativeRegistrationCrudController@export')->name('initiative-registration.export');
@@ -130,6 +135,9 @@ Route::group([
     Route::crud('membership-opportunity', 'MembershipOpportunityCrudController');
     Route::crud('banks', 'BanksCrudController');
     Route::crud('video-library', 'VideoLibraryCrudController');
+    Route::crud('faq', 'FaqCrudController');
+    Route::crud('footer-links', 'FooterLinksCrudController');
     Route::crud('governance', 'GovernanceCrudController');
-    Route::crud('newgovernance', 'NewgovernanceCrudController');
+    Route::crud('newgovernance', 'NewGovernanceCrudController');
+    Route::crud('ceo', 'CeoCrudController');
 }); // this should be the absolute last line of this file

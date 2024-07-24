@@ -24,8 +24,8 @@ class FinancialReportController extends Controller
 
     public function preview($id)
     {
-        $report = FinancialReport::findOrFail($id);
-        $filePath = $report->file;
+        $financialReport = FinancialReport::findOrFail($id);
+        $filePath = $financialReport->file;
     
         // Log the file path for debugging
         \Log::info('File Path: ' . $filePath);
@@ -49,12 +49,4 @@ class FinancialReportController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
-
-
-
-
-
-
-
 }

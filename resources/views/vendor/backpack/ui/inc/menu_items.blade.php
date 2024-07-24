@@ -14,20 +14,24 @@
     <x-backpack::menu-dropdown-item title="القيم" :link="backpack_url('value')" />
     <x-backpack::menu-dropdown-item title="المجالات" :link="backpack_url('field')" />
     <x-backpack::menu-dropdown-header title="صفحات الأعضاء" class="text-muted" />
+    <x-backpack::menu-dropdown-item title="المدير التنفيذي" :link="backpack_url('ceo/create')" />
     <x-backpack::menu-dropdown-item title="المناصب" :link="backpack_url('position')" />
     <x-backpack::menu-dropdown-item title="مجلس الإدارة" :link="backpack_url('board-member')" />
     <x-backpack::menu-dropdown-item title="الجمعية العمومية" :link="backpack_url('general-assembly-member')" />
     <x-backpack::menu-dropdown-item title="فريق الجمعية" :link="backpack_url('charity-team-member')" />
+    <x-backpack::menu-dropdown-item title="المؤهلات" :link="backpack_url('qualification')" />
+    <x-backpack::menu-dropdown-item title="الخبرات" :link="backpack_url('experiance')" />
     <x-backpack::menu-dropdown-header title="الهيكل التنظيمي" class="text-muted" />
     <x-backpack::menu-dropdown-item title="خصائص الهيكل التنظيمي" :link="backpack_url('organizational-structure-settings')" />
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="الإعلام" icon="la la-photo-video">
     <x-backpack::menu-dropdown-header title="إعدادات المركز الإعلامي" class="text-muted" />
-    <x-backpack::menu-dropdown-item title="الإخبار" :link="backpack_url('news')" />
-    <x-backpack::menu-dropdown-item title="الغعاليات" :link="backpack_url('event')" />
+    <x-backpack::menu-dropdown-item title="الأخبار" :link="backpack_url('news')" />
+    <x-backpack::menu-dropdown-item title="الفعاليات" :link="backpack_url('event')" />
     <x-backpack::menu-dropdown-item title="الصور" :link="backpack_url('picture')" />
     <x-backpack::menu-dropdown-item title="مكتبة الفيديو" :link="backpack_url('video-library')" />
+    <x-backpack::menu-dropdown-item title="الأسئلة الشائعة" :link="backpack_url('faq')" />
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="الصفحات" icon="la la-file-alt">
@@ -37,9 +41,9 @@
     <x-backpack::menu-dropdown-item title="أبرز مشاريعنا" :link="backpack_url('projects')" />
     <x-backpack::menu-dropdown-item title="الحسابات البنكية" :link="backpack_url('banks')" />
     <x-backpack::menu-dropdown-item title="المسجلين في المبادرات" :link="backpack_url('initiative-registration')" />
-    <!-- <x-backpack::menu-dropdown-header title="الحوكمة" class="text-muted" /> -->
-    <x-backpack::menu-dropdown-item title="صفحات الحوكمة الجديدة" icon="la la-file" :link="backpack_url('governance')" />
-    <x-backpack::menu-dropdown-item title="ملفات صفحات الحوكمة الجديدة"  :link="backpack_url('newgovernance')" />
+    <x-backpack::menu-dropdown-header title="الحوكمة" class="text-muted" />
+    <x-backpack::menu-dropdown-item title="صفحات الحوكمة الجديدة" :link="backpack_url('governance')" />
+    <x-backpack::menu-dropdown-item title="محتوى صفحات الحوكمة الجديدة" :link="backpack_url('newgovernance')" />
     <x-backpack::menu-dropdown-item title="اللوائح والسياسات" :link="backpack_url('regulation')" />
     <x-backpack::menu-dropdown-item title="الخطط التشغيلية" :link="backpack_url('operational-plan')" />
     <x-backpack::menu-dropdown-item title="تقارير الأنشطة" :link="backpack_url('activity-report')" />
@@ -47,8 +51,6 @@
     <x-backpack::menu-dropdown-item title="المحاضر العمومية" :link="backpack_url('public-record')" />
     <x-backpack::menu-dropdown-item title="الإفصاح والشفافية" :link="backpack_url('transparency')" />
     <x-backpack::menu-dropdown-item title="أخرى" :link="backpack_url('other-governance')" />
-
-    
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="انضم معنا" icon="la la-sign-in-alt">
@@ -82,11 +84,6 @@
     <x-backpack::menu-dropdown-item title="الوظائف" icon="la la-group" :link="backpack_url('role')" />
 </x-backpack::menu-dropdown>
 
-<x-backpack::menu-item title="الإستبيانات" icon="la la-question" :link="backpack_url('questionnaires')" />
+<x-backpack::menu-item title="الإستبيانات" :link="backpack_url('questionnaires')" />
 
-<x-backpack::menu-item title="الصفحات" icon="la la-question" :link="backpack_url('page')" />
-
-<x-backpack::menu-item title="المؤهلات" icon="la la-question" :link="backpack_url('qualification')" />
-<x-backpack::menu-item title="الخبرات" icon="la la-question" :link="backpack_url('experiance')" />
-
-
+<x-backpack::menu-item title="الصفحات" :link="backpack_url('page')" />

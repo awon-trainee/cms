@@ -25,8 +25,8 @@ class OtherGovernanceController extends Controller
 
     public function preview($id)
     {
-        $record = OtherGovernance::findOrFail($id);
-        $filePath = $record->file;
+        $otherGover = OtherGovernance::findOrFail($id);
+        $filePath = $otherGover->file;
     
         // Log the file path for debugging
         \Log::info('File Path: ' . $filePath);
@@ -50,12 +50,4 @@ class OtherGovernanceController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
-
-
-
-
-
-
-
 }

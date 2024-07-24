@@ -49,6 +49,4 @@ class OperationalPlanController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
-
 }

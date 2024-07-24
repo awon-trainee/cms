@@ -76,6 +76,9 @@ class InitiativeCrudController extends CrudController
         CRUD::setColumnDetails('description', [
             'label' => 'الوصف',
         ]);
+        CRUD::setColumnDetails('link', [
+            'label' => 'رابط التسجيل للمبادرة',
+        ]);
         CRUD::setColumnDetails('is_active', [
             'label' => 'الحالة',
         ]);
@@ -105,6 +108,7 @@ class InitiativeCrudController extends CrudController
 
         CRUD::field('name')->label('الاسم');
         CRUD::field('description')->label('الوصف');
+        CRUD::field('link')->label('رابط التسجيل للمبادرة');
         CRUD::field('is_active')->label('مفعلة');
     }
 
@@ -151,6 +155,9 @@ class InitiativeCrudController extends CrudController
         ]);
         CRUD::setColumnDetails('description', [
             'label' => 'الوصف',
+        ]);
+        CRUD::setColumnDetails('link', [
+            'label' => 'رابط التسجيل للمبادرة',
         ]);
         CRUD::setColumnDetails('is_active', [
             'label' => 'الحالة',

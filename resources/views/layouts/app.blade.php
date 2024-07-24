@@ -162,6 +162,9 @@
                             href="{{ route('videos.index') }}" class="nav-link">
                             مكتبة الفيديو
                         </a></li>   
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s">
+                        <a href="{{ route('faq.index') }}" class="nav-link">الأسئلة الشائعة</a>
+                    </li>  
                 </ul>
             </li>
             <li class="nav-item" id="ul-dropdown-Four">
@@ -188,9 +191,8 @@
                     <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
                         style="visibility: visible; animation-duration: 1.1s; animation-iteration-count: 1; animation-name: fadeIn;">
                         <a href="{{ route('disclosure-and-transparency.index') }}" class="nav-link">{{$pages['disclosure_transparency']}}</a></li>
-                  
-                       <!-- new governance pages -->
-                        @foreach($governances as $governance)
+                         <!-- new governance pages -->
+                         @foreach($governances as $governance)
                         <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
                             style="visibility: visible; animation-duration: 1.1s; animation-iteration-count: 1; animation-name: fadeIn;">
                             <a href="{{ route('governance.show', ['id' => $governance->id]) }}" class="nav-link">
@@ -198,11 +200,10 @@
                             </a>
                         </li>
                         @endforeach
-
-                        <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
+                    <li class="nav-item wow animate__fadeIn" data-wow-iteration="1" data-wow-duration="1.1s"
                         style="visibility: visible; animation-duration: 1.1s; animation-iteration-count: 1; animation-name: fadeIn;">
                         <a href="{{ route('other-governance.index') }}" class="nav-link">{{$pages['others']}}</a></li>
-                    </ul>
+                </ul>
             </li>
         </ul>
 
@@ -256,19 +257,14 @@
         <div class="container-fluid px-sm-2 px-1">
             <div class="row justify-content-center gap-3 flex-xl-row flex-column w-100 align-items-center pb-5">
                 <div class="col-12 col-xl-6 row gap-3 justify-content-center px-sm-2 px-0">
-                    <div class="col-11 col-sm-5 mb-3">
+                    <div class="col-11 col-sm-5 mb-3" style="display:@if(sizeof($footerLink) > 0) block @else none @endif;">
                         <h6 class=" text-center pb-2">الروابط السريعة</h6>
                         <hr class="w-100 m-auto border-primary-web">
-                        <div class="py-2 text-center">
-                            <a class=" text-decoration-none py-2 text-center ps-1" href="{{ route('our-services') }}">{{$pages['services']}}
-                        </a>
-                        </div>
-                        <div class="py-2 text-center">
-                            <a class=" text-decoration-none py-2 text-center ps-1" href="{{ route('our-initiatives.index') }}">{{$pages['initiatives']}}</a>
-                        </div>
-                        <div class="py-2 text-center">
-                            <a class=" text-decoration-none py-2 text-center ps-1" href="{{ route('contact-us.index') }}">تواصل معنا</a>
-                        </div>
+                        @foreach($footerLink as $link)
+                            <div class="py-2 text-center">
+                                <a class=" text-decoration-none py-2 text-center ps-1" href="{{ $link->url }}">{{ $link->title }}</a>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="col-11 col-sm-5 mb-3">
                         <h6 class=" text-center pb-2">

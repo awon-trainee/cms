@@ -31,7 +31,7 @@ class PageSeeder extends Seeder
         Page::query()->create(['name_ar' => 'تطوع' , 'name_en' => 'volunteering']);
         Page::query()->create(['name_ar' => 'عضوية' , 'name_en' => 'membership']);
         ######### المركز الاعلامي
-        Page::query()->create(['name_ar' => 'الآخبار' , 'name_en' => 'news']);
+        Page::query()->create(['name_ar' => 'الأخبار' , 'name_en' => 'news']);
         Page::query()->create(['name_ar' => 'الفعاليات' , 'name_en' => 'events']);
         Page::query()->create(['name_ar' => 'الصور' , 'name_en' => 'images']);
         ######### الحوكمة
@@ -42,7 +42,6 @@ class PageSeeder extends Seeder
         Page::query()->create(['name_ar' => 'المحاضر العمومية' , 'name_en' => 'public_lecturer']);
         Page::query()->create(['name_ar' => 'الإفصاح والشفافية' , 'name_en' => 'disclosure_transparency']);
         Page::query()->create(['name_ar' => 'أخرى' , 'name_en' => 'others']);
-
         Page::query()->create(['name_ar' => 'الاستبيانات' , 'name_en' => 'questionnaires']);
 
 

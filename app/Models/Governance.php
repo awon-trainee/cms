@@ -16,6 +16,6 @@ class Governance extends Model
 
     public function newgovernances()
     {
-        return $this->hasMany(Newgovernance::class, 'at_page');
+        return $this->hasMany(NewGovernance::class, 'at_page');
     }
 }

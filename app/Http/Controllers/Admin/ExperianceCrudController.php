@@ -58,7 +58,7 @@ class ExperianceCrudController extends CrudController
         ]);
 
 
-        CRUD::setColumnDetails('board_member_id', [
+        CRUD::setColumnDetails('members_id', [
             'label' => 'العضو'
         ]);
 
@@ -87,11 +87,11 @@ class ExperianceCrudController extends CrudController
         CRUD::field('tasks')->label('المهام');
 
 
-        CRUD::field('board_member_id')
+        CRUD::field('members_id')
             ->type('select2')
-            ->entity('BoardMember')
+            ->entity('Members')
             ->attribute('name')
-            ->model('App\Models\BoardMember')
+            ->model('App\Models\Members')
             ->label('العضو')
             ->placeholder('أختر العضو');
 

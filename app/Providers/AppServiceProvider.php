@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Providers;
 
 use App\Models\Page;
+use App\Models\FooterLinks;
 use App\Models\Governance;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Storage;
@@ -28,10 +30,11 @@ class AppServiceProvider extends ServiceProvider
             $generalSettings = new \App\Settings\GeneralSettings;
             $contactUsSettings = new \App\Settings\ContactUsSetting;
             $pages = Page::all(['name_ar', 'name_en'])->pluck('name_ar', 'name_en')->toArray();
-            $governances = Governance::all(); // Fetch all governance items
-          
-
+            $footerLink = FooterLinks::all();
+            $governances = Governance::all(); 
             $view->with('generalSettings', $generalSettings);
+            $view->with('governances', $governances);
+            //$view->with('logo', asset($generalSettings::IMAGE_VIEW_PATH.$generalSettings->charity_logo));
             $view->with('logo', config('filesystems.disks.digitalocean.url').'/'.$generalSettings::IMAGE_VIEW_PATH.$generalSettings->charity_logo);
             $view->with('social', [
                 'twitter' => $generalSettings->twitter_account,
@@ -45,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
                 'telegram' => $generalSettings->telegram_account,
                 'google_maps_location' => $generalSettings->google_maps_location,
             ]);
-            $view->with('pages', $pages);
-            $view->with('governances', $governances); // Add the governance data
+            $view->with('footerLink', $footerLink);
+            $view->with('pages' , $pages);
             $view->with('contactUsSettings', $contactUsSettings);
 
             if (!auth()->check()) {

@@ -643,10 +643,6 @@ section.Main-address .title p {
     max-width: fit-content !important;
 }
 
-.btn-join {
-    margin-right: 3rem;
-}
-
 .manager-content {
     display: flex;
     align-items: center;
@@ -673,44 +669,8 @@ section.Main-address .title p {
     background-color: rgba(var(--secondary-charity-color), 0.1) !important;
 }
 
-.members-body:hover p,
-.members-body:hover small,
-.members-body:hover div {
+.body-hover:hover .card {
     opacity: 0;
-}
-
-.members-body:hover {
-    background-color: #D5D7EB;
-}
-
-.overlay {
-    opacity: 0;
-    transition: .5s ease;
-}
-
-.members-body:hover .overlay {
-    opacity: 1;
-}
-
-.members-body:hover .overlay .text {
-    display: block;
-    text-align: center;
-    color: white;
-    opacity: 1;
-    font-size: 20px;
-    position: absolute;
-    -webkit-transform: translate(5%, 50%);
-    transform: translate(5%, 50%);
-    text-align: center;
-}
-
-.overlay .text .btn-link {
-    background-color: transparent !important;
-    color: #3542B8 !important;
-}
-
-.members-body .overlay .text {
-    display: none;
 }
 
 /* .manager-body .title-card {
@@ -724,7 +684,7 @@ section.Main-address .title p {
     list-style-type: circle;
 }
 
-.manager-body .experience {
+.manager-body {
     width: fit-content;
 }
 
@@ -761,9 +721,6 @@ section.Main-address .title p {
   .charity-teams, .list-of-op {
         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
     }
-    .btn-join {
-        margin-right: 0rem;
-    }
 
     .manager-content {
         display: grid ;
@@ -779,8 +736,11 @@ section.Main-address .title p {
 }
 
 .list-of-projects {
+    width: fit-content;
     display: grid;
-    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 5rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -1651,8 +1611,6 @@ and (max-width: 1600px) {
         grid-template-columns: auto auto;
     }
 }
-
-@media screen and (min-width: 1100px) and (max-width: 1344px) {}
 
 /* email */
 
@@ -6159,10 +6117,15 @@ footer .iframe iframe {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.list-of-op .card {
-    width: 18rem;
-}
-
 .list-of-op .card-text {
     margin-right: 0rem !important;
+}
+
+.body-hover  {
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.body-hover:hover  {
+    transform: translateY(-10px);
 }

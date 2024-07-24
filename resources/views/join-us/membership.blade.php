@@ -19,35 +19,38 @@
                 </div>
             </div>
 
-        <div class="list-of-op">
-            @foreach($membership_opportunity as $membership)
-                <div class="card shadow rounded-3">
-                    <img src="{{ $membership->image_link }}" class="card-img-top" alt="" />
-                    <div class="card-body">
-                        <h5 class="card-title fw-bolder">{{ $membership->membership_title }}</h5>
-                        <p class="card-text">{{ $membership->membership_desc }}</p>
-                        <a href="{{ $membership->membership_link }}" class="btn btn-link fw-bold">
-                            <span>رابط:</span>
-                                انقر هنا
-                        </a>
-                        <div class="all-ope-a btn-join">
-                            @auth
-                                <form action="{{ route('employment.store') }}" method="post">
-                                    @csrf
-                                        <a class="btn btn-primary text-light" role="button" onclick="this.parentElement.submit()">
+            <div class="list-of-op">
+                @foreach($membership_opportunity as $membership)
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="{{ $membership->image_url }}" alt="Card Image">
+                            <h3>{{ $membership->membership_title }}</h3>
+                            <p>{{ $membership->membership_desc }}</p>
+                            <div class="d-flex link">
+                                <img src="{{ asset('assets/images/broken-link 1.svg') }}" alt="" class="" />
+                                <a href="{{ $membership->membership_link }}" class="fw-bold">
+                                    <span>رابط:</span>
+                                    انقر هنا
+                                </a>
+                            </div>
+                            <div class="all-ope-a btn-join">
+                                    @auth
+                                        <form action="{{ route('employment.store') }}" method="post">
+                                            @csrf
+                                                <a class="btn text-light" role="button" onclick="this.parentElement.submit()">
+                                                    تسجيل
+                                                </a>
+                                        </form>
+                                    @else
+                                        <a class="btn text-light pra disabled"  role="button">
                                             تسجيل
                                         </a>
-                                </form>
-                            @else
-                                <a class="btn btn-primary text-light m-auto pra disabled"  role="button">
-                                    تسجيل
-                                </a>
-                            @endauth
+                                    @endauth
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
             <x-buttons.contact-us/>
         </div>
     </div>
@@ -76,3 +79,79 @@
         });
     </script>
 @endpush
+
+<style>
+    .card {
+      width: 337px !important;
+      height: 530px !important;
+      background-color: rgba(var(--secondary-charity-color), 0.1) !important;
+      border-radius: 10px !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .card-content h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-right: 38px;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: #666;
+      margin-top: 15px;
+      margin-right: 38px !important;
+    }
+
+    .card-content img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    /* Button styles */
+    .card-content button {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      /* width: 100%; */
+      padding: 12px 24px;
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .link img {
+        width: auto;
+        height: 1.5rem;
+    }
+
+    .link {
+        margin-right: 38px;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .link a {
+        text-decoration: none;
+    }
+
+    .link span {
+        color: rgba(var(--primary-charity-color), 1);
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-join form a {
+        width: 123px;
+        border-radius: 5px;
+        background-color: white !important;
+        color: rgba(var(--primary-charity-color), 1) !important;
+        margin: 6rem;
+    }
+  </style>

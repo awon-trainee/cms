@@ -8,6 +8,8 @@
         .event-title {
             font-size: 24px;
             font-weight: bold;
+            margin-top: 120px;
+            padding-bottom: 21px;
             color: rgba(var(--secondary-charity-color), 1) !important;
         }
 
@@ -16,9 +18,13 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 14px;
+            font-weight: medium;
+            color: #5A5656;
         }
 
         .event-content {
+            color: #5A5656;
             margin-top: 20px;
             line-height: 1.6;
         }
@@ -51,7 +57,7 @@
             text-align: right;
             margin-bottom: 20px;
             font-weight: bold;
-            color: rgba(var(--secondary-charity-color), 1) !important;
+            color: #5A5656;
         }
 
         .btn-custom {
@@ -69,6 +75,14 @@
             color: rgba(var(--secondary-charity-color), 1) !important;
             font-size: 20px;
             font-weight: bold;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            place-items: center !important;
+        }
+        .additional-images-title img {
+            width: 65px;
+            height: 65px;
         }
     </style>
 @endpush
@@ -76,41 +90,26 @@
 @section('content')
 
     <div class="container mt-6">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4 class="text-dark w-100" style="color: rgba(var(--secondary-charity-color), 1) !important;">الفعاليات</h4>
-            </div>
-        </div>
-
         <div class="row mt-3">
             <div class="col-12">
                 <h5 class="event-title">{{ $event->title }}</h5>
                 <div class="event-dates">
                     <div class="event-date">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
-                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                            <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                        <span>تاريخ البداية: {{ \Carbon\Carbon::parse($event->start_date)->locale('ar')->translatedFormat('d M Y') }}</span>
+                        <img src="{{ asset('assets/images/qualification-icon/calendar.svg') }}" alt="calendar" />
+                        <span>تاريخ بداية الفعالية: {{ \Carbon\Carbon::parse($event->start_date)->locale('ar')->translatedFormat('d M Y') }}</span>
                     </div>
                     <div class="event-date">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
-                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                            <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                        <span>تاريخ النهاية: {{ \Carbon\Carbon::parse($event->end_date)->locale('ar')->translatedFormat('d M Y') }}</span>
+                        <img src="{{ asset('assets/images/qualification-icon/calendar.svg') }}" alt="calendar" />
+                        <span>تاريخ نهاية الفعالية: {{ \Carbon\Carbon::parse($event->end_date)->locale('ar')->translatedFormat('d M Y') }}</span>
                     </div>
                 </div>
                 <div class="event-location">
-                    <i class="fa-solid fa-location-dot"></i>
+                    <!-- <i class="fa-solid fa-location-dot"></i> -->
+                    <img src="{{ asset('assets/images/qualification-icon/location.svg') }}" alt="location" />
                     <span>{{ $event->location }}</span>
                 </div>
                 <p class="event-content">{{ $event->content }}</p>
                 <div class="event-duration">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                        <path d="M8 3.5a.5.5 0 0 1 .5.5v4.793l3.146 3.147a.5.5 0 0 1-.708.708l-3.147-3.147A.5.5 0 0 1 7.5 8V4a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0 1A9 9 0 1 1 8 0a9 9 0 0 1 0 18z"/>
-                    </svg>
                     <span>{{ $event->created_at->locale('ar')->diffForHumans() }}</span>
                 </div>
             </div>
@@ -119,8 +118,10 @@
         <div class="row mt-4">
             <div class="col-12 text-center">
                 <h5 class="additional-images-title">
-                    <i class="fas fa-image"></i>
-                    الصور الإضافية
+                    <img src="{{ asset('assets/icons/images.png') }}" alt="الصور الإضافية">
+                    <p>
+                        الصور الإضافية
+                    </p>
                 </h5>
             </div>
         </div>
@@ -140,7 +141,7 @@
         </div>
 
         <div class="row mt-4">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center py-5">
                 <a href="{{ route('events.index') }}" class="btn btn-custom">العودة للفعاليات</a>
             </div>
         </div>

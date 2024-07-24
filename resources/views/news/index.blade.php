@@ -109,9 +109,6 @@
 .all-secshen {
     font-size: 14px;
 }
-.title h4 {
-    font-size: 16px;
-}
 .text-right h5 {
     font-size: 16px;
     color: #8c5ab4;

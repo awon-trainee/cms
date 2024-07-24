@@ -39,7 +39,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: #76448A;
+        color: rgba(var(--secondary-charity-color), 1);
         word-wrap: break-word;
         white-space: normal;
     }
@@ -114,7 +114,7 @@
         justify-content: center;
         width: 28px;
         height: 28px;
-        background-color: #c6b6c8;
+        background-color: rgba(var(--primary-charity-color), 1);
         border-radius: 50%;
         margin-right: 8px;
     }
@@ -194,8 +194,7 @@
 
     <div class="container">
         <div class="row">
-            @foreach($otherGovernance as $governance)
-
+        @foreach($otherGovernance as $governance)
             <article class="card">
                 <div class="card-img">
                     <div class="ficon-circle">
@@ -213,8 +212,7 @@
 
                     <div class="gap-buttons" style="display: flex; flex-direction: column; gap:20px;">
                         <a href="#" class="secondary-cta preview-btn" data-id="{{ $governance->id }}"
-                            data-title="{{ $governance->title }}"
-                            style="display: flex; flex-direction: row; gap:15px;    ">
+                            data-title="{{ $governance->title }}" style="display: flex; flex-direction: row; gap:15px;    ">
                             <div class="icon-circle">
                                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -257,7 +255,7 @@
 </div>
 
 <div class="m-2 mt-4">
-    {{ $otherGovernance->links() }}
+{{ $otherGovernance->links() }}
 </div>
 
 <x-buttons.contact-us />
@@ -266,8 +264,8 @@
 document.querySelectorAll('.preview-btn').forEach(button => {
     button.addEventListener('click', function(event) {
         event.preventDefault();
-        const governanceId = this.getAttribute('data-id');
-        const pdfUrl = `/other-governance/preview/${governanceId}`;
+        const regulationId = this.getAttribute('data-id');
+        const pdfUrl = `/regulations-and-policies/preview/${regulationId}`;
 
         // Set the project title
         const projectTitle = this.getAttribute('data-title');

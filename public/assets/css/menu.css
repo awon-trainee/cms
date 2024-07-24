@@ -152,11 +152,6 @@
     text-align: center;
     width: 100px;
     height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 99;
 }
 
 .field img {
@@ -173,18 +168,10 @@
 
 .fields-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.fields-container::before {
-    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: rgba(var(--secondary-charity-color), 1);
+    top: 20rem;
+    margin-top: 1.5rem;
+    gap: 4rem;
 }
 
 
@@ -196,12 +183,26 @@
     .field {
         margin-bottom: 20px;
     }
-
-    .fields-container::before {
-        height: 0;
-    }
 }
 
 .vision-message-container {
     text-align: center;
+}
+
+@media screen and (min-width:855px) and (max-width:1430px) {
+    .fields-container {
+        top: 2rem;
+    }
+}
+
+@media screen and (min-width:1431px) and (max-width:1440px) {
+    .fields-container {
+        top: 22.5rem;
+    }
+}
+
+@media screen and (min-width:2000px) and (max-width:2560px) {
+    .fields-container {
+        top: 30rem;
+    }
 }

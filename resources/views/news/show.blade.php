@@ -9,18 +9,22 @@
             font-size: 24px;
             font-weight: bold;
             color: rgba(var(--secondary-charity-color), 1) !important;
+            margin-bottom: 12px;
         }
 
-        .news-date,
-        .news-time {
+        .news-date{
+            margin-top: 130px;
             display: flex;
             align-items: center;
             gap: 5px;
+            color: #5A5656;
+            margin-bottom: 12px;
         }
 
         .news-content {
             margin-top: 20px;
             line-height: 1.6;
+            color: #5A5656;
         }
 
         .owl-carousel .item {
@@ -74,36 +78,32 @@
             color: rgba(var(--secondary-charity-color), 1) !important;
             font-size: 20px;
             font-weight: bold;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            place-items: center !important;
+        }
+
+        .additional-images-title img {
+            width: 65px;
+            height: 65px;
         }
     </style>
 @endpush
 
 @section('content')
     <div class="container mt-6">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4 class="text-dark w-100" style="color: rgba(var(--secondary-charity-color), 1) !important;">الأخبار</h4>
-            </div>
-        </div>
-
         <div class="row mt-3">
             <div class="col-12">
                 <div class="news-dates">
                     <div class="news-date">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3-week" viewBox="0 0 16 16">
-                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a 2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                            <path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                        <span>تاريخ النشر: {{ $news->created_at->locale('ar')->translatedFormat('d M Y') }}</span>
+                        <img src="{{ asset('assets/images/qualification-icon/calendar.svg') }}" alt="calendar">
+                        <span>{{ $news->created_at->locale('ar')->translatedFormat('d M Y') }}</span>
                     </div>
                 </div>
                 <h5 class="news-title">{{ $news->title }}</h5>
                 <p class="news-content">{{ $news->content }}</p>
                 <div class="news-time">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                        <path d="M8 3.5a.5.5 0 0 1 .5.5v4.793l3.146 3.147a.5.5 0 0 1-.708.708l-3.147-3.147A.5.5 0 0 1 7.5 8V4a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0 1A9 9 0 1 1 8 0a9 9 0 0 1 0 18z"/>
-                    </svg>
                     <span>{{ $news->created_at->locale('ar')->diffForHumans() }}</span>
                 </div>
             </div>
@@ -112,8 +112,10 @@
         <div class="row mt-4">
             <div class="col-12 text-center">
                 <h5 class="additional-images-title">
-                    <i class="fa-regular fa-image"></i>
-                    صور الخبر
+                    <img src="{{ asset('assets/icons/images.png') }}" alt="الصور الإضافية">
+                    <p>
+                        صور الخبر
+                    </p>
                 </h5>
             </div>
         </div>
@@ -132,7 +134,7 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4 pb-5">
             <div class="col-12 text-center">
                 <a href="{{ route('news.index') }}" class="btn btn-custom">العودة للأخبار</a>
             </div>

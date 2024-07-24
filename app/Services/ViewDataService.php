@@ -10,6 +10,7 @@ use App\Models\Field;
 use App\Models\FinancialReport;
 use App\Models\GeneralAssemblyMember;
 use App\Models\HomeAd;
+use App\Models\Ceo;
 use App\Models\HomeStatistic;
 use App\Models\Initiative;
 use App\Models\News;
@@ -62,6 +63,8 @@ class ViewDataService
 
         $data['first_bank'] = Banks::all()->first();
 
+        $data['fields'] = Field::all();
+
         return $data;
 
     }
@@ -70,10 +73,9 @@ class ViewDataService
     public function getExecutiveData()
     {
         // return CEO
-        return BoardMember::query()
-            ->where('stage_order', 1)
-            ->where('member_order', 1)
-            ->first();
+        $data['ceo'] = Ceo::all()->first();
+        
+        return $data;
     }
 
     public function getContactUsData(): array
@@ -131,9 +133,7 @@ class ViewDataService
 
     public function getWorkingTeamData(): array
     {
-        $data['members'] = CharityTeamMember::query()
-            ->orderBy('order')
-            ->paginate(18);
+        $data['members'] = CharityTeamMember::query()->orderBy('order')->paginate(18);
 
         return $data;
     }

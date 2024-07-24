@@ -50,6 +50,15 @@ class EventCrudController extends CrudController
         CRUD::setColumnDetails('title', [
             'label' => 'العنوان',
         ]);
+        CRUD::setColumnDetails('location', [
+            'label' => 'المكان',
+        ]);
+        CRUD::setColumnDetails('start_date', [
+            'label' => 'بداية الفعالية',
+        ]);
+        CRUD::setColumnDetails('end_date', [
+            'label' => 'نهاية الفعالية',
+        ]);
     }
 
     /**
@@ -80,6 +89,9 @@ class EventCrudController extends CrudController
 
         CRUD::field('title')->label('العنوان');
         CRUD::field('content')->label('المحتوى');
+        CRUD::field('start_date')->label('بداية الفعالية');
+        CRUD::field('end_date')->label('نهاية الفعالية');
+        CRUD::field('location')->label('المكان');
     }
 
     /**
@@ -128,6 +140,15 @@ class EventCrudController extends CrudController
         ]);
         CRUD::setColumnDetails('updated_at', [
             'label' => 'تاريخ التعديل',
+        ]);
+        CRUD::setColumnDetails('location', [
+            'label' => 'المكان',
+        ]);
+        CRUD::setColumnDetails('start_date', [
+            'label' => 'تاريخ البداية',
+        ]);
+        CRUD::setColumnDetails('end_date', [
+            'label' => 'تاريخ النهاية',
         ]);
     }
 }

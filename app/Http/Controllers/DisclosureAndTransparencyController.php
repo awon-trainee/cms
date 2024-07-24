@@ -22,11 +22,10 @@ class DisclosureAndTransparencyController extends Controller
         return Storage::disk('digitalocean')->download($record->file , $record->title.'.pdf');
     }
 
-
     public function preview($id)
     {
-        $record = Transparency::findOrFail($id);
-        $filePath = $record->file;
+        $trans = Transparency::findOrFail($id);
+        $filePath = $trans->file;
     
         // Log the file path for debugging
         \Log::info('File Path: ' . $filePath);
@@ -50,5 +49,4 @@ class DisclosureAndTransparencyController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
 }

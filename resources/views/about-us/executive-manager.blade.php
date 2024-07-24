@@ -7,35 +7,33 @@
                 <div class="card mb-3">
                     <div class="manager-content">
                         <div class="avatar m-3">
-                            <img class="card-img-top rounded-circle shadow" src="{{ asset($viewData->picture_url) }}"
-                                 alt="manager-avatar"/>
+                            <img class="card-img-top rounded-circle shadow" src="{{ asset($ceo->image_url) }}" alt="manager-avatar"/>
                         </div>
                         <div>
-                            <p>{{$viewData->name}}</p>
+                            <p>{{$ceo->name}}</p>
                             <p class="fw-normal text-secondary">المدير التنفيذي</p>
                             <div class="d-flex align-items-center me-5 gap-2">
-                                <a href="{{$viewData->telegram}}">
+                                <a href="{{$ceo->telegram}}">
                                     <img src="{{ asset("assets/images/social-icons/telegram 2.svg") }}" alt="telegram"/>
                                 </a>
-                                <a href="{{$viewData->mail}}">
+                                <a href="{{$ceo->mail}}">
                                     <img src="{{ asset("assets/images/social-icons/gmail 2.svg") }}" alt="gmail"/>
                                 </a>
-                                <a href="{{$viewData->twitter}}">
+                                <a href="{{$ceo->twitter}}">
                                     <img src="{{ asset("assets/images/social-icons/twitter 2.svg") }}" alt="twitter"/>
                                 </a>
-                                <a href="{{$viewData->phone}}">
+                                <a href="{{$ceo->phone}}">
                                     <img src="{{ asset("assets/images/social-icons/phone-call 1.svg") }}" alt="phone-call"/>
                                 </a>
                             </div>
                         </div>
                     </div>
-
                     <div class="card-body mt-5">
                         <div class="manager-body shadow-sm d-flex justify-content-around">
                             <div class="grid m-5">
                                 <h6 class="fw-bold text-muted pt-5">المؤهلات</h6>
                                 <div class="qualifications">
-                                    @foreach($viewData->qualifications as $qualification)
+                                    @foreach($ceoQualification as $qualification)
                                         <div class="card my-3">
                                             <div class="d-flex align-items-center justify-content-center q-name-w">
                                                 <hr />
@@ -67,7 +65,7 @@
                             <div class="grid m-5">
                                 <h6 class="fw-bold text-muted pt-5">الخبرات</h6>
                                 <div class="grid gap-4">
-                                    @foreach($viewData->experiences as $experience)
+                                    @foreach($ceoExperience as $experience)
                                     <div class="mt-3 experience">
                                         <div class="card border rounded-3">
                                             <div class="card-body">

@@ -39,6 +39,9 @@ class MembershipRequest extends Model
     {
         return '<a href="' . backpack_url('user/' . $this->user_id . '/show') . '" class="btn btn-sm btn-link"><i class="la la-eye me-1"></i> عرض المستخدم</a>';
     }
+    public function showRegistrationsButton(){
+        return '<a href="'.backpack_url('membership-request?membership_request_id='.$this->id).'" class="btn btn-sm btn-link"><i class="la la-eye me-1"></i> عرض المسجلين</a>';
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -39,7 +39,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: #76448A;
+        color: rgba(var(--secondary-charity-color), 1);
         word-wrap: break-word;
         white-space: normal;
     }
@@ -114,7 +114,7 @@
         justify-content: center;
         width: 28px;
         height: 28px;
-        background-color: #c6b6c8;
+        background-color: rgba(var(--primary-charity-color), 1);
         border-radius: 50%;
         margin-right: 8px;
     }

@@ -55,8 +55,8 @@ class Qualification extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function boardMember(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function members(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(BoardMember::class);
+        return $this->belongsTo(Members::class);
     }
 }

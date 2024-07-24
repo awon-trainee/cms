@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\status\EmploymentRequestStatus;
 use App\Http\Requests\EmploymentRequestRequest;
+use App\Exports\EmploymentRequestsExport;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class EmploymentRequestCrudController
@@ -50,6 +52,8 @@ class EmploymentRequestCrudController extends CrudController
             ->type('select2')
             ->label('الحالة')
             ->options(EmploymentRequestStatus::toArray());
+
+        CRUD::addButtonFromView('top', 'export', 'export', 'end');
     }
 
     /**
@@ -142,6 +146,8 @@ class EmploymentRequestCrudController extends CrudController
 
         // add action to show ths user
         CRUD::addButtonFromModelFunction('line', 'show_user', 'showUserButton', 'beginning');
+
+        CRUD::addButtonFromModelFunction('line', 'show_registrations', 'showRegistrationsButton', 'beginning');
     }
 
     /**
@@ -208,5 +214,10 @@ class EmploymentRequestCrudController extends CrudController
         CRUD::setColumnDetails('updated_at', [
             'label' => 'تاريخ التعديل',
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new EmploymentRequestsExport(), 'employment-rquests.xlsx');
     }
 }

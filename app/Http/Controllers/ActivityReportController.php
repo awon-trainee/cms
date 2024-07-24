@@ -24,8 +24,8 @@ class ActivityReportController extends Controller
 
     public function preview($id)
     {
-        $report = ActivityReport::findOrFail($id);
-        $filePath = $report->file;
+        $activityReport = ActivityReport::findOrFail($id);
+        $filePath = $activityReport->file;
     
         // Log the file path for debugging
         \Log::info('File Path: ' . $filePath);
@@ -49,8 +49,4 @@ class ActivityReportController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
-        
-
-    
 }

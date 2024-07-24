@@ -26,7 +26,7 @@ class NewgovernanceCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Newgovernance::class);
+        CRUD::setModel(\App\Models\NewGovernance::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/newgovernance');
         CRUD::setEntityNameStrings( 'ملف جديد', 'ملفات صفحات قسم الحوكمة');
     }
@@ -67,7 +67,7 @@ class NewgovernanceCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NewgovernanceRequest::class);
+        // CRUD::setValidation(NewgovernanceRequest::class);
         CRUD::setFromDb(); // set fields from db columns.
 
         CRUD::field('file')
@@ -75,7 +75,7 @@ class NewgovernanceCrudController extends CrudController
             ->type('upload')
             ->withFiles([
                 'disk' => 'digitalocean',
-                'path' => 'newgovernancepages', // the path inside the disk where file will be stored
+                'path' => 'new-governance-pages', // the path inside the disk where file will be stored
                 'deleteWhenEntryIsDeleted' => true,
                 'mime_types' => ['pdf'],
                 'fileNamer' => function($file, $uploader) { return \Str::random(40).'.pdf'; },

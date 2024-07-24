@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\status\VolunteeringRequestStatus;
 use App\Http\Requests\VolunteeringRequestRequest;
+use App\Exports\VolunteerRequestsExport;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class VolunteeringRequestCrudController
@@ -50,6 +52,8 @@ class VolunteeringRequestCrudController extends CrudController
             ->type('select2')
             ->label('الحالة')
             ->options(VolunteeringRequestStatus::toArray());
+
+            CRUD::addButtonFromView('top', 'export', 'export', 'end');
     }
 
     /**
@@ -209,6 +213,11 @@ class VolunteeringRequestCrudController extends CrudController
         CRUD::setColumnDetails('updated_at', [
             'label' => 'تاريخ التعديل',
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new VolunteerRequestsExport(), 'volunteer-rquests.xlsx');
     }
 
 }

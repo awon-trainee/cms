@@ -13,23 +13,24 @@
                         </div>
                         <div class="card-body m-2 row">
                             @foreach($settings::rules() as $name => $rules)
-                                @php($splitRules = is_array($rules) ? $rules : explode('|', $rules))
-                                @continue(in_array('boolean', $splitRules) || in_array('image', $splitRules) || str_contains($name, '.') || in_array('string', $splitRules))
-                                @if(in_array((new \App\Rules\ColorValidation), $splitRules))
-                                    <div class="col-sm-12 col-md-4">
-                                        <div class="card  mb-3">
-                                            <div class="card-header">{{ $settings->nameAr($name) }}</div>
-                                            <div class="card-body p-0">
-                                                <input class="form-control @error($name) is-invalid @enderror"
-                                                       type="color"
-                                                       id="{{ Str::kebab(Str::camel($name)) }}"
-                                                       value="{{ old($name, $settings->$name) }}"
-                                                       name="{{ $name }}">
-                                            </div>
-                                        </div>
+                            @php($splitRules = is_array($rules) ? $rules : explode('|', $rules))
+                            @continue(in_array('boolean', $splitRules) || in_array('image', $splitRules) || str_contains($name, '.') || in_array('string', $splitRules))
+                            @if(in_array((new \App\Rules\ColorValidation), $splitRules))
+                            <div class="col-sm-12 col-md-4">
+                                <div class="card  mb-3">
+                                    <div class="card-header">{{ $settings->nameAr($name) }}</div>
+                                    <div class="card-body p-0">
+                                        <input class="form-control @error($name) is-invalid @enderror"
+                                        type="color"
+                                        id="{{ Str::kebab(Str::camel($name)) }}"
+                                        value="{{ old($name, $settings->$name) }}"
+                                        name="{{ $name }}">
                                     </div>
-                                @endif
+                                </div>
+                            </div>
+                            @endif
                             @endforeach
+                            <a href="{{ backpack_url('footer-links') }}">الروابط السريعة</a>
                             <div class="col-sm-12 col-md-12 mb-3">
                                 <ul class="list-group list-group-flush list-inline row flex-row">
                                     @foreach($settings::rules() as $name => $rules)

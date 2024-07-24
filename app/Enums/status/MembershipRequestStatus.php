@@ -51,4 +51,13 @@ enum MembershipRequestStatus: int
             self::REJECTED->value => self::REJECTED->nameAr(),
         ];
     }
+
+    public static function allowedValues(): array
+    {
+        return [
+            self::PENDING->value,
+            self::ACCEPTED->value,
+            self::REJECTED->value,
+        ];
+    }
 }

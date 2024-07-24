@@ -29,7 +29,7 @@ class ExperianceRequest extends FormRequest
             'start_at' => 'required',
             'end_at' => 'required|min:5|max:255',
             'employer' => 'required|min:5|max:255',
-            'board_member_id' => 'required',
+            'members_id' => 'required',
             'tasks' => 'required',
         ];
     }

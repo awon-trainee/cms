@@ -41,6 +41,14 @@ class GeneralAssemblyMember extends Model
         return $this->belongsTo(Position::class);
     }
 
+    public function qualifications() {
+        return $this->hasMany(Qualification::class);
+    }
+
+    public function experiences() {
+        return $this->hasMany(Experiance::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

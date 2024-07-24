@@ -24,8 +24,8 @@ class PublicRecordController extends Controller
 
     public function preview($id)
     {
-        $record = PublicRecord::findOrFail($id);
-        $filePath = $record->file;
+        $publicRecord = PublicRecord::findOrFail($id);
+        $filePath = $publicRecord->file;
     
         // Log the file path for debugging
         \Log::info('File Path: ' . $filePath);
@@ -49,10 +49,4 @@ class PublicRecordController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
     }
-    
-
-
-
-
-
 }

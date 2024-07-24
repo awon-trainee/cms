@@ -60,7 +60,7 @@
     left: 0;
 }
 .bg-primary {
-    background-color: #8c5ab4 !important;
+    background-color: rgba(var(--secondary-charity-color), 1) !important;
 }
 .text-white {
     color: white;
@@ -98,6 +98,11 @@
     text-align: right;
     width: 100%;
 }
+
+.text-right h5 {
+    color: rgba(var(--primary-charity-color), 1) !important;
+}
+
 .d-flex {
     display: flex;
     flex-wrap: wrap;
@@ -110,9 +115,6 @@
 }
 .all-secshen {
     font-size: 14px;
-}
-.title h4 {
-    font-size: 16px;
 }
 .text-right h5 {
     font-size: 16px;

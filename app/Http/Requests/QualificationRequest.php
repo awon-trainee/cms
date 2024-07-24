@@ -30,7 +30,7 @@ class QualificationRequest extends FormRequest
             'university' => 'required|min:5|max:255',
             'country' => 'required|min:5|max:255',
             'year' => 'required',
-            'board_member_id' => 'required|integer',
+            'members_id' => 'required|integer',
         ];
     }
 
