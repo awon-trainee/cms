@@ -59,6 +59,7 @@ Route::group([
     Route::resource('/employment', 'EmploymentController')->only(['index', 'store']);
     Route::resource('/volunteering', 'VolunteeringController')->only(['index', 'store']);
     Route::resource('/our-initiatives', 'OurInitiativeController')->only(['index', 'store']);
+    
     Route::resource('/contact-us', 'ContactUsController')->only(['index', 'store']);
 
 
