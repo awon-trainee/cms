@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
@@ -25,6 +24,7 @@ class User extends Authenticatable implements CanResetPassword
         'email',
         'phone_number',
         'password',
+        'profile_photo',  // Add this line
     ];
 
     /**

@@ -182,6 +182,7 @@ return [
         'password_confirmation' => 'تأكيد كلمة المرور',
         'new_password'          => 'كلمة المرور الجديدة',
         'confirm_password' => 'تأكيد كلمة المرور',
+        'profile_photo' => 'صورة الملف الشخصي',
         'old_password'          => 'كلمة المرور القديمة',
         'city'                  => 'المدينة',
         'country'               => 'الدولة',
