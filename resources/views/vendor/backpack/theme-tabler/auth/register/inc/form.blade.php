@@ -1,5 +1,5 @@
 <h5>{{ trans('backpack::base.register') }}</h5>
-<form role="form" method="POST" action="{{ route('backpack.auth.register') }}">
+<form role="form" method="POST" action="{{ route('backpack.auth.register') }}" enctype="multipart/form-data" dir="rtl">
     @csrf
     <div class="form-group to mb-3">
         <label class="form-label" for="name">{{ trans('backpack::base.name') }}</label>
@@ -41,8 +41,17 @@
         @endif
     </div>
 
-        <button tabindex="5" type="submit" class="btn btn-primary regster wow animate__fadeInLeft">
-            {{ trans('backpack::base.register') }}
-        </button>
+    <div class="form-group to mb-3">
+        <label class="form-label" for="profile_photo">{{ trans('validation.attributes.profile_photo') }}</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input {{ $errors->has('profile_photo') ? 'is-invalid' : '' }}" name="profile_photo" id="profile_photo" lang="ar">
+            @if ($errors->has('profile_photo'))
+                <div class="invalid-feedback">{{ $errors->first('profile_photo') }}</div>
+            @endif
+        </div>
+    </div>
 
+    <button tabindex="6" type="submit" class="btn btn-primary regster wow animate__fadeInLeft">
+        {{ trans('backpack::base.register') }}
+    </button>
 </form>

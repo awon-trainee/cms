@@ -36,23 +36,39 @@ class MyAccountController extends Controller
      */
     public function postAccountInfoForm(UpdateUserInformation $request)
     {
-        $result = $this->guard()->user()->update($request->only('name', 'phone_number'));
-
-        if ($request->mailing_list) {
-            MailingListSubscriber::firstOrCreate(['email' => $this->guard()->user()->email]);
-        } else {
-            MailingListSubscriber::where('email', $this->guard()->user()->email)->delete();
+        $user = $this->guard()->user();
+    
+        $user->name = $request->input('name');
+        $user->phone_number = $request->input('phone_number');
+        $user->email = $request->input('email');
+    
+        if ($request->hasFile('profile_photo')) {
+            $profilePhotoPath = $request->file('profile_photo')->store('profile_photos', 'public');
+            $user->profile_photo = $profilePhotoPath;
         }
-
+    
+        if ($request->input('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+    
+        $result = $user->save();
+    
+        if ($request->mailing_list) {
+            MailingListSubscriber::firstOrCreate(['email' => $user->email]);
+        } else {
+            MailingListSubscriber::where('email', $user->email)->delete();
+        }
+    
         if ($result) {
             Alert::success(trans('backpack::base.account_updated'))->flash();
         } else {
             Alert::error(trans('backpack::base.error_saving'))->flash();
         }
-
+    
         return redirect()->back();
     }
-
+    
+    
     /**
      * Save the new password for a user.
      */
@@ -84,6 +100,7 @@ class MyAccountController extends Controller
 
         return redirect()->back();
     }
+
 
     /**
      * Get the guard to be used for account manipulation.

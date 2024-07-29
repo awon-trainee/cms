@@ -13,14 +13,14 @@
                 <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-right: 20px;">
                     <!-- Profile Picture -->
                     <div style="margin-left: auto;">
-                        <img src="https://cdn-icons-png.flaticon.com/128/6380/6380101.png" alt="Profile Picture"
+                        <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}" alt="Profile Picture"
                             style="width: 150px; height: 150px; border-radius: 50%;">
                     </div>
                     <!-- Information -->
                     <div style="text-align: right; margin-left: 130px;">
-                        <h5 style="font-weight: bold; color: #2e4ca4;">الاسم الثلاثي</h5>
-                        <h5>987 210 543 966+</h5>
-                        <h5>email@email.com</h5>
+                        <h5 style="font-weight: bold; color: #2e4ca4;">{{ $user->name }}</h5>
+                        <h5>{{ $user->phone_number }}</h5>
+                        <h5>{{ $user->email }}</h5>
                         <button id="update-button"
                             style="background-color: #8c5ab4 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 220px;">تحديث
                             البيانات الشخصية</button>
@@ -170,37 +170,52 @@
                 <span class="close">&times;</span>
                 <div class="container">
                     <div class="profile">
-                        <img src="profile-placeholder.png" alt="Profile Picture">
-                        <button class="edit-button"
-                            style="background-color: #8c5ab4 !important; color: white;">✎</button>
+                        <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}"
+                            alt="Profile Picture">
+                        <!-- <button class="edit-button"
+                            style="background-color: #8c5ab4 !important; color: white;">✎</button> -->
                     </div>
-                    <form>
+                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="name">الاسم</label>
-                            <input type="text" id="name" placeholder="الاسم الثلاثي">
+                            <input type="text" id="name" name="name" value="{{ $user->name }}" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" placeholder="email@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">رقم الجوال</label>
-                            <input type="text" id="phone" placeholder="543210987" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">كلمة المرور</label>
-                            <input type="password" id="password" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">تأكيد كلمة المرور</label>
-                            <input type="password" id="confirm-password" placeholder="" required>
-                        </div>
-                        <button type="submit" class="submit-button"
-                            style="background-color: #8c5ab4 !important; color: white;">حفظ التعديلات</button>
-                    </form>
+                        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    <div class="form-group">
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+    </div>
+    <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+    </div>
+    <div class="form-group">
+        <label for="phone_number">رقم الجوال</label>
+        <input type="text" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
+    </div>
+    <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <div class="form-group">
+        <label for="confirm-password">تأكيد كلمة المرور</label>
+        <input type="password" id="confirm-password" name="password_confirmation">
+    </div>
+    <div class="form-group">
+        <label for="profile_photo">صورة الملف الشخصي</label>
+        <input type="file" id="profile_photo" name="profile_photo">
+    </div>
+    <button type="submit" class="submit-button" style="background-color: #8c5ab4 !important; color: white;">حفظ التعديلات</button>
+</form>
+
                 </div>
             </div>
         </div><!--modal-->
+
     </div>
 </div>
 </div>
