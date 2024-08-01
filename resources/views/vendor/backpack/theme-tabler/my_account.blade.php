@@ -47,7 +47,8 @@
                                     <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
                                         <div
                                             style="font-size: 48px; color: #3542B8; margin-right: -15px; width: 78px; height: 104px;">
-                                            3</div>
+                                            {{ $initiativeCount }}
+                                            </div>
                                     </b>
                                 </div>
                                 <!-- Text below the number and image -->
@@ -69,7 +70,8 @@
                                     <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
                                         <div
                                             style="font-size: 48px; color: #3542B8; margin-right: -10px; width: 78px; height: 104px;">
-                                            5</div>
+                                            {{ $messageCount }}
+                                            </div>
                                     </b>
                                 </div>
                                 <!-- Text below the number and image -->
@@ -91,7 +93,7 @@
                                     <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
                                         <div
                                             style="font-size: 48px; color: #3542B8; margin-right: -10px; width: 78px; height: 104px;">
-                                            2</div>
+                                           {{$volunteeringrequestCount}}</div>
                                     </b>
                                 </div>
                                 <!-- Text below the number and image -->
@@ -172,8 +174,7 @@
                     <div class="profile">
                         <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}"
                             alt="Profile Picture">
-                        <!-- <button class="edit-button"
-                            style="background-color: #8c5ab4 !important; color: white;">✎</button> -->
+                        <button class="edit-button" style="background-color: #8c5ab4 !important; color: white;">✎</button>
                     </div>
                     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -182,36 +183,28 @@
                             <label for="name">الاسم</label>
                             <input type="text" id="name" name="name" value="{{ $user->name }}" required>
                         </div>
-                        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <div class="form-group">
-        <label for="name">الاسم</label>
-        <input type="text" id="name" name="name" value="{{ $user->name }}" required>
-    </div>
-    <div class="form-group">
-        <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" name="email" value="{{ $user->email }}" required>
-    </div>
-    <div class="form-group">
-        <label for="phone_number">رقم الجوال</label>
-        <input type="text" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
-    </div>
-    <div class="form-group">
-        <label for="password">كلمة المرور</label>
-        <input type="password" id="password" name="password">
-    </div>
-    <div class="form-group">
-        <label for="confirm-password">تأكيد كلمة المرور</label>
-        <input type="password" id="confirm-password" name="password_confirmation">
-    </div>
-    <div class="form-group">
-        <label for="profile_photo">صورة الملف الشخصي</label>
-        <input type="file" id="profile_photo" name="profile_photo">
-    </div>
-    <button type="submit" class="submit-button" style="background-color: #8c5ab4 !important; color: white;">حفظ التعديلات</button>
-</form>
-
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">رقم الجوال</label>
+                            <input type="text" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">كلمة المرور</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">تأكيد كلمة المرور</label>
+                            <input type="password" id="confirm-password" name="password_confirmation">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_photo">صورة الملف الشخصي</label>
+                            <input type="file" id="profile_photo" name="profile_photo">
+                        </div>
+                        <button type="submit" class="submit-button" style="background-color: #8c5ab4 !important; color: white;">حفظ التعديلات</button>
+                    </form>
                 </div>
             </div>
         </div><!--modal-->

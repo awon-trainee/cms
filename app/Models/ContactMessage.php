@@ -23,7 +23,7 @@ class ContactMessage extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['name', 'email', 'phone', 'message', 'status', 'type', 'admin_response'];
+    protected $fillable = ['name', 'email', 'phone', 'message', 'status', 'type', 'admin_response', 'user_id'];
     // protected $hidden = [];
 
     protected $casts = [

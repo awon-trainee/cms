@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateUserInformation;
+use App\Models\ContactMessage; 
+use App\Models\InitiativeRegistration;
+use App\Models\VolunteeringRequest;
 use App\Models\MailingListSubscriber;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,9 +28,14 @@ class MyAccountController extends Controller
      */
     public function getAccountInfoForm()
     {
+        $user = $this->guard()->user();
         $this->data['title'] = trans('backpack::base.my_account');
-        $this->data['user'] = $this->guard()->user();
+        $this->data['user'] = $user;
+        $this->data['messageCount'] = ContactMessage::where('user_id', $user->id)->count(); 
+        $this->data['initiativeCount'] = InitiativeRegistration::where('user_id', $user->id)->count(); 
+        $this->data['volunteeringrequestCount'] = VolunteeringRequest::where('user_id', $user->id)->count(); 
 
+        
         return view(backpack_view('my_account'), $this->data);
     }
 
