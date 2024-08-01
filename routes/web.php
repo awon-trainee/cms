@@ -11,6 +11,8 @@ use App\Http\Controllers\OtherGovernanceController;
 use App\Http\Controllers\NewGovernancePageController;
 use App\Http\Controllers\GovernanceController;
 use App\Http\Controllers\MyAccountController;
+use App\Http\Controllers\ContactUsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +82,4 @@ Route::group([
     Route::put('/profile', [App\Http\Controllers\MyAccountController::class, 'postAccountInfoForm'])->name('profile.update');
 
 });
+
