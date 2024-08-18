@@ -546,3 +546,336 @@
     document.addEventListener("DOMContentLoaded", displayInitiatives);
 
 </script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+    .card:hover {
+        transform: scale(1.05);
+        /* تكبير البطاقة عند التأشير */
+    }
+
+    .card b {
+        font-family: 'Tajwal', sans-serif;
+        font-weight: bold;
+    }
+
+    .card div[style*="font-size: 48px"] {
+        font-family: 'Tajwal', sans-serif;
+    }
+
+    .card div[style*="font-size: 1em"] {
+        font-family: 'Tajwal', sans-serif;
+    }
+
+    .first-card {
+        margin-left: 10px;
+        /* تعديل الهامش على اليسار للبطاقة الأولى */
+    }
+
+    .last-card {
+        margin-right: 10px;
+        /* تعديل الهامش على اليمين للبطاقة الأخيرة */
+    }
+
+    .card-container {
+        padding-left: 20px;
+        /* زيادة الحافة اليسرى */
+        padding-right: 20px;
+        /* زيادة الحافة اليمنى */
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        /* تعديل العرض ليكون 50% */
+        max-width: 600px;
+        /* أقصى عرض */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .edit-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .initiative-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #F3F4FB;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .initiative-title {
+        font-size: 1.5em;
+        color: #2e4ca4;
+        margin-bottom: 10px;
+    }
+
+    .initiative-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #888;
+    }
+
+    .button-content-section {
+        background-color: #ffffff;
+        width: 1004px;
+        margin: 0 auto;
+        /* Center the section horizontally */
+    }
+
+    .button-content-section .buttons {
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        border-radius: 10px;
+        padding: 10px;
+        /* Add padding to create space inside the border */
+    }
+
+    .button-content-section .btn {
+        flex: 1;
+        /* Ensure buttons take equal space */
+        padding: 10px;
+        font-size: 16px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        /* Directly set the border color */
+        border-radius: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        color: rgba(var(--secondary-charity-color), 1);
+        margin: 0 10px;
+        /* Add margin to create space between buttons */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        /* Align icon and text vertically */
+        justify-content: center;
+        /* Center icon and text */
+        user-select: none;
+    }
+
+    .button-content-section .btn.active {
+        background-color: rgba(var(--secondary-charity-color), 1);
+        color: #ffffff;
+    }
+
+    .button-content-section .btn:hover {
+        background-color: rgba(var(--secondary-charity-color), 0.2);
+        color: #fff;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        border-radius: 10px;
+        width: 100%;
+        /* Make it span the full width */
+        margin-top: 20px;
+    }
+
+    .search-container input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        flex: 1;
+        /* Make it take up available space */
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #8c5ab4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-container button:hover {
+        background-color: #732c9c;
+    }
+
+    .search-container select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+</style>
+
+<script>
+    // JavaScript function to show/hide content based on button click
+    function showContent(id, button) {
+        // Hide all content sections
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function (content) {
+            content.style.display = 'none';
+        });
+
+        // Deactivate all buttons
+        var buttons = document.querySelectorAll('.btn');
+        buttons.forEach(function (btn) {
+            btn.classList.remove('active');
+        });
+
+        // Activate the clicked button
+        button.classList.add('active');
+
+        // Show the corresponding content section
+        var selectedContent = document.getElementById(id);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("modal");
+        var btn = document.getElementById("update-button");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+    const initiatives = [
+        {
+            title: "اسم المبادرة 1",
+            date: "02 يناير 2024",
+            status: "تم إرسال الطلب",
+            id: "#123454"
+        },
+        {
+            title: "اسم المبادرة 2",
+            date: "15 فبراير 2024",
+            status: "تم قبول الطلب",
+            id: "#567890"
+        }
+    ];
+
+    function displayInitiatives() {
+        const container = document.getElementById('about');
+        container.innerHTML = '';
+
+        initiatives.forEach(initiative => {
+            const card = document.createElement('div');
+            card.classList.add('initiative-card');
+
+            card.innerHTML = `
+            <h5 class="initiative-title">${initiative.title}</h5>
+            <div class="initiative-info">
+                <div class="initiative-date"><span style="margin-right: 5px;">📅</span>تاريخ التسجيل: ${initiative.date}</div>
+                <div class="initiative-status"><span style="margin-right: 5px;">📝</span>حالة التسجيل: ${initiative.status}</div>
+                <div class="initiative-id"><span style="margin-right: 5px;">🔍</span>رقم الطلب: ${initiative.id}</div>
+            </div>
+        `;
+
+            container.appendChild(card);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", displayInitiatives);
+
+</script>

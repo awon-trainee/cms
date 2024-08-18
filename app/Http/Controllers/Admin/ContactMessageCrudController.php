@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\status\ContactMessageStatus;
 use App\Enums\type\ContactMessageType;
 use App\Exports\ContactMessagesExport;
+use App\Http\Requests\ContactMessageRequest;
 use App\Models\ContactMessage;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -21,6 +22,8 @@ class ContactMessageCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -49,7 +52,6 @@ class ContactMessageCrudController extends CrudController
             ->label('الحالة')
             ->options(ContactMessageStatus::toArray());
 
-
         CRUD::filter('type')
             ->type('select2')
             ->label('النوع')
@@ -68,12 +70,18 @@ class ContactMessageCrudController extends CrudController
             });
 
         $this->prepareColumns();
+        
 
         if (ContactMessage::unread()->exists()) {
             CRUD::addButtonFromView('top', 'markAllAsRead', 'mark-all-as-read', 'beginning');
         }
 
         CRUD::addButtonFromView('top', 'export', 'export', 'end');
+
+        // Change the label for the admin_response column
+        CRUD::modifyColumn('admin_response', [
+            'label' => 'رد الإدارة',
+        ]);
     }
 
     /**
@@ -87,6 +95,43 @@ class ContactMessageCrudController extends CrudController
         $this->autoSetupShowOperation();
 
         $this->prepareColumns();
+
+    }
+
+    /**
+     * Define what happens when the Create operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-create
+     * @return void
+     */
+    protected function setupCreateOperation()
+    {
+        // Set validation rules using the ContactMessageRequest class
+        CRUD::setValidation(\App\Http\Requests\ContactMessageRequest::class);
+
+        // Define fields to be displayed in the create form
+        CRUD::field('name')->label('الاسم');
+        CRUD::field('email')->label('البريد الإلكتروني');
+        CRUD::field('phone')->label('رقم الجوال');
+        CRUD::field('message')->label('الرسالة');
+        CRUD::field('status')->label('الحالة');
+        CRUD::field('type')->label('النوع');
+        CRUD::field('admin_response')->label('رد الإدارة')->type('textarea');
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        // Set validation rules using the ContactMessageRequest class
+        CRUD::setValidation(\App\Http\Requests\ContactMessageRequest::class);
+
+        // Only include the admin_response field in the update form
+        CRUD::field('admin_response')->label('رد الإدارة')->type('textarea');
     }
 
     public function markAsRead($id)
@@ -158,6 +203,8 @@ class ContactMessageCrudController extends CrudController
             'format' => 'D MMM YYYY, HH:mm',
         ]);
 
+     
+
         CRUD::addButtonFromModelFunction('line', 'markAsReadOrUnread', 'markAsReadOrUnreadButton', 'beginning');
 
         CRUD::setColumnDetails('name', [
@@ -177,6 +224,9 @@ class ContactMessageCrudController extends CrudController
         ]);
         CRUD::setColumnDetails('updated_at', [
             'label' => 'تاريخ التعديل',
+        ]);
+        CRUD::modifyColumn('admin_response', [
+            'label' => ' رد الإدارة',
         ]);
     }
 }
