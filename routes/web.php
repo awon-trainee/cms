@@ -12,8 +12,6 @@ use App\Http\Controllers\NewGovernancePageController;
 use App\Http\Controllers\GovernanceController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\MyAccountController;
-use App\Http\Controllers\ContactUsController;
 
 
 /*
