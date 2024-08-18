@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('email', 255);
-            $table->string('phone', 255);
-            $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('type')->default(1);
+            $table->string('phone', 20)->nullable();
+            $table->string('status')->default('UNREAD');
+            $table->string('type')->default('INQUIRY');
             $table->text('message');
+            $table->text('admin_response')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

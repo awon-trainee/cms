@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Http\Requests\StoreContactUsRequest; 
 use Illuminate\Foundation\Http\FormRequest;
 
 class ContactMessageRequest extends FormRequest

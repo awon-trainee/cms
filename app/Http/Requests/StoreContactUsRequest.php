@@ -29,9 +29,13 @@ class StoreContactUsRequest extends FormRequest
             'phone' => ['required', 'string', 'max:15', 'min:10', 'regex:/^([0-9\s\+]*)$/'],
             'type' => ['required', Rule::in(ContactMessageType::allowedValues())],
             'message' => ['required', 'string', 'max:1024'],
+            'user_id' => 'nullable|exists:users,id', // Add validation for user_id
+
         ];
     }
 
+
+    
     /**
      * Get the error messages for the defined validation rules.
      *
@@ -56,6 +60,8 @@ class StoreContactUsRequest extends FormRequest
             'message.required' => 'الرسالة مطلوبة',
             'message.string' => 'الرسالة يجب ان تكون نص',
             'message.max' => 'الرسالة يجب ان لا تتجاوز :max حرف',
+            'user_id.exists' => 'معرف المستخدم غير صالح',
+
         ];
     }
 }

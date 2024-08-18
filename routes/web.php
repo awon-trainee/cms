@@ -10,6 +10,8 @@ use App\Http\Controllers\DisclosureAndTransparencyController;
 use App\Http\Controllers\OtherGovernanceController;
 use App\Http\Controllers\NewGovernancePageController;
 use App\Http\Controllers\GovernanceController;
+use App\Http\Controllers\MyAccountController;
+use App\Http\Controllers\ContactUsController;
 
 
 /*
@@ -59,6 +61,7 @@ Route::group([
     Route::resource('/employment', 'EmploymentController')->only(['index', 'store']);
     Route::resource('/volunteering', 'VolunteeringController')->only(['index', 'store']);
     Route::resource('/our-initiatives', 'OurInitiativeController')->only(['index', 'store']);
+
     Route::resource('/contact-us', 'ContactUsController')->only(['index', 'store']);
 
 
@@ -74,4 +77,8 @@ Route::group([
     Route::resource('/new-governance-page', 'NewGovernancePageController')->only(['index', 'show']);
     Route::get('/newgovernance/download/{id}', [NewGovernancePageController::class, 'download'])->name('newgovernance.download');
     Route::get('/newgovernance/preview/{id}', [NewGovernancePageController::class, 'preview'])->name('newgovernance.preview');
+
+    // profile
+    Route::put('/profile', [App\Http\Controllers\MyAccountController::class, 'postAccountInfoForm'])->name('profile.update');
+
 });

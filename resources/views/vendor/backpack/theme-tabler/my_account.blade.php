@@ -1,207 +1,548 @@
 @extends('layouts.app')
-
-@section('after_styles')
-    <style media="screen">
-        .backpack-profile-form .required::after {
-            content: ' *';
-            color: red;
-        }
-    </style>
-@endsection
-
-@php
-    $breadcrumbs = [
-        trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
-        trans('backpack::base.my_account') => false,
-    ];
-@endphp
-
-@section('header')
-    <section class="content-header">
-        <div class="container-fluid mb-3">
-            <h1>{{ trans('backpack::base.my_account') }}</h1>
-        </div>
-    </section>
-@endsection
-
 @section('content')
-    <div class="all-secshen mt-6">
-        <div class="viergein viergein-active-2 mt-1">
-            <div class="all">
-                <div class="title text-center">
-                    <h4 class="text-dark w-100"> ملفي الشخصي</h4>
-                </div><!--title-->
-            </div>
-            <div class="all-values Two to ">
-                <div class="row justify-content-center">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<div class="all-secshen mt-6">
+    <div class="viergein viergein-active-2 mt-1">
+        <div class="all">
+            <div class="title text-center">
+                <h4 class="text-dark w-100">ملفي الشخصي</h4>
+            </div><!--title-->
 
-                    @if (session('alert_messages.success'))
-                        <div class="col-lg-8">
-                            <div class="alert alert-success">
-                                {{ session('alert_messages.success.0') }}
-                            </div>
-                        </div>
-                    @endif
-
-                    @if (isset($errors) && $errors->count())
-                        <div class="col-lg-8">
-                            <div class="alert alert-danger">
-                                <ul class="mb-1">
-                                    @foreach ($errors->all() as $e)
-                                        <li>{{ $e }}</li><br>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
-
-                    {{-- UPDATE INFO FORM --}}
-                    <div class="col-lg-12 mb-4">
-                        <form class="input-all on" action="{{ route('backpack.account.info.store') }}" method="post">
-
-                            {!! csrf_field() !!}
-
-
-                            <div class="card-body backpack-profile-form bold-labels">
-
-                                    <div class="form-group">
-                                        @php
-                                            $label = 'الاسم';
-                                            $field = 'name';
-                                        @endphp
-                                        <label class="required">{{ $label }}</label>
-                                        <input required class="form-control" type="text" name="{{ $field }}" placeholder="محمد أحمد"
-                                               value="{{ old($field) ? old($field) : $user->$field }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="required">البريد الالكتروني</label>
-                                        <input required class="form-control"
-                                               type="email" disabled
-                                               value="{{ $user->email }}">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="required form-label">رقم الجوال</label>
-                                        <div class="input-group" dir="ltr">
-                                            <span class="input-group-text">+966</span>
-                                            <input required class="form-control" type="text" name="phone_number" maxlength="9"
-                                                   value="{{ old('phone', $user->phone_number) }}">
-                                        </div>
-
-                                    <div class="form-group">
-                                        <input type="checkbox" name="mailing_list" value="1" id="mailingListCheckbox"
-                                            @checked($user->subscribedToMailingList())>
-                                        <label for="mailingListCheckbox">النشرة البريدية</label>
-                                    </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary bt-2n"><i
-                                    class="la la-save"></i> حفظ التغييرات
-                            </button>
-
-                        </form>
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
+                <!-- Personal Information Section -->
+                <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-right: 20px;">
+                    <!-- Profile Picture -->
+                    <div style="margin-left: auto;">
+                        <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}" alt="Profile Picture"
+                            style="width: 150px; height: 150px; border-radius: 50%;">
                     </div>
-
-                    {{-- CHANGE PASSWORD FORM --}}
-                    <div class="col-lg-12 mb-4 mt-4">
-                        <form class="input-all on" action="{{ route('backpack.account.password') }}" method="post">
-                            {!! csrf_field() !!}
-                            <h3 class="card-title">تغيير كلمة المرور</h3>
-                            <div class="card-body backpack-profile-form bold-labels">
-                                <div class="row">
-                                    <div class="col-md-12 mb-4">
-                                        @php
-                                            $label = 'كلمة المرور القديمة';
-                                            $field = 'old_password';
-                                        @endphp
-                                        <label class="required">{{ $label }}</label>
-                                        <input autocomplete="new-password" required class="form-control"
-                                               type="password" name="{{ $field }}" id="{{ $field }}" value="">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        @php
-                                            $label = 'كلمة المرور الجديدة';
-                                            $field = 'new_password';
-                                        @endphp
-                                        <label class="required">{{ $label }}</label>
-                                        <input autocomplete="new-password" required class="form-control"
-                                               type="password" name="{{ $field }}" id="{{ $field }}" value="">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        @php
-                                            $label = 'تأكيد كلمة المرور';
-                                            $field = 'confirm_password';
-                                        @endphp
-                                        <label class="required">{{ $label }}</label>
-                                        <input autocomplete="new-password" required class="form-control"
-                                               type="password" name="{{ $field }}" id="{{ $field }}" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-success bt-2n"><i
-                                    class="la la-save"></i> حفظ التغييرات
-                            </button>
-                        </form>
+                    <!-- Information -->
+                    <div style="text-align: right; margin-left: 130px;">
+                        <h5 style="font-weight: bold; color: #2e4ca4;">{{ $user->name }}</h5>
+                        <h5>{{ $user->phone_number }}</h5>
+                        <h5>{{ $user->email }}</h5>
+                        <button id="update-button"
+                            style="background-color: #8c5ab4 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 220px;">تحديث
+                            البيانات الشخصية</button>
                     </div>
-
                 </div>
 
+                <!-- Design Section -->
+                <div class="design-section text-center mt-4" style="display: flex; justify-content: left;">
+                    <!-- Container to hold the cards inside a box with appropriate width and aligned to the left -->
+                    <div class="card-container"
+                        style="border: 1px solid #ccc; border-radius: 10px; padding: 10px 20px; background-color: #FFFFFF; display: inline-block; float: left; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 730px; height: 199px; margin-left: -50px;">
+                        <!-- Container to hold all the cards side by side -->
+                        <div style="display: flex; justify-content: space-between; gap: 25px;">
+                            <!-- Card 1 -->
+                            <div class="card first-card"
+                                style="text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #F3F4FB; width: 250px; height: 155px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s; padding-top: 20px; margin-top: 10px;">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                                    <!-- Image on the left -->
+                                    <div style="margin-right: 10px; margin-bottom: 35px;">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/2988/2988036.png"
+                                            alt="Idea Icon" style="width: 61px; height: 61px;">
+                                    </div>
+                                    <!-- Number on the right -->
+                                    <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
+                                        <div
+                                            style="font-size: 48px; color: #3542B8; margin-right: -15px; width: 78px; height: 104px;">
+                                            {{ $initiativeCount }}
+                                            </div>
+                                    </b>
+                                </div>
+                                <!-- Text below the number and image -->
+                                <div
+                                    style="font-family: 'Tajwal', sans-serif; font-size: 1.3em; color: #5A5656; margin-top: -30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; height: 34px;">
+                                    عدد المبادرات المسجلة</div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="card"
+                                style="text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #F3F4FB; width: 250px; height: 155px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s; padding-top: 20px; margin-top: 10px;">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                                    <!-- Image on the left -->
+                                    <div style="margin-right: 10px; margin-bottom: 35px;">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/1161/1161724.png"
+                                            alt="Idea Icon" style="width: 61px; height: 61px;">
+                                    </div>
+                                    <!-- Number on the right -->
+                                    <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
+                                        <div
+                                            style="font-size: 48px; color: #3542B8; margin-right: -10px; width: 78px; height: 104px;">
+                                            {{ $messageCount }}
+                                            </div>
+                                    </b>
+                                </div>
+                                <!-- Text below the number and image -->
+                                <div
+                                    style="font-family: 'Tajwal', sans-serif; font-size: 1.3em; color: #5A5656; margin-top: -30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; height: 34px;">
+                                    عدد رسائل التواصل</div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="card last-card"
+                                style="text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 10px; background-color: #F3F4FB; width: 250px; height: 155px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s; padding-top: 20px; margin-top: 10px;">
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                                    <!-- Image on the left -->
+                                    <div style="margin-right: 10px; margin-bottom: 25px;">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/1006/1006657.png"
+                                            alt="Idea Icon" style="width: 61px; height: 61px;">
+                                    </div>
+                                    <!-- Number on the right -->
+                                    <b style="font-family: 'Tajwal', sans-serif; font-weight: bold;">
+                                        <div
+                                            style="font-size: 48px; color: #3542B8; margin-right: -10px; width: 78px; height: 104px;">
+                                           {{$volunteeringrequestCount}}</div>
+                                    </b>
+                                </div>
+                                <!-- Text below the number and image -->
+                                <div
+                                    style="font-family: 'Tajwal', sans-serif; font-size: 1.3em; color: #5A5656; margin-top: -30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; height: 34px;">
+                                    عدد طلبات الانضمام</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--design-section-->
+            <!-- New section with buttons and content -->
+            <div class="button-content-section mt-5">
+                <div class="buttons">
+                    <button class="btn active" onclick="showContent('about', this)"> المبادرات المسجلة</button>
+                    <button class="btn" onclick="showContent('goals', this)"> طلبات الانضمام</button>
+                    <button class="btn" onclick="showContent('fields', this)"> رسائل التواصل</button>
+                </div>
+            </div>
+            <!-- Centered Search Bar and Menus with Shadow and Tailwind CSS -->
+            <div class="button-content-section mt-5">
+                <!-- Search Bar with Dropdowns -->
+                <div class="search-container">
+                    <input type="text" placeholder="بحث ..." aria-label="Search">
+                    <button type="button" onclick="performSearch()">Search</button>
+                    <select>
+                        <option selected>تاريخ التسجيل</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <select>
+                        <option selected>حالة التسجيل</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                </div>
+            </div><br>
+            <div class="content" id="about" style="display: block;">
+                <!-- Content for المبادرات المسجلة -->
+                <div class="initiative-card"
+                    style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #F3F4FB; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <h5 class="initiative-title" style="font-size: 1.5em; color: #2e4ca4; margin-bottom: 10px;">اسم
+                        المبادرة</h5>
+                    <div class="initiative-info"
+                        style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="initiative-date" style="color: #888;">
+                            <i class="fa fa-calendar" style="margin-right: 5px;"></i>تاريخ التسجيل: 02 يناير 2024
+                        </div>
+                        <div class="initiative-status" style="color: #888;">
+                            <i class="fa fa-clipboard-check" style="margin-right: 5px;"></i>حالة التسجيل: تم إرسال الطلب
+                        </div>
+                        <div class="initiative-id" style="color: #888;">
+                            <i class="fa fa-search" style="margin-right: 5px;"></i>رقم الطلب: #123454
+                        </div>
+                    </div>
+                </div>
+                <!-- يمكنك تكرار الكود أعلاه لكل مبادرة مسجلة -->
+            </div>
+            <div class="content" id="goals" style="display: none;">
+                <!-- Content for طلبات الانضمام -->
+            </div>
+            <div class="content" id="fields" style="display: none;">
+
+                <!-- Content for رسائل التواصل -->
+
+
+
+
             </div>
         </div>
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="container">
+                    <div class="profile">
+                        <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}"
+                            alt="Profile Picture">
+                        <button class="edit-button" style="background-color: #8c5ab4 !important; color: white;">✎</button>
+                    </div>
+                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="name">الاسم</label>
+                            <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">رقم الجوال</label>
+                            <input type="text" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">كلمة المرور</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">تأكيد كلمة المرور</label>
+                            <input type="password" id="confirm-password" name="password_confirmation">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_photo">صورة الملف الشخصي</label>
+                            <input type="file" id="profile_photo" name="profile_photo">
+                        </div>
+                        <button type="submit" class="submit-button" style="background-color: #8c5ab4 !important; color: white;">حفظ التعديلات</button>
+                    </form>
+                </div>
+            </div>
+        </div><!--modal-->
 
     </div>
-    <div class="contact-with">
-        <ul class="list-group animate__fadeInUp" data-wow-iteration="1" data-wow-duration=".5s">
-          <li class="nav-con conta">
-           <a href="#" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset text-dark" viewBox="0 0 16 16">
-             <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
-           </svg></a>
-
-           <p class="p-3 bg-dark-custome text-light text-center">نموذج التواصل</p>
-
-          </li>
-          <li class="nav-con conta">
-            <a href="#" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" svg-telephone bi bi-telephone-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
-            </svg></a>
-
-            <p class="p-3 bg-dark-custome text-light text-center">تواصل عبر الجوال</p>
-
-           </li>
-          <li class="nav-con conta">
-            <a href="#" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" svg-mail bi bi-envelope-fill" viewBox="0 0 16 16">
-              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"></path>
-            </svg></a>
-
-            <p class="p-3 bg-dark-custome text-light text-center">تواصل عبر الإيميل</p>
-
-           </li>
-          <li class="nav-con conta">
-            <a href="#" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="svg-whatsapp bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
-            </svg></a>
-
-            <p class="p-3 bg-dark-custome text-light text-center">تواصل عبر واتساب</p>
-
-           </li>
-
-          <li class="nav-con conta">
-            <a href="#" class="nav-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="svg-twitter bi bi-twitter" viewBox="0 0 16 16">
-                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
-              </svg>
-            </a>
-
-            <p class="p-3 bg-dark-custome text-light text-center">صفحتنا على تويتر</p>
-
-           </li>
-       </ul>
-       <a  href="{{ route('contact-us.index') }}" class="link-con">
-            تواصل معنا
-        </a>
-      </div>
-    </div>
+</div>
+</div>
 @endsection
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+    .card:hover {
+        transform: scale(1.05);
+        /* تكبير البطاقة عند التأشير */
+    }
+
+    .card b {
+        font-family: 'Tajwal', sans-serif;
+        font-weight: bold;
+    }
+
+    .card div[style*="font-size: 48px"] {
+        font-family: 'Tajwal', sans-serif;
+    }
+
+    .card div[style*="font-size: 1em"] {
+        font-family: 'Tajwal', sans-serif;
+    }
+
+    .first-card {
+        margin-left: 10px;
+        /* تعديل الهامش على اليسار للبطاقة الأولى */
+    }
+
+    .last-card {
+        margin-right: 10px;
+        /* تعديل الهامش على اليمين للبطاقة الأخيرة */
+    }
+
+    .card-container {
+        padding-left: 20px;
+        /* زيادة الحافة اليسرى */
+        padding-right: 20px;
+        /* زيادة الحافة اليمنى */
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        /* تعديل العرض ليكون 50% */
+        max-width: 600px;
+        /* أقصى عرض */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .edit-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .initiative-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #F3F4FB;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .initiative-title {
+        font-size: 1.5em;
+        color: #2e4ca4;
+        margin-bottom: 10px;
+    }
+
+    .initiative-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #888;
+    }
+
+    .button-content-section {
+        background-color: #ffffff;
+        width: 1004px;
+        margin: 0 auto;
+        /* Center the section horizontally */
+    }
+
+    .button-content-section .buttons {
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        border-radius: 10px;
+        padding: 10px;
+        /* Add padding to create space inside the border */
+    }
+
+    .button-content-section .btn {
+        flex: 1;
+        /* Ensure buttons take equal space */
+        padding: 10px;
+        font-size: 16px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        /* Directly set the border color */
+        border-radius: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        color: rgba(var(--secondary-charity-color), 1);
+        margin: 0 10px;
+        /* Add margin to create space between buttons */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        /* Align icon and text vertically */
+        justify-content: center;
+        /* Center icon and text */
+        user-select: none;
+    }
+
+    .button-content-section .btn.active {
+        background-color: rgba(var(--secondary-charity-color), 1);
+        color: #ffffff;
+    }
+
+    .button-content-section .btn:hover {
+        background-color: rgba(var(--secondary-charity-color), 0.2);
+        color: #fff;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow */
+        border-radius: 10px;
+        width: 100%;
+        /* Make it span the full width */
+        margin-top: 20px;
+    }
+
+    .search-container input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        flex: 1;
+        /* Make it take up available space */
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #8c5ab4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-container button:hover {
+        background-color: #732c9c;
+    }
+
+    .search-container select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+</style>
+
+<script>
+    // JavaScript function to show/hide content based on button click
+    function showContent(id, button) {
+        // Hide all content sections
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function (content) {
+            content.style.display = 'none';
+        });
+
+        // Deactivate all buttons
+        var buttons = document.querySelectorAll('.btn');
+        buttons.forEach(function (btn) {
+            btn.classList.remove('active');
+        });
+
+        // Activate the clicked button
+        button.classList.add('active');
+
+        // Show the corresponding content section
+        var selectedContent = document.getElementById(id);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("modal");
+        var btn = document.getElementById("update-button");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+    const initiatives = [
+        {
+            title: "اسم المبادرة 1",
+            date: "02 يناير 2024",
+            status: "تم إرسال الطلب",
+            id: "#123454"
+        },
+        {
+            title: "اسم المبادرة 2",
+            date: "15 فبراير 2024",
+            status: "تم قبول الطلب",
+            id: "#567890"
+        }
+    ];
+
+    function displayInitiatives() {
+        const container = document.getElementById('about');
+        container.innerHTML = '';
+
+        initiatives.forEach(initiative => {
+            const card = document.createElement('div');
+            card.classList.add('initiative-card');
+
+            card.innerHTML = `
+            <h5 class="initiative-title">${initiative.title}</h5>
+            <div class="initiative-info">
+                <div class="initiative-date"><span style="margin-right: 5px;">📅</span>تاريخ التسجيل: ${initiative.date}</div>
+                <div class="initiative-status"><span style="margin-right: 5px;">📝</span>حالة التسجيل: ${initiative.status}</div>
+                <div class="initiative-id"><span style="margin-right: 5px;">🔍</span>رقم الطلب: ${initiative.id}</div>
+            </div>
+        `;
+
+            container.appendChild(card);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", displayInitiatives);
+
+</script>

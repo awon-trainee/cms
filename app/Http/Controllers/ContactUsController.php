@@ -26,9 +26,11 @@ class ContactUsController extends Controller
     public function store(StoreContactUsRequest $request)
     {
         $validated = $request->validated();
-
+    
+    
         ContactMessage::create($validated);
-
+    
         return redirect()->route('contact-us.index')->with('success', 'تم إرسال رسالتك بنجاح');
     }
+    
 }

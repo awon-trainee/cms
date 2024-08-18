@@ -23,7 +23,7 @@ class ContactMessage extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['name', 'email', 'phone', 'message', 'status', 'type', 'admin_response', 'user_id'];
     // protected $hidden = [];
 
     protected $casts = [
@@ -40,7 +40,7 @@ class ContactMessage extends Model
     {
         if ($this->status->isRead()) {
             return '<a href="' . backpack_url('contact-message/' . $this->id . '/mark-as-unread') . '" class="btn btn-sm btn-link" title="Mark as unread"><i class="la la-eye-slash me-1"></i> تحديد كغير مقروءة</a>';
-        }else{
+        } else {
             return '<a href="' . backpack_url('contact-message/' . $this->id . '/mark-as-read') . '" class="btn btn-sm btn-link" title="Mark as read"><i class="la la-eye me-1"></i> تحديد كمقروءة</a>';
         }
     }
@@ -56,7 +56,6 @@ class ContactMessage extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
-
     public function scopeUnread($query)
     {
         return $query->where('status', ContactMessageStatus::UNREAD);
