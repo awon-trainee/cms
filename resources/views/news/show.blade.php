@@ -17,7 +17,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            color: #5A5656;
+            color: #57565a;
             margin-bottom: 12px;
         }
 
@@ -92,6 +92,7 @@
 @endpush
 
 @section('content')
+
     <div class="container mt-6">
         <div class="row mt-3">
             <div class="col-12">

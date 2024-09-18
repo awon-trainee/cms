@@ -1,14 +1,25 @@
 @extends('layouts.app')
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<div class="all-secshen mt-6">
-    <div class="viergein viergein-active-2 mt-1">
+<!--<div class="all-secshen mt-6">-->
+    <div>
+        <div>
+   <!-- <div class="viergein viergein-active-2 mt-1">-->
         <div class="all">
-            <div class="title text-center">
-                <h4 class="text-dark w-100">ملفي الشخصي</h4>
-            </div><!--title-->
+           <!-- <div class="title text-center">-->
+                <div class="topnav"><!--اضافة ناف بار -->
+                    <a class="navbar-brand" href="#">
+                        <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : 'https://cdn-icons-png.flaticon.com/128/6380/6380101.png' }}" alt="Profile Picture"
+                        style="width: 60px; height: 60px; border-radius: 50%;">
+                        ملفي الشخصي
+                      <!--<h6 class="text-dark w-100">ملفي الشخصي</h6>-->
+                   </a>
+                </div>
 
-            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
+            <!--</div>-->
+            <!--title-->
+<div style=" width:300%;display: flex;align-items: center; background: rgb(209, 209, 248);height: 50%;top:100% position: absolute;padding: 0px 40px 0px 20px;">
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 0px;">
                 <!-- Personal Information Section -->
                 <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-right: 20px;">
                     <!-- Profile Picture -->
@@ -28,7 +39,7 @@
                 </div>
 
                 <!-- Design Section -->
-                <div class="design-section text-center mt-4" style="display: flex; justify-content: left;">
+                <div class="design-section text-center mt-4" style="display: flex; justify-content: left; padding: 0px 0px 0px 0px;">
                     <!-- Container to hold the cards inside a box with appropriate width and aligned to the left -->
                     <div class="card-container"
                         style="border: 1px solid #ccc; border-radius: 10px; padding: 10px 20px; background-color: #FFFFFF; display: inline-block; float: left; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 730px; height: 199px; margin-left: -50px;">
@@ -104,9 +115,11 @@
                         </div>
                     </div>
                 </div>
-            </div><!--design-section-->
+            </div>
+</div>
+            <!--design-section-->
             <!-- New section with buttons and content -->
-            <div class="button-content-section mt-5">
+            <div class="button-content-section mt-5" style="top:45%; position: absolute; left: 190px;">
                 <div class="buttons">
                     <button class="btn active" onclick="showContent('about', this)"> المبادرات المسجلة</button>
                     <button class="btn" onclick="showContent('goals', this)"> طلبات الانضمام</button>
@@ -133,7 +146,7 @@
                     </select>
                 </div>
             </div><br>
-            <div class="content" id="about" style="display: block;">
+            <div class="content" id="about" style="display: block;padding: 0px 150px 0px 150px;">
                 <!-- Content for المبادرات المسجلة -->
                 <div class="initiative-card"
                     style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #F3F4FB; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
@@ -216,6 +229,19 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+    .topnav {
+
+        background: rgb(63, 75, 187);
+  position: fixed; /* Set the navbar to fixed position */
+  top:70; /* Position the navbar at the top of the page */
+  width: 100%;
+  height: 70px;
+  flex-wrap: wrap;
+  padding: 0px 40px 0px 20px;
+
+
+
+}
 
     .card:hover {
         transform: scale(1.05);

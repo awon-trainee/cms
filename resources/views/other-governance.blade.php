@@ -3,19 +3,44 @@
 @section('content')
 
 <div class="all-secshen mt-6">
-    <div class="viergein viergein-active-2 eo mt-1">
+   <!-- <div class="viergein viergein-active-2 eo mt-1">-->
         <div class="all">
-            <div class="title text-center">
+            <div class="topnav"><!--اضافة ناف بار -->
+
+                <a class="navbar-brand" href="#" style="top: 40%; ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16" style="color: aqua;  padding: 10px;">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                      </svg>
+                      {{$pages['others']}}
+
+               </a>
+            </div>
+           <!-- <div class="title text-center">
                 <h4 class="text-dark w-100">
                     {{$pages['others']}}
                 </h4>
             </div>
-            <!--title-->
-        </div>
+            <!-title->
+        </div>-->
     </div>
 
     <style>
     /* -------------------------------------------------------- start cards style --------------------------------------------------*/
+
+    .topnav {
+
+background: rgb(63, 75, 187);
+position: fixed; /* Set the navbar to fixed position */
+top:8%; /* Position the navbar at the top of the page */
+width: 100%;
+height: 70px;
+flex-wrap: wrap;
+padding: 0px 40px 0px 20px;
+
+
+
+}
+
     .container {
         display: flex;
         scroll-snap-type: x mandatory;
@@ -39,7 +64,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: rgba(var(--secondary-charity-color), 1);
+        color:rgba(53, 66, 184, 1);
         word-wrap: break-word;
         white-space: normal;
     }
@@ -114,7 +139,7 @@
         justify-content: center;
         width: 28px;
         height: 28px;
-        background-color: rgba(var(--primary-charity-color), 1);
+        background-color:rgba(137, 144, 213, 1);
         border-radius: 50%;
         margin-right: 8px;
     }
@@ -192,7 +217,7 @@
     }
     </style>
 
-    <div class="container">
+    <div class="container"style=" margin-top: 15%;  ">
         <div class="row">
         @foreach($otherGovernance as $governance)
             <article class="card">
@@ -221,7 +246,7 @@
                                         d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
                                 </svg>
                             </div>
-                            <h6>معاينة</h6>
+                            <h6 style="color: #000000">معاينة</h6>
                         </a>
 
                         <a href="{{ route('other-governance.show', $governance->id) }}" class="secondary-cta"
@@ -233,7 +258,7 @@
                                         d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4" />
                                 </svg>
                             </div>
-                            <h6>تحميل</h6>
+                            <h6 style="color: #000000">تحميل</h6>
                         </a>
                     </div>
                 </div>

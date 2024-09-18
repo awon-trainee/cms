@@ -2,12 +2,30 @@
 
 @section('content')
     <div class="all-secshen">
-        <div class="viergein viergein-active-2">
+       <!-- <div class="viergein viergein-active-2">-->
             <div class="all">
-                <div class="card mb-3">
+                <div class="topnav"><!--اضافة ناف بار -->
+
+                    <a class="navbar-brand" href="#" style="top: 40%; ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16" style="color: aqua;  padding: 10px;">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                          </svg>
+                          المدير التنفيذي
+                   </a>
+                </div>
+
+
+
+
+
+                <div class="card mb-3" style="
+               width=70%;  margin: 200px 100; ">
                     <div class="manager-content">
                         <div class="avatar m-3">
-                            <img class="card-img-top rounded-circle shadow" src="{{ asset($ceo->image_url) }}" alt="manager-avatar"/>
+                            <img class="card-img-top rounded-circle shadow" style=" width: 140px;
+    height: 140px;
+    position: relative;
+            right: 20%;" src="{{ asset($ceo->image_url) }}" alt="manager-avatar"/>
                         </div>
                         <div>
                             <p>{{$ceo->name}}</p>
@@ -29,8 +47,9 @@
                         </div>
                     </div>
                     <div class="card-body mt-5">
-                        <div class="manager-body shadow-sm d-flex justify-content-around">
-                            <div class="grid m-5">
+                        <div class="manager-body shadow-sm d-flex justify-content-around"  >
+
+                            <div class="grid m-5" >
                                 <h6 class="fw-bold text-muted pt-5">المؤهلات</h6>
                                 <div class="qualifications">
                                     @foreach($ceoQualification as $qualification)
@@ -98,3 +117,18 @@
         </div>
     </div>
 @endsection
+<style>
+    .topnav {
+
+   background: rgb(63, 75, 187);
+   position: fixed; /* Set the navbar to fixed position */
+   top:70; /* Position the navbar at the top of the page */
+   width: 100%;
+   height: 70px;
+   flex-wrap: wrap;
+   padding: 0px 40px 0px 20px;
+
+
+
+   }
+   </style>

@@ -63,7 +63,7 @@
         </li>
         @endif
     </ul>
-    <a  href="{{ route('contact-us.index') }}" class="link-con">
+    <a  href="{{ route('contact-us.index') }}" class="link-con" style="background-color: rgba(53, 66, 184, 1)">
         تواصل معنا
     </a>
 </div>
