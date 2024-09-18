@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="all-secshen mt-6">
-    <div class="viergein viergein-active-2 eo mt-1">
+   <!--- <div class="viergein viergein-active-2 eo mt-1">-->
         <div class="all">
             <div class="title text-center">
                 <h4 class="text-dark w-100">

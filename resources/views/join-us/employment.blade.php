@@ -3,22 +3,33 @@
 
 @section('content')
 <div class="all-secshen mt-6">
-    <div class="viergein viergein-active-2 a mt-1 container">
+   <!-- <div class="viergein viergein-active-2 a mt-1 container">-->
+
         <div class="all">
-            <div class="title text-center">
+            <div class="topnav"><!--اضافة ناف بار -->
+
+                <a class="navbar-brand" href="#" style="top: 40%; ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16" style="color: aqua;  padding: 10px;">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                      </svg>
+                      {!! $settings->title !!}
+
+               </a>
+            </div>
+           <!-- <div class="title text-center">
                 <h4 class="text-dark w-100">
                     {!! $settings->title !!}
                 </h4>
-            </div><!--title-->
+            </div><!-title-->
         </div>
-        <div class="a-description two ">
+      <!--  <div class="a-description two ">
             <div class="icon">
                 <span>
                     <x-icons.work/>
                 </span>
             </div>
-        </div>
-        <div class="list-of-op">
+        </div>-->
+        <div class="list-of-op" style=" margin-top: 15%;  ">
             @foreach($employment_opportunity as $employment)
                 <div class="card">
                     <div class="card-content">
@@ -27,7 +38,7 @@
                         <p>{{ $employment->job_desc }}</p>
                         <div class="d-flex link">
                             <img src="{{ asset('assets/images/broken-link 1.svg') }}" alt="" class="" />
-                            <a href="{{ $employment->job_link }}" class="fw-bold">
+                            <a href="{{ $employment->job_link }}" class="fw-bold" style="color: #000">
                                 <span>رابط:</span>
                                 انقر هنا
                             </a>
@@ -81,10 +92,23 @@
 @endpush
 
 <style>
+     .topnav {
+
+background: rgb(63, 75, 187);
+position: fixed; /* Set the navbar to fixed position */
+top:70; /* Position the navbar at the top of the page */
+width: 100%;
+height: 70px;
+flex-wrap: wrap;
+padding: 0px 40px 0px 20px;
+
+
+
+}
     .card {
       width: 337px !important;
-      height: 530px !important;
-      background-color: rgba(var(--secondary-charity-color), 0.1) !important;
+      height: auto!important;
+      background-color: rgba(127, 157, 178, 0.1) !important;
       border-radius: 10px !important;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
@@ -138,20 +162,29 @@
     }
 
     .link a {
+
+        color:rgb(0, 1, 9)!important;
         text-decoration: none;
     }
 
     .link span {
-        color: rgba(var(--primary-charity-color), 1);
+        color:rgba(53, 66, 184, 1);
         font-size: 16px;
         font-weight: bold;
+
     }
 
     .btn-join form a {
         width: 123px;
         border-radius: 5px;
-        background-color: white !important;
-        color: rgba(var(--primary-charity-color), 1) !important;
-        margin: 6rem;
+        background-color: rgb(250, 250, 251) !important;
+        color:rgba(53, 66, 184, 1)!important;
+        align-items: center;
+        margin-right: 100px;
+        border: 5ch;
+        border-color: black;
+        box-shadow: 0 4px 6px rgba(247, 245, 245, 0.1);
+
+
     }
   </style>
