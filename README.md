@@ -31,3 +31,6 @@
 1. Make new branch for any update you did `git checkout -b name-of-the-branch`
 2. Create `Pull request` from the branch to main
 3. And that's it!
+
+--------------
+Hello world :)
